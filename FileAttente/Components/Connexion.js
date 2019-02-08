@@ -10,7 +10,7 @@ class Connexion extends React.Component {
         <Text style = {styles.decalage}> Welcome back !</Text>
         <TextInput style = {styles.textinput} placeholder = 'Username'/>
         <TextInput style = {styles.textinput} placeholder = 'Password'/>
-        <Button title = 'Se connecter' onPress={() => {}}/>
+        <Button title = 'Sign in' onPress={() => {}}/>
       </View>
     )
   }
