@@ -1,12 +1,15 @@
 // App.js
 
 import React from 'react'
-import Connexion from './Components/Connexion'
+import {createAppContainer} from 'react-navigation'
+import AppNavigator from './Screens/AppNavigator'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Connexion/>
+      <AppScreens/>
     )
   }
 }
+
+const AppScreens = createAppContainer(AppNavigator);

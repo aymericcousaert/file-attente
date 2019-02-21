@@ -1,16 +1,16 @@
-// Components/Search.js
-
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
+import AppNavigator from './AppNavigator'
 
-class Connexion extends React.Component {
+class SignUpScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text style = {styles.decalage}> Welcome back !</Text>
-        <TextInput style = {styles.textinput} placeholder = 'Username'/>
+        <Text style = {styles.decalage}> Sign Up</Text>
+        <TextInput style = {styles.textinput} placeholder = 'Email'/>
         <TextInput style = {styles.textinput} placeholder = 'Password'/>
-        <Button title = 'Sign in' onPress={() => {}}/>
+				<TextInput style = {styles.textinput} placeholder = 'Password (confirm)'/>
+        <Button title = 'Create Account' onPress={() => {}}/>
       </View>
     )
   }
@@ -33,4 +33,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Connexion
+
+export default SignUpScreen
