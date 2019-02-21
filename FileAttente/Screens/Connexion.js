@@ -1,19 +1,27 @@
+/**************************************
+Screen Connexion :
+
+***************************************/
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 class Connexion extends React.Component {
-
+	/**************************************
+	Function definition for Log In screen
+	***************************************/
 	goToSignUp = () =>
   {
      this.props.navigation.navigate('SignUp');
   }
-
 	goToHomeScreen = () =>
 	{
 		 this.props.navigation.navigate('HomeScreen');
 	}
   render() {
+		/**************************************
+		Render definition for Log In screen
+		***************************************/
     return (
       <View>
         <Text style = {styles.decalage}> Welcome back !</Text>
