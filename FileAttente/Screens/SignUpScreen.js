@@ -1,9 +1,16 @@
+/**************************************
+Screen SignUpScreen :
+
+***************************************/
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
 import AppNavigator from './AppNavigator'
 
 class SignUpScreen extends React.Component {
   render() {
+		/**************************************
+		Render definition of the Sign Up screen
+		***************************************/
     return (
       <View>
         <Text style = {styles.decalage}> Sign Up</Text>
@@ -16,6 +23,9 @@ class SignUpScreen extends React.Component {
   }
 }
 
+/**************************************
+Style Sheet of the page
+***************************************/
 const styles = StyleSheet.create({
   textinput: {
     marginLeft: 5,
