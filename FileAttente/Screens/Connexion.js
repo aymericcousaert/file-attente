@@ -7,6 +7,12 @@ import { StyleSheet, View, TextInput, Button, Text, KeyboardAvoidingView } from 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 class Connexion extends React.Component {
+
+	constructor(props){
+			super(props);
+			this.state = { };
+	}
+
 	/**************************************
 	Function definition for Log In screen
 	***************************************/
@@ -18,6 +24,7 @@ class Connexion extends React.Component {
 	{
 		 this.props.navigation.navigate('HomeScreen');
 	}
+
   render() {
 		/**************************************
 		Render definition for Log In screen

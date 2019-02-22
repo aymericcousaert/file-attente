@@ -4,7 +4,6 @@ Screen SignUpScreen :
 ***************************************/
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
-import AppNavigator from './AppNavigator'
 
 class SignUpScreen extends React.Component {
   render() {
