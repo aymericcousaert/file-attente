@@ -4,7 +4,6 @@ Screen HomeScreen :
 ***************************************/
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
-import AppNavigator from './AppNavigator'
 
 class HomeScreen extends React.Component {
   render() {
@@ -13,7 +12,7 @@ class HomeScreen extends React.Component {
 		***************************************/
     return (
       <View>
-        <Text style = {styles.decalage}> Home </Text>
+        <Text> Home </Text>
       </View>
     )
   }
