@@ -3,14 +3,9 @@ Screen Connexion :
 
 ***************************************/
 import React from 'react'
-<<<<<<< HEAD
 import { StyleSheet, View, TextInput, Button, Text, Alert } from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
-=======
-import { StyleSheet, View, TextInput, Button, Text, KeyboardAvoidingView } from 'react-native'
-import { createStackNavigator, createAppContainer } from 'react-navigation';
->>>>>>> 6e84a9e4d8cc2cc27a8785bc6efa2dea0c161b07
 
 class Connexion extends React.Component {
 
@@ -46,9 +41,8 @@ class Connexion extends React.Component {
 		Render definition for Log In screen
 		***************************************/
     return (
-			<KeyboardAvoidingView behavior = "position" style = {styles.container}>
+			<View style = {styles.container}>
         <Text style = {styles.decalage}> Welcome back !</Text>
-<<<<<<< HEAD
 				<TextInput style={styles.textinput}
                   value={this.state.email}
                   onChangeText={(text) => { this.setState({email: text}) }}
@@ -69,28 +63,7 @@ class Connexion extends React.Component {
         <Button onPress = { this.goToSignUp } title = 'Sign Up'/>
 				<Button onPress = { this.goToSignUp } title = 'Forgot Password'/>
       </View>
-=======
-        <TextInput
-				style = {styles.textinput}
-				placeholder = 'Email'
-				returnKeyType = "next"
-				onSubmitEditing = {() => this.passwordInput.focus()}
-				keyboardType = "email-address"
-				autoCapitalize = "none"
-				autoCorrect = {false}
-				/>
-        <TextInput
-				style = {styles.textinput}
-				placeholder = 'Mot de Passe'
-				secureTextEntry
-				returnKeyType = "go"
-				ref = {(input) => this.passwordInput = input}
-				/>
-				<Button onPress = { this.goToHomeScreen } title = 'Se connecter'/>
-        <Button onPress = { this.goToSignUp } title = "S'inscrire"/>
-			</KeyboardAvoidingView>
->>>>>>> 6e84a9e4d8cc2cc27a8785bc6efa2dea0c161b07
-    )
+		)
   }
 }
 

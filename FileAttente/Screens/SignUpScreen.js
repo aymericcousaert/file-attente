@@ -33,7 +33,6 @@ class SignUpScreen extends React.Component {
     return (
       <View>
         <Text style = {styles.decalage}> Sign Up</Text>
-<<<<<<< HEAD
 				<TextInput style={styles.textinput}
                   value={this.state.email}
                   onChangeText={(text) => { this.setState({email: text}) }}
@@ -59,19 +58,6 @@ class SignUpScreen extends React.Component {
                   autoCorrect={false}
 	      />
         <Button title = 'Create Account'  onPress = { this.signUpComplete }/>
-=======
-        <TextInput
-        style = {styles.textinput}
-        placeholder = 'Email'
-        />
-        <TextInput
-        style = {styles.textinput}
-        placeholder = 'Password'
-        secureTextEntry
-        />
-				<TextInput style = {styles.textinput} placeholder = 'Password (confirm)'/>
-        <Button title = 'Create Account' onPress={() => {}}/>
->>>>>>> 6e84a9e4d8cc2cc27a8785bc6efa2dea0c161b07
       </View>
     )
   }
