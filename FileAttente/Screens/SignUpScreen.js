@@ -14,8 +14,15 @@ class SignUpScreen extends React.Component {
     return (
       <View>
         <Text style = {styles.decalage}> Sign Up</Text>
-        <TextInput style = {styles.textinput} placeholder = 'Email'/>
-        <TextInput style = {styles.textinput} placeholder = 'Password'/>
+        <TextInput
+        style = {styles.textinput}
+        placeholder = 'Email'
+        />
+        <TextInput
+        style = {styles.textinput}
+        placeholder = 'Password'
+        secureTextEntry
+        />
 				<TextInput style = {styles.textinput} placeholder = 'Password (confirm)'/>
         <Button title = 'Create Account' onPress={() => {}}/>
       </View>
