@@ -1,6 +1,5 @@
 /**************************************
 Class App :
-
 ***************************************/
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
@@ -9,10 +8,11 @@ import AppNavigator from './Screens/AppNavigator';
 import HomeScreen from './Screens/HomeScreen';
 import ApiKeys from './Constants/ApiKeys'
 import * as firebase from 'firebase';
+import SideBar from './src/navigation/SideBar';
 
 const AppScreens = createAppContainer(AppNavigator);
 const HomeNavigator = createStackNavigator({
- 	Home: HomeScreen,
+ 	Home: SideBar,
 })
 const AppHome = createAppContainer(HomeNavigator);
 

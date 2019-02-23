@@ -6,6 +6,12 @@ import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
 
 class HomeScreen extends React.Component {
+
+  goToConnexion = () =>
+  {
+		this.props.navigation.navigate('SignUp');
+  }
+
   render() {
 		/**************************************
 		Render definition of the Home screen
@@ -13,6 +19,7 @@ class HomeScreen extends React.Component {
     return (
       <View>
         <Text> Home </Text>
+        <Button onPress = { this.goToConnexion } title = 'Sign out'/>
       </View>
     )
   }

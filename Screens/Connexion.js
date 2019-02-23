@@ -3,7 +3,7 @@ Screen Connexion :
 
 ***************************************/
 import React from 'react'
-import { StyleSheet, View, TextInput, Button, Text, Alert } from 'react-native'
+import { StyleSheet, View, TextInput, Button, Text, Alert, KeyboardAvoidingView } from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
 
@@ -41,7 +41,7 @@ class Connexion extends React.Component {
 		Render definition for Log In screen
 		***************************************/
     return (
-			<View style = {styles.container}>
+			<KeyboardAvoidingView behavior="position">
         <Text style = {styles.decalage}> Welcome back !</Text>
 				<TextInput style={styles.textinput}
                   value={this.state.email}
@@ -62,7 +62,7 @@ class Connexion extends React.Component {
 				<Button onPress = { this.goToHomeScreen } title = 'Log In'/>
         <Button onPress = { this.goToSignUp } title = 'Sign Up'/>
 				<Button onPress = { this.goToSignUp } title = 'Forgot Password'/>
-      </View>
+      </KeyboardAvoidingView>
 		)
   }
 }
@@ -80,9 +80,6 @@ Style Sheet of the page
     borderWidth: 1,
     paddingLeft: 5
   },
-	container: {
-		flex: 1
-	},
   decalage: {
     marginTop: 200,
     marginBottom: 50,
