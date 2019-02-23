@@ -1,0 +1,1 @@
+nom install --save firebase
