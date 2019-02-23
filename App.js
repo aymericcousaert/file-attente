@@ -6,7 +6,6 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native'
 import {createAppContainer, createStackNavigator} from 'react-navigation';
 import AppNavigator from './Screens/AppNavigator';
-import HomeScreen from './Screens/HomeScreen';
 import ApiKeys from './Constants/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';

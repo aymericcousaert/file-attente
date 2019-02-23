@@ -10,7 +10,6 @@ import { Map } from '../screens';
 import CustomSideBar from './../components/CustomSideBar';
 import MainPageStack from './MainPageStack';
 import Feed from './Feed';
-import Begin from './Begin';
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -36,9 +35,6 @@ const SideBar = createDrawerNavigator(
         Map: {
             screen: Map
         },
-        Logout: {
-            screen: Begin,
-        }
     },
     SideBarConfig,
 );
