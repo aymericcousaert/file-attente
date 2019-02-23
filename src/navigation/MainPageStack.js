@@ -1,3 +1,8 @@
+/**************************************
+Class MainPageStack :
+
+***************************************/
+
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { MenuButton, BackButton, ReservationButton } from './../components';

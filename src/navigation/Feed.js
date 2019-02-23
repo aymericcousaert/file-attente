@@ -1,3 +1,8 @@
+/**************************************
+Class Feed :
+
+***************************************/
+
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { TileList } from './../container'
 

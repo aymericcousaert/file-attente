@@ -1,3 +1,8 @@
+/**************************************
+Class CreateEmpPageNav :
+
+***************************************/
+
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { CreateEmpPage, FormInscription } from './../screens'
 

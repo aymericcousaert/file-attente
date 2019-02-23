@@ -1,3 +1,8 @@
+/**************************************
+Class MainPageTab :
+
+***************************************/
+
 import React from 'react';
 import Image from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
@@ -11,6 +16,5 @@ const MainPageTab = createBottomTabNavigator(
         Map: { screen: Map },
     },
 )
-
 
 export default createAppContainer(MainPageTab);

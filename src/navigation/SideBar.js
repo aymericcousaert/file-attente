@@ -1,3 +1,8 @@
+/**************************************
+Class SideBar :
+
+***************************************/
+
 import React from 'react';
 import { Dimensions } from 'react-native';
 import { createDrawerNavigator, createAppContainer } from 'react-navigation';
@@ -16,7 +21,10 @@ const SideBarConfig = {
         return (<CustomSideBar navigation={navigation} />)
     }
 }
-
+/**************************************
+Creates a Drawer navigation where the user
+is prompted with different screens
+***************************************/
 const SideBar = createDrawerNavigator(
     {
         Home: {

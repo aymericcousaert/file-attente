@@ -1,5 +1,6 @@
 /**************************************
 Class App :
+
 ***************************************/
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
@@ -10,6 +11,11 @@ import ApiKeys from './Constants/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
 
+/**************************************
+Creation of the App containers one that
+routes to the home page (AppHome) and one
+that routes to the app's login (AppScreens)
+***************************************/
 const AppScreens = createAppContainer(AppNavigator);
 const HomeNavigator = createStackNavigator({
  	Home: SideBar,
