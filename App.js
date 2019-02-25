@@ -4,7 +4,7 @@ cc je suis la
 ***************************************/
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
-import {createAppContainer, createStackNavigator} from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import AppNavigator from './Screens/AppNavigator';
 import ApiKeys from './Constants/ApiKeys'
 import * as firebase from 'firebase';
@@ -16,9 +16,17 @@ routes to the home page (AppHome) and one
 that routes to the app's login (AppScreens)
 ***************************************/
 const AppScreens = createAppContainer(AppNavigator);
-const HomeNavigator = createStackNavigator({
- 	Home: SideBar,
-})
+const HomeNavigator = createStackNavigator(
+	{
+		Home: SideBar,
+	},
+	{
+		headerMode: 'none',
+		defaultNavigationOptions: {
+			gesturesEnabled: false,
+		},
+	}
+)
 const AppHome = createAppContainer(HomeNavigator);
 
 export default class App extends React.Component {
@@ -35,33 +43,33 @@ export default class App extends React.Component {
 		to the AppScreens else he goes directly
 		to the HomeScreen (thanks to isAuthenticated).
 		***************************************/
-		if (!firebase.apps.length) {firebase.initializeApp(ApiKeys.FirebaseConfig);}
+		if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
 		firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 	}
 	onAuthStateChanged = (user) => {
-		this.setState({isAuthenticationReady: true});
-		this.setState({isAuthenticated: !!user});
+		this.setState({ isAuthenticationReady: true });
+		this.setState({ isAuthenticated: !!user });
 	}
 
-  render() {
+	render() {
 		/**************************************
 		Render definition for Log In screen
 		***************************************/
-    return (
+		return (
 			/**************************************
 			Checks if the user can go directly to
 			the App's home or not
 			***************************************/
 			<View style={styles.container}>
-      { this.state.isAuthenticated ? <AppHome/> : <AppScreens/> }
+				{this.state.isAuthenticated ? <AppHome /> : <AppScreens />}
 			</View>
-    );
+		);
 	}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  }
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+	}
 });
