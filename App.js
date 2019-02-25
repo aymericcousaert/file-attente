@@ -5,8 +5,8 @@ cc je suis la
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import AppNavigator from './Screens/AppNavigator';
-import ApiKeys from './Constants/ApiKeys'
+import AppNavigator from './src/navigation/AppNavigator';
+import ApiKeys from './src/config/firebase/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
 

@@ -9,14 +9,14 @@ export default {
     },
     styles: {
         grandFond: {
-            backgroundColor: 'rgb(247,255,247)',
+            backgroundColor: 'rgb(255,255,255)',
             width: '100%',
             height: '100%'
         }
     },
     colors: {
-        mainColor: 'rgb(85,204,195)',
-        secondaryColor: 'rgb(247,255,247)',
+        mainColor: 'rgb(73,194,103)',
+        secondaryColor: 'rgb(255,255,255)',
         borderColor: "rgb(73,73,73)",
         red: 'rgb(255,96,96)',
         yelow: 'rgb(255,226,98)',

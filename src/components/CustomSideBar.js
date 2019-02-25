@@ -25,7 +25,7 @@ export default class CustomSideBar extends Component {
                     {this.navLink('Map', 'Map')}
                     {this.navLink('CreateEmpPage', 'Create your shop page ?')}
                     {this.navLink('Settings', 'Settings')}
-                    {this.navLink('Logout', 'Logout')}
+                    {this.navLink('LogIn', 'Logout')}
                 </View>
             </View>
         )
