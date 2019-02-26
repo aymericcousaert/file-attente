@@ -3,11 +3,26 @@ Screen Connexion :
 
 ***************************************/
 import React from 'react'
-import { StyleSheet, View, TextInput, Button, Text, Alert, KeyboardAvoidingView } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  Image,
+  Text,
+  Dimensions,
+  Alert,
+  KeyboardAvoidingView,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
-import config from './../config'
+import config from './../config';
+import background from './../image/BackImage.png';
+import logo from './../icon/logo.png';
 
+const { width: WIDTH } = Dimensions.get('window');
 class Connexion extends React.Component {
 
 	/**************************************
@@ -20,8 +35,12 @@ class Connexion extends React.Component {
     this.state = {
       email: "",
       password: "",
+      showPass: true,
+      press: false,
     };
   }
+
+
 
 	/**************************************
 	Function definition for Log In screen
@@ -34,36 +53,69 @@ class Connexion extends React.Component {
       .then(() => { },
         (error) => { Alert.alert(error.message); });
   }
+  showPass = () => {
+    if (this.state.press == false) {
+      this.setState({ showPass: false, press: true })
+    } else {
+      this.setState({ showPass: true, press: false })
+    }
+  }
 
   render() {
 		/**************************************
 		Render definition for Log In screen
 		***************************************/
     return (
-      <View style={styles.background}>
+      <ImageBackground source={background} style={styles.background}>
         <KeyboardAvoidingView behavior="position">
-          <Text style={styles.decalage}> Welcome back !</Text>
-          <TextInput style={styles.textinput}
-            value={this.state.email}
-            onChangeText={(text) => { this.setState({ email: text }) }}
-            placeholder="Email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <TextInput style={styles.textinput}
-            value={this.state.password}
-            onChangeText={(text) => { this.setState({ password: text }) }}
-            placeholder="Password"
-            secureTextEntry={true}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Button onPress={this.goToHomeScreen} title='Log In' />
-          <Button onPress={this.goToSignUp} title='Sign Up' />
-          <Button onPress={this.goToSignUp} title='Forgot Password' />
+          <View style={styles.logoContainer}>
+            <Image source={logo} style={styles.logo} />
+            <Text style={styles.logoText}>FILE ATENTE</Text>
+          </View>
+          <View style={styles.zoneContainer}>
+            <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
+            <TextInput style={styles.textinput}
+              value={this.state.email}
+              onChangeText={(text) => { this.setState({ email: text }) }}
+              placeholder="Email"
+              placeholderTextColor='rgba(255,255,255,0.7)'
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+          </View >
+
+          <View style={styles.zoneContainer}>
+            <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+            <TextInput style={styles.textinput}
+              value={this.state.password}
+              onChangeText={(text) => { this.setState({ password: text }) }}
+              placeholder="Password"
+              placeholderTextColor='rgba(255,255,255,0.7)'
+              secureTextEntry={this.state.showPass}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <TouchableOpacity style={config.styles.iconsEyePos} onPress={this.showPass} >
+              <Image source={config.icons.eyeIcon} style={config.styles.iconsEyeStyle} />
+            </TouchableOpacity>
+
+            <View style={styles.btnContainer}>
+              <TouchableOpacity style={styles.btnOther} onPress={this.goToSignUp} >
+                <Text style={styles.btnText}>Sign Up</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btnOther} onPress={this.goToSignUp} >
+                <Text style={styles.btnText}>Forgot Password</Text>
+              </TouchableOpacity>
+            </View>
+
+            <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
+              <Text style={styles.btnText}>Login</Text>
+            </TouchableOpacity>
+
+          </View>
         </KeyboardAvoidingView>
-      </View>
+      </ImageBackground>
     )
   }
 }
@@ -73,26 +125,70 @@ Style Sheet of the page
 ***************************************/
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: config.colors.mainColor,
+    flex: 1,
     width: '100%',
-    height: '100%'
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoContainer: {
+    alignItems: 'center'
+  },
+  zoneContainer: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    tintColor: config.colors.secondaryColor,
+    opacity: 0.8
+  },
+  logoText: {
+    color: config.colors.secondaryColor,
+    fontSize: 20,
+    fontWeight: '500',
+    marginTop: 30,
+    opacity: 0.9,
+    marginBottom: 35,
   },
   textinput: {
-    backgroundColor: config.colors.secondaryColor,
-    borderColor: config.colors.borderColor,
-    borderWidth: StyleSheet.hairlineWidth,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 15,
-    height: 50,
-    borderBottomRightRadius: 23,
-    borderTopLeftRadius: 23
+    width: WIDTH - 55,
+    height: 45,
+    fontSize: 16,
+    paddingLeft: 45,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    color: 'rgba(255,255,255,0.6)',
+    marginHorizontal: 25,
+    borderRadius: 25,
+    marginTop: 20,
   },
-  decalage: {
-    marginTop: 200,
-    marginBottom: 50,
-    textAlign: 'center'
-  }
+  btnLogin: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#19342F',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  btnOther: {
+    width: WIDTH / 2 - 40,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#19342F',
+    justifyContent: 'center',
+    margin: 12,
+  },
+  btnText: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  btnContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+  },
 })
 
 export default Connexion
