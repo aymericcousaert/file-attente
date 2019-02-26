@@ -1,11 +1,19 @@
-import React, { Component } from 'react'
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
-import config from './../config'
+import React, { Component } from 'react';
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import config from './../config';
+import * as firebase from 'firebase';
 
 const WIDHT = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
 export default class CustomSideBar extends Component {
+    logOut() {
+        firebase.auth().signOut().then(function () {
+            this.props.navigation.navigate(nav)
+        }).catch(function (error) {
+            // An error happened.
+        });
+    }
 
     navLink(nav, text) {
         return (
@@ -25,7 +33,9 @@ export default class CustomSideBar extends Component {
                     {this.navLink('Map', 'Map')}
                     {this.navLink('CreateEmpPage', 'Create your shop page ?')}
                     {this.navLink('Settings', 'Settings')}
-                    {this.navLink('LogIn', 'Logout')}
+                    <TouchableOpacity onPress={() => this.logOut()} >
+                        <Text style={styles.menuText}>Logout</Text>
+                    </ TouchableOpacity>
                 </View>
             </View>
         )

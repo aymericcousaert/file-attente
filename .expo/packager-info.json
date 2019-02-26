@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19003,
+  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 99121,
+  "packagerPid": 8997,
   "expoServerNgrokUrl": "https://7v-736.anonymous.fileattente.exp.direct",
   "packagerNgrokUrl": "https://packager.7v-736.anonymous.fileattente.exp.direct",
-  "ngrokPid": 99140
+  "ngrokPid": 9029
 }
