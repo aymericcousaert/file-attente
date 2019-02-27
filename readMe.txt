@@ -6,4 +6,6 @@ npm install react-native-maps --save
 
 react-native link
 
+react-native link
+
 
