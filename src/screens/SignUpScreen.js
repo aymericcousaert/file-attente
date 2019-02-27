@@ -3,9 +3,12 @@ Screen SignUpScreen :
 
 ***************************************/
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, Alert } from 'react-native';
+import { StyleSheet, View, Image, TextInput, Button, Text, Alert, Dimensions, ImageBackground } from 'react-native';
 import * as firebase from 'firebase';
 import config from './../config'
+import background from './../image/BackImage.png';
+
+const { width: WIDTH } = Dimensions.get('window');
 
 class SignUpScreen extends React.Component {
 
@@ -32,34 +35,48 @@ class SignUpScreen extends React.Component {
 		Render definition of the Sign Up screen
 		***************************************/
     return (
-      <View style={styles.background}>
-        <Text style={styles.decalage}> Sign Up</Text>
-        <TextInput style={styles.textinput}
-          value={this.state.email}
-          onChangeText={(text) => { this.setState({ email: text }) }}
-          placeholder="Email"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput style={styles.textinput}
-          value={this.state.password}
-          onChangeText={(text) => { this.setState({ password: text }) }}
-          placeholder="Password"
-          secureTextEntry={true}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput style={styles.textinput}
-          value={this.state.passwordConfirm}
-          onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
-          placeholder="Password (confirm)"
-          secureTextEntry={true}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+      <ImageBackground source={background} style={config.styles.backgroundInit}>
+        <View style={config.styles.logoContainerInit}>
+          <Text style={config.styles.titleTextInit}>Sign Up</Text>
+        </View>
+        <View style={styles.zoneContainer}>
+          <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
+          <TextInput style={styles.textInputInit}
+            value={this.state.email}
+            onChangeText={(text) => { this.setState({ email: text }) }}
+            placeholder="Email"
+            placeholderTextColor='rgba(255,255,255,0.7)'
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View >
+        <View style={styles.zoneContainer}>
+          <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+          <TextInput style={styles.textInputInit}
+            value={this.state.email}
+            onChangeText={(text) => { this.setState({ password: text }) }}
+            placeholder="Password"
+            placeholderTextColor='rgba(255,255,255,0.7)'
+            secureTextEntry={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View >
+        <View style={styles.zoneContainer}>
+          <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+          <TextInput style={styles.textInputInit}
+            value={this.state.email}
+            onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
+            placeholder="Password (confirm)"
+            placeholderTextColor='rgba(255,255,255,0.7)'
+            secureTextEntry={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View >
         <Button title='Create Account' onPress={this.signUpComplete} />
-      </View>
+      </ImageBackground>
     )
   }
 }
@@ -68,25 +85,21 @@ class SignUpScreen extends React.Component {
 Style Sheet of the page
 ***************************************/
 const styles = StyleSheet.create({
-  background: {
-    backgroundColor: config.colors.mainColor,
-    width: '100%',
-    height: '100%'
+  zoneContainer: {
+    alignItems: 'center',
+    marginBottom: 10,
   },
-  textinput: {
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 5,
-    height: 50,
-    borderColor: '#000000',
-    borderWidth: 1,
-    paddingLeft: 5
+  textInputInit: {
+    width: WIDTH - 55,
+    height: 45,
+    fontSize: 16,
+    paddingLeft: 45,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    color: 'rgba(255,255,255,0.6)',
+    marginHorizontal: 25,
+    borderRadius: 25,
+    marginTop: 20,
   },
-  decalage: {
-    marginTop: 200,
-    marginBottom: 50,
-    textAlign: 'center'
-  }
 })
 
 

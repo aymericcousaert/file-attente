@@ -16,6 +16,13 @@ export default {
             width: '100%',
             height: '100%'
         },
+        backgroundInit: {
+            flex: 1,
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
         iconsLogin: {
             tintColor: 'rgb(255,255,255)',
             width: 23,
@@ -24,17 +31,23 @@ export default {
             top: 31,
             left: 37,
         },
-        iconsEyePos: {
-            position: 'absolute',
-            top: 31,
-            right: 37,
+        logoContainerInit: {
+            alignItems: 'center'
         },
-        iconsEyeStyle: {
-            tintColor: 'rgba(255,255,255,0.7)',
-            width: 23,
-            height: 23,
+        logoInit: {
+            width: 120,
+            height: 120,
+            tintColor: 'rgb(255,255,255)',
+            opacity: 0.8
         },
-
+        titleTextInit: {
+            color: 'rgb(255,255,255)',
+            fontSize: 20,
+            fontWeight: '500',
+            marginTop: 30,
+            opacity: 0.9,
+            marginBottom: 35,
+        },
     },
     colors: {
         mainColor: 'rgb(73,194,103)',

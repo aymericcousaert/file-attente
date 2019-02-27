@@ -66,15 +66,15 @@ class Connexion extends React.Component {
 		Render definition for Log In screen
 		***************************************/
     return (
-      <ImageBackground source={background} style={styles.background}>
+      <ImageBackground source={background} style={config.styles.backgroundInit}>
         <KeyboardAvoidingView behavior="position">
-          <View style={styles.logoContainer}>
-            <Image source={logo} style={styles.logo} />
-            <Text style={styles.logoText}>FILE ATENTE</Text>
+          <View style={config.styles.logoContainerInit}>
+            <Image source={logo} style={config.styles.logoInit} />
+            <Text style={config.styles.titleTextInit}>FILE ATENTE</Text>
           </View>
           <View style={styles.zoneContainer}>
             <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
-            <TextInput style={styles.textinput}
+            <TextInput style={styles.textInputInit}
               value={this.state.email}
               onChangeText={(text) => { this.setState({ email: text }) }}
               placeholder="Email"
@@ -83,11 +83,10 @@ class Connexion extends React.Component {
               autoCapitalize="none"
               autoCorrect={false}
             />
-          </View >
-
-          <View style={styles.zoneContainer}>
+          </View>
+          <View style={config.styles.logoContainerInit}>
             <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-            <TextInput style={styles.textinput}
+            <TextInput style={styles.textInputInit}
               value={this.state.password}
               onChangeText={(text) => { this.setState({ password: text }) }}
               placeholder="Password"
@@ -96,8 +95,8 @@ class Connexion extends React.Component {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            <TouchableOpacity style={config.styles.iconsEyePos} onPress={this.showPass} >
-              <Image source={config.icons.eyeIcon} style={config.styles.iconsEyeStyle} />
+            <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
+              <Image source={config.icons.eyeIcon} style={styles.iconsEyeStyle} />
             </TouchableOpacity>
 
             <View style={styles.btnContainer}>
@@ -115,7 +114,7 @@ class Connexion extends React.Component {
 
           </View>
         </KeyboardAvoidingView>
-      </ImageBackground>
+      </ImageBackground >
     )
   }
 }
@@ -124,35 +123,11 @@ class Connexion extends React.Component {
 Style Sheet of the page
 ***************************************/
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoContainer: {
-    alignItems: 'center'
-  },
   zoneContainer: {
     alignItems: 'center',
     marginBottom: 10,
   },
-  logo: {
-    width: 120,
-    height: 120,
-    tintColor: config.colors.secondaryColor,
-    opacity: 0.8
-  },
-  logoText: {
-    color: config.colors.secondaryColor,
-    fontSize: 20,
-    fontWeight: '500',
-    marginTop: 30,
-    opacity: 0.9,
-    marginBottom: 35,
-  },
-  textinput: {
+  textInputInit: {
     width: WIDTH - 55,
     height: 45,
     fontSize: 16,
@@ -188,6 +163,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
+  },
+  iconsEyePos: {
+    position: 'absolute',
+    top: 31,
+    right: 37,
+  },
+  iconsEyeStyle: {
+    tintColor: 'rgba(255,255,255,0.7)',
+    width: 23,
+    height: 23,
   },
 })
 
