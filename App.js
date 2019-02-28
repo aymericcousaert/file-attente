@@ -1,6 +1,6 @@
 /**************************************
 Class App :
-cc je suis la 
+cc je suis la
 ***************************************/
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
@@ -9,6 +9,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
+import HomeCompany from './src/screens/HomeCompany'
 
 /**************************************
 Creation of the App containers one that
@@ -28,6 +29,15 @@ const HomeNavigator = createStackNavigator(
 	}
 )
 const AppHome = createAppContainer(HomeNavigator);
+
+/*NAVIGATION OF COMPANY*/
+const CompanyStackNavigator = createStackNavigator({
+	HomeCompany: {
+		screen:HomeCompany
+	}
+})
+const AppCompany = createAppContainer(CompanyStackNavigator)
+/***************************************/
 
 export default class App extends React.Component {
 
@@ -60,9 +70,7 @@ export default class App extends React.Component {
 			Checks if the user can go directly to
 			the App's home or not
 			***************************************/
-			<View style={styles.container}>
-				{this.state.isAuthenticated ? <AppHome /> : <AppScreens />}
-			</View>
+			<AppCompany/> /*J'ai modifié cette ligne pour se concentrer sur la partie entreprise*/
 		);
 	}
 }
