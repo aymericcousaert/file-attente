@@ -54,7 +54,7 @@ class SignUpScreen extends React.Component {
         <View style={styles.zoneContainer}>
           <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
           <TextInput style={styles.textInputInit}
-            value={this.state.email}
+            value={this.state.password}
             onChangeText={(text) => { this.setState({ password: text }) }}
             placeholder="Password"
             placeholderTextColor='rgba(255,255,255,0.7)'
@@ -66,7 +66,7 @@ class SignUpScreen extends React.Component {
         <View style={styles.zoneContainer}>
           <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
           <TextInput style={styles.textInputInit}
-            value={this.state.email}
+            value={this.state.passwordConfirm}
             onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
             placeholder="Password (confirm)"
             placeholderTextColor='rgba(255,255,255,0.7)'
