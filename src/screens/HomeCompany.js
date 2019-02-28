@@ -1,12 +1,17 @@
 import React from 'react'
-import {StyleSheet, View, Text} from 'react-native'
+import {StyleSheet, View, FlatList} from 'react-native'
+import FileAttente from '../components/FileAttente'
 
 class HomeCompany extends React.Component {
 
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Test</Text>
+                <FlatList
+                    style={styles.flat_list}
+                    data={[{key:'a'},{key:'b'}]}
+                    renderItem={({item}) => <FileAttente/>}
+                />
             </View>
         )
     }
@@ -14,6 +19,10 @@ class HomeCompany extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
+        flex:1,
+        alignItems:'center',
+    },
+    flat_list: {
         flex:1
     }
 })
