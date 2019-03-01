@@ -10,6 +10,7 @@ import ApiKeys from './src/config/firebase/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
 import HomeCompany from './src/screens/HomeCompany'
+import QueueDetails from './src/screens/QueueDetails'
 
 /**************************************
 Creation of the App containers one that
@@ -34,6 +35,9 @@ const AppHome = createAppContainer(HomeNavigator);
 const CompanyStackNavigator = createStackNavigator({
 	HomeCompany: {
 		screen:HomeCompany
+	},
+	QueueDetails: {
+		screen:QueueDetails
 	}
 })
 const AppCompany = createAppContainer(CompanyStackNavigator)
