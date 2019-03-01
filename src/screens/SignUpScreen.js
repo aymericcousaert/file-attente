@@ -74,7 +74,7 @@ class SignUpScreen extends React.Component {
           </View>
           <View style={styles.zoneContainer}>
             <View style={styles.boite}>
-              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+              <Image source={config.icons.validateIcon} style={config.styles.iconsLogin} />
               <TextInput style={styles.textInputInit}
                 value={this.state.passwordConfirm}
                 onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
