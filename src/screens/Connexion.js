@@ -73,30 +73,35 @@ class Connexion extends React.Component {
             <Text style={config.styles.titleTextInit}>FILE ATENTE</Text>
           </View>
           <View style={styles.zoneContainer}>
-            <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
-            <TextInput style={styles.textInputInit}
-              value={this.state.email}
-              onChangeText={(text) => { this.setState({ email: text }) }}
-              placeholder="Email"
-              placeholderTextColor='rgba(255,255,255,0.7)'
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-              onSubmitEditing={() => this.refs.txtPassword.focus()}
-            />
+
+            <View style={styles.boite}>
+              <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
+              <TextInput style={styles.textInputInit}
+                value={this.state.email}
+                onChangeText={(text) => { this.setState({ email: text }) }}
+                placeholder="Email"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onSubmitEditing={() => this.refs.txtPassword.focus()}
+              />
+            </View>
           </View>
           <View style={config.styles.logoContainerInit}>
-            <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-            <TextInput style={styles.textInputInit}
-              value={this.state.password}
-              onChangeText={(text) => { this.setState({ password: text }) }}
-              placeholder="Password"
-              placeholderTextColor='rgba(255,255,255,0.7)'
-              secureTextEntry={this.state.showPass}
-              autoCapitalize="none"
-              autoCorrect={false}
-              ref={"txtPassword"}
-            />
+            <View style={styles.boite}>
+              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+              <TextInput style={styles.textInputInit}
+                value={this.state.password}
+                onChangeText={(text) => { this.setState({ password: text }) }}
+                placeholder="Password"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                secureTextEntry={this.state.showPass}
+                autoCapitalize="none"
+                autoCorrect={false}
+                ref={"txtPassword"}
+              />
+            </View>
             <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
               <Image source={config.icons.eyeIcon} style={styles.iconsEyeStyle} />
             </TouchableOpacity>
@@ -133,11 +138,18 @@ const styles = StyleSheet.create({
     width: WIDTH - 55,
     height: 45,
     fontSize: 16,
-    paddingLeft: 45,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    color: 'rgba(255,255,255,0.6)',
+    paddingLeft: 24,
+    color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
     borderRadius: 25,
+    marginTop: 4,
+  },
+  boite: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
     marginTop: 20,
   },
   btnLogin: {

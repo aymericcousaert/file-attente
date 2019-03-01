@@ -16,6 +16,7 @@ const WIDTH = Dimensions.get('window').width;
 const SideBarConfig = {
     SideBarWidth: WIDTH * 0.68,
     gestureEnabled: false,
+    drawerBackgroundColor: "transparent",
     contentComponent: ({ navigation }) => {
         return (<CustomSideBar navigation={navigation} />)
     }
@@ -33,7 +34,7 @@ const SideBar = createDrawerNavigator(
             screen: Feed,
         },
         Map: {
-            screen: Map
+            screen: Map,
         },
     },
     SideBarConfig,

@@ -3,7 +3,7 @@ Class App :
 cc je suis la 
 ***************************************/
 import React from 'react';
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, StatusBar } from 'react-native'
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import AppNavigator from './src/navigation/AppNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys'
@@ -61,6 +61,7 @@ export default class App extends React.Component {
 			the App's home or not
 			***************************************/
 			<View style={styles.container}>
+				<StatusBar barStyle='light-content' />
 				{this.state.isAuthenticated ? <AppHome /> : <AppScreens />}
 			</View>
 		);

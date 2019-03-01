@@ -24,12 +24,12 @@ export default {
             alignItems: 'center',
         },
         iconsLogin: {
-            tintColor: 'rgb(255,255,255)',
-            width: 23,
-            height: 23,
+            tintColor: 'rgba(255,255,255,0.7)',
+            width: 22,
+            height: 22,
             position: 'absolute',
-            top: 31,
-            left: 37,
+            top: 11.6,
+            left: 16,
         },
         logoContainerInit: {
             alignItems: 'center'

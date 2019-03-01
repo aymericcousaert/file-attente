@@ -12,9 +12,23 @@ import config from '../config'
 
 const MainPageTab = createBottomTabNavigator(
     {
-        Feed: { screen: Feed },
-        Map: { screen: Map },
+        Feed: {
+            screen: Feed,
+        },
+        Map: {
+            screen: Map,
+        },
     },
+    {
+        tabBarPosition: "bottom",
+        tabBarOptions: {
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'tomato',
+            showLabel: true,
+            showIcon: true,
+
+        }
+    }
 )
 
 export default createAppContainer(MainPageTab);

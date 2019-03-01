@@ -3,7 +3,7 @@ Screen SignUpScreen :
 
 ***************************************/
 import React from 'react';
-import { StyleSheet, View, Image, TextInput, Button, Text, Alert, Dimensions, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, KeyboardAvoidingView, View, Image, TextInput, Button, Text, Alert, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
 import config from './../config'
 import background from './../image/BackImage.png';
@@ -36,47 +36,64 @@ class SignUpScreen extends React.Component {
 		***************************************/
     return (
       <ImageBackground source={background} style={config.styles.backgroundInit}>
-        <View style={config.styles.logoContainerInit}>
-          <Text style={config.styles.titleTextInit}>Sign Up</Text>
-        </View>
-        <View style={styles.zoneContainer}>
-          <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
-          <TextInput style={styles.textInputInit}
-            value={this.state.email}
-            onChangeText={(text) => { this.setState({ email: text }) }}
-            placeholder="Email"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-        </View >
-        <View style={styles.zoneContainer}>
-          <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-          <TextInput style={styles.textInputInit}
-            value={this.state.password}
-            onChangeText={(text) => { this.setState({ password: text }) }}
-            placeholder="Password"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            secureTextEntry={true}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-        </View >
-        <View style={styles.zoneContainer}>
-          <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-          <TextInput style={styles.textInputInit}
-            value={this.state.passwordConfirm}
-            onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
-            placeholder="Password (confirm)"
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            secureTextEntry={true}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-        </View >
-        <Button title='Create Account' onPress={this.signUpComplete} />
-      </ImageBackground>
+        <KeyboardAvoidingView behavior="position" >
+          <View style={styles.header}>
+            <Text style={config.styles.titleTextInit}>Sign Up</Text>
+          </View>
+          <View style={styles.zoneContainer}>
+            <View style={styles.boite}>
+              <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
+              <TextInput style={styles.textInputInit}
+                value={this.state.email}
+                onChangeText={(text) => { this.setState({ email: text }) }}
+                placeholder="Email"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onSubmitEditing={() => this.refs.txtPassword.focus()}
+              />
+            </View>
+          </View>
+
+          <View style={styles.zoneContainer}>
+            <View style={styles.boite}>
+              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+              <TextInput style={styles.textInputInit}
+                value={this.state.password}
+                onChangeText={(text) => { this.setState({ password: text }) }}
+                placeholder="Password"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                secureTextEntry={true}
+                autoCapitalize="none"
+                autoCorrect={false}
+                ref={"txtPassword"}
+                onSubmitEditing={() => this.refs.lastPasswordCheck.focus()}
+              />
+            </View>
+          </View>
+          <View style={styles.zoneContainer}>
+            <View style={styles.boite}>
+              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
+              <TextInput style={styles.textInputInit}
+                value={this.state.passwordConfirm}
+                onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
+                placeholder="Password (confirm)"
+                placeholderTextColor='rgba(255,255,255,0.7)'
+                secureTextEntry={true}
+                autoCapitalize="none"
+                autoCorrect={false}
+                ref={"lastPasswordCheck"}
+                onSubmitEditing={() => this.signUpComplete()}
+              />
+            </View>
+          </View>
+
+          <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
+            <Text style={styles.btnText}>Create Account</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </ImageBackground >
     )
   }
 }
@@ -89,16 +106,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
+  header: {
+    alignItems: 'center',
+  },
   textInputInit: {
     width: WIDTH - 55,
     height: 45,
     fontSize: 16,
-    paddingLeft: 45,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    color: 'rgba(255,255,255,0.6)',
+    paddingLeft: 24,
+    color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
     borderRadius: 25,
+    marginTop: 4,
+  },
+  boite: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
     marginTop: 20,
+  },
+  btn: {
+    width: WIDTH / 2 - 40,
+    height: 45,
+    borderRadius: 25,
+    left: (WIDTH / 2 - 40) / 2,
+    backgroundColor: '#19342F',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 12,
+    top: 43,
+    marginBottom: 80,
+  },
+  btnText: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 16,
+    textAlign: 'center',
   },
 })
 

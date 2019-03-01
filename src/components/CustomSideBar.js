@@ -25,10 +25,10 @@ export default class CustomSideBar extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{ opacity: 0.8, backgroundColor: '#19342F' }}>
                 <View style={styles.topLinks}>
                 </View>
-                <View style={{ top: 30 }}>
+                <View style={{ top: 30, height: 700, }}>
                     {this.navLink('Feed', 'Home')}
                     {this.navLink('Map', 'Map')}
                     {this.navLink('CreateEmpPage', 'Create your shop page ?')}
@@ -50,9 +50,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
     },
     menuText: {
-        fontSize: 13,
+        fontSize: 19,
         margin: 8,
-        color: 'black',
+        paddingHorizontal: 12,
+        color: 'rgba(255,255,255,0.7)',
         fontWeight: 'bold'
     }
 })
