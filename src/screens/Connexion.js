@@ -22,7 +22,11 @@ import config from './../config';
 import background from './../image/BackImage.png';
 import logo from './../icon/logo.png';
 
+/**************************************
+	Const
+	***************************************/
 const { width: WIDTH } = Dimensions.get('window');
+
 class Connexion extends React.Component {
 
 	/**************************************
@@ -100,10 +104,11 @@ class Connexion extends React.Component {
                 autoCapitalize="none"
                 autoCorrect={false}
                 ref={"txtPassword"}
+                onSubmitEditing={() => this.goToHomeScreen()}
               />
             </View>
             <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
-              <Image source={config.icons.eyeIcon} style={styles.iconsEyeStyle} />
+              <Image source={this.state.press == false ? config.icons.eyeOpenIcon : config.icons.eyeCloseIcon} style={styles.iconsEyeStyle} />
             </TouchableOpacity>
 
             <View style={styles.btnContainer}>

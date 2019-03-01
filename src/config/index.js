@@ -1,14 +1,19 @@
 export default {
     icons: {
         menuIcon: require('./../icon/menu.png'),
-        reservationIcon: require('./../icon/reserved.png'),
-        circleIcon: require('./../icon/circle.png'),
+        reservationIcon: require('./../icon/calendar-with-spring-binder-and-date-blocks.png'),
+        circleIcon: require('./../icon/circular-shape-silhouette.png'),
         routeIcon: require('./../icon/route.png'),
-        backArrowIcon: require('./../icon/backarrow.png'),
-        validateIcon: require('./../icon/validated.png'),
-        LockIcon: require('./../icon/lock.png'),
-        emailIcon: require('./../icon/email.png'),
-        eyeIcon: require('./../icon/eye.png'),
+        backArrowIcon: require('./../icon/chevron-pointing-to-the-left.png'),
+        validateIcon: require('./../icon/checked-symbol.png'),
+        LockIcon: require('./../icon/padlock-unlock.png'),
+        emailIcon: require('./../icon/envelope-of-white-paper.png'),
+        eyeOpenIcon: require('./../icon/eye-open.png'),
+        eyeCloseIcon: require('./../icon/eye-with-a-diagonal-line-interface-symbol-for-invisibility.png'),
+        mapIcon: require('./../icon/compass-circular-variant.png'),
+        map2Icon: require('./../icon/map-marker.png'),
+        logOutIcon: require('./../icon/sign-out-option.png'),
+        settingsIcon: require('./../icon/cog-wheel-silhouette.png')
     },
     styles: {
         grandFond: {
