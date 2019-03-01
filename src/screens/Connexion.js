@@ -82,6 +82,7 @@ class Connexion extends React.Component {
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
+              onSubmitEditing={() => this.refs.txtPassword.focus()}
             />
           </View>
           <View style={config.styles.logoContainerInit}>
@@ -94,6 +95,7 @@ class Connexion extends React.Component {
               secureTextEntry={this.state.showPass}
               autoCapitalize="none"
               autoCorrect={false}
+              ref={"txtPassword"}
             />
             <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
               <Image source={config.icons.eyeIcon} style={styles.iconsEyeStyle} />
