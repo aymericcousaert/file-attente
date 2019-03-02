@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, View, TouchableOpacity, Image, FlatList} from 'react-native'
+import {StyleSheet, View, TouchableOpacity, Image, FlatList, Text} from 'react-native'
 import Queue from '../components/Queue'
 
 class HomeCompany extends React.Component {
@@ -8,7 +8,7 @@ class HomeCompany extends React.Component {
         this.props.navigation.navigate('QueueDetails')
     }
 
-    _displayQueueSettings = () => {
+    _displayQueueSettings() {
         this.props.navigation.navigate('QueueSettings')
     }
 
@@ -19,11 +19,9 @@ class HomeCompany extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <View style={styles.settings_container}>
-                    <TouchableOpacity style={styles.settings_touchableOpacity} onPress={() => this._displayCompanySettings()}>
-                        <Image style={styles.settings_image} source={require('../icon/settings.png')}/>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.settings_touchableOpacity} onPress={() => this._displayCompanySettings()}>
+                    <Image style={styles.settings_image} source={require('../icon/settings.png')}/>
+                </TouchableOpacity>
                 <View style={styles.flatlist_container}>
                     <FlatList
                         style={styles.flat_list}
@@ -32,13 +30,14 @@ class HomeCompany extends React.Component {
                         renderItem={({item}) =>
                             <Queue
                                 num={item}
-                                isTheLast={(item.key > 2) ? true : false}
                                 displayQueueDetails={this._displayQueueDetails}
-                                displayQueueSettings={this._displayQueueSettings}
                             />
                         }
                     />
                 </View>
+                <TouchableOpacity style={styles.add_queue_touchableOpacity} onPress={() => this._displayQueueSettings()}>
+                    <Text style={styles.add_queue_text}>+</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -47,9 +46,6 @@ class HomeCompany extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex:1
-    },
-    settings_container: {
-        height:50
     },
     flatlist_container: {
         flex:1,
@@ -66,6 +62,22 @@ const styles = StyleSheet.create({
     },
     flat_list: {
         flex:1
+    },
+    add_queue_touchableOpacity: {
+        position:'absolute',
+        justifyContent:'center',
+        alignItems:'center',
+        width:60,
+        height:60,
+        right:30,
+        bottom:30,
+        borderRadius:30,
+        backgroundColor:'#0064FF',
+    },
+    add_queue_text: {
+        color:'white',
+        fontSize:26,
+        fontWeight:'bold'
     }
 })
 

@@ -4,20 +4,12 @@ import {StyleSheet, TouchableOpacity, Text} from 'react-native'
 class Queue extends React.Component {
 
     render() {
-        const {num,isTheLast,displayQueueDetails,displayQueueSettings} = this.props
-        if(isTheLast) {
-            return (
-                <TouchableOpacity style={styles.main_container} onPress={() => displayQueueSettings()}>
-                    <Text style={styles.text}>+</Text>
-                </TouchableOpacity>
-            )
-        } else {
-            return (
-                <TouchableOpacity style={styles.main_container} onPress={() => displayQueueDetails()}>
-                    <Text style={styles.text}>File d'attente {num.key}</Text>
-                </TouchableOpacity>
-            )
-        }
+        const {num,displayQueueDetails} = this.props
+        return (
+            <TouchableOpacity style={styles.main_container} onPress={() => displayQueueDetails()}>
+                <Text style={styles.text}>File d'attente {num.key}</Text>
+            </TouchableOpacity>
+        )
     }
 }
 
@@ -32,7 +24,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color:'white',
-        fontSize:16,
+        fontSize:18,
         fontWeight:'bold'
     }
 })
