@@ -15,6 +15,8 @@ import {
   KeyboardAvoidingView,
   ImageBackground,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
@@ -26,6 +28,12 @@ import logo from './../icon/logo.png';
 	Const
 	***************************************/
 const { width: WIDTH } = Dimensions.get('window');
+
+const DismissKeyboard = ({ children }) => (
+<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+  {children}
+</TouchableWithoutFeedback>
+);
 
 class Connexion extends React.Component {
 
@@ -72,6 +80,8 @@ class Connexion extends React.Component {
     return (
       <ImageBackground source={background} style={config.styles.backgroundInit}>
         <KeyboardAvoidingView behavior="position">
+        <DismissKeyboard>
+          <View>
           <View style={config.styles.logoContainerInit}>
             <Image source={logo} style={config.styles.logoInit} />
             <Text style={config.styles.titleTextInit}>FILE ATENTE</Text>
@@ -89,6 +99,7 @@ class Connexion extends React.Component {
                 autoCapitalize="none"
                 autoCorrect={false}
                 returnKeyType="next"
+
                 onSubmitEditing={() => this.refs.txtPassword.focus()}
               />
             </View>
@@ -106,6 +117,7 @@ class Connexion extends React.Component {
                 autoCorrect={false}
                 ref={"txtPassword"}
                 returnKeyType="go"
+
                 onSubmitEditing={() => this.goToHomeScreen()}
               />
             </View>
@@ -127,6 +139,8 @@ class Connexion extends React.Component {
             </TouchableOpacity>
 
           </View>
+          </View>
+        </DismissKeyboard>
         </KeyboardAvoidingView>
       </ImageBackground >
     )

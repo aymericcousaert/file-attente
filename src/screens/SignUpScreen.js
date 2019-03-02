@@ -3,13 +3,31 @@ Screen SignUpScreen :
 
 ***************************************/
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, KeyboardAvoidingView, View, Image, TextInput, Button, Text, Alert, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet,
+TouchableWithoutFeedback,
+Keyboard,
+KeyboardAvoidingView,
+View,
+Image,
+TextInput,
+Button,
+Text,
+Alert,
+Dimensions,
+ImageBackground,
+TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
 import config from './../config';
 import background from './../image/BackImage.png';
 import BackButton from './../components/BackButton';
 
 const { width: WIDTH } = Dimensions.get('window');
+
+const DismissKeyboard = ({ children }) => (
+<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+  {children}
+</TouchableWithoutFeedback>
+);
 
 class SignUpScreen extends React.Component {
 
@@ -41,10 +59,12 @@ class SignUpScreen extends React.Component {
 		***************************************/
     return (
       <ImageBackground source={background} style={config.styles.backgroundInit}>
-      <TouchableOpacity style={styles.btnBackBox} onPress={this.goToSignIn} >
-        <BackButton style={styles.btnBack}> </BackButton>
-      </TouchableOpacity>
         <KeyboardAvoidingView behavior="position" >
+        <DismissKeyboard>
+        <View>
+        <TouchableOpacity style={styles.btnBackBox} onPress={this.goToSignIn} >
+          <BackButton style={styles.btnBack}> </BackButton>
+        </TouchableOpacity>
           <View style={styles.header}>
             <Text style={config.styles.titleTextInit}>Sign Up</Text>
           </View>
@@ -103,6 +123,8 @@ class SignUpScreen extends React.Component {
           <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
             <Text style={styles.btnText}>Create Account</Text>
           </TouchableOpacity>
+          </View>
+          </DismissKeyboard>
         </KeyboardAvoidingView>
       </ImageBackground >
     )
