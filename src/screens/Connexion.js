@@ -60,6 +60,11 @@ class Connexion extends React.Component {
   goToSignUp = () => {
     this.props.navigation.navigate('SignUp');
   }
+
+  goToForgotPassword = () => {
+    this.props.navigation.navigate('ForgotPassword');
+  }
+
   goToHomeScreen = () => {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => { },
@@ -124,20 +129,17 @@ class Connexion extends React.Component {
             <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
               <Image source={this.state.press == false ? config.icons.eyeOpenIcon : config.icons.eyeCloseIcon} style={styles.iconsEyeStyle} />
             </TouchableOpacity>
-
             <View style={styles.btnContainer}>
-              <TouchableOpacity style={styles.btnOther} onPress={this.goToSignUp} >
+              <TouchableOpacity style={styles.btnSignUp} onPress={this.goToSignUp} >
                 <Text style={styles.btnText}>Sign Up</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.btnOther} onPress={this.goToSignUp} >
-                <Text style={styles.btnText}>Forgot Password</Text>
+              <TouchableOpacity style={styles.btnForgot} onPress={this.goToForgotPassword} >
+                <Text style={styles.btnText}>Forgot Password ?</Text>
               </TouchableOpacity>
             </View>
-
             <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
               <Text style={styles.btnText}>Login</Text>
             </TouchableOpacity>
-
           </View>
           </View>
         </DismissKeyboard>
@@ -181,8 +183,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 8,
   },
-  btnOther: {
-    width: WIDTH / 2 - 40,
+  btnSignUp: {
+    width: WIDTH / 2 - 75,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#19342F',
+    justifyContent: 'center',
+    margin: 12,
+  },
+  btnForgot: {
+    width: WIDTH / 2 - 5,
     height: 45,
     borderRadius: 25,
     backgroundColor: '#19342F',
