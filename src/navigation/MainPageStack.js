@@ -24,7 +24,7 @@ const MainPageStack = createStackNavigator(
         Reservations: {
             screen: Reservations,
             navigationOptions: {
-                headerTitle: 'Mes Reservation'
+                headerTitle: 'Bookings'
             }
         },
         EmpPage: {

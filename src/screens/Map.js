@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, Dimensions, Text, View } from 'react-native';
-import MapView from 'react-native-maps';
+import { ImageBackground, StyleSheet, Dimensions, Text, View, FlatList } from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
+import Shops from './../Helpers/ShopsData'
+import MapPoint from './../components/MapPoint'
+import MapMarker from './../icon/map-marker.png'
 
 const {width, height} = Dimensions.get('window')
 
@@ -20,10 +23,9 @@ class Map extends Component {
         latitudeDelta: 0,
         longitudeDelta: 0,
       },
+      markers: Shops
     }
-  }
 
-  componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
        var lat = parseFloat(position.coords.latitude)
        var long = parseFloat(position.coords.longitude)
@@ -43,15 +45,27 @@ class Map extends Component {
 
 
 
+
+
     render() {
         return (
+
+
                 /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
                 <View style={styles.container}>
                 <MapView  style={styles.map}
                   region={this.state.initialPosition}
                   showsUserLocation={true}
-                  followUserLocation={true}
-                />
+                  followUserLocation={true}>
+
+                  {this.state.markers.map((marker, index) => {
+                   return (
+                     <MapView.Marker key={index}  coordinate={marker.coordinate} />
+                   );
+                  })}
+
+
+                </MapView>
                 </View>
         )
     }
@@ -59,20 +73,10 @@ class Map extends Component {
 
 const styles = StyleSheet.create({
   map: {
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    position: 'absolute'
+    flex: 1
   },
   container: {
-   position: 'absolute',
-   top: 0,
-   left: 0,
-   right: 0,
-   bottom: 0,
-   justifyContent: 'flex-end',
-   alignItems: 'center',
+   flex: 1
  },
 });
 

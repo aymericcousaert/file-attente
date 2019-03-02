@@ -4,7 +4,9 @@ import { withNavigation } from 'react-navigation';
 import config from '../config'
 
 class Tile extends Component {
+
     render() {
+      const shop = this.props.shop
         return (
 
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage') }}>
@@ -13,9 +15,9 @@ class Tile extends Component {
 
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
-                            <Text style={styles.lowTilesText}>Le Nom du truc</Text>
+                            <Text style={styles.lowTilesText}> {shop.name} </Text>
                             <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}>200 m</Text>
+                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> 200 m</Text>
                             <Image style={styles.routeImg} source={require('../icon/route.png')} />
                         </View>
                     </View>
