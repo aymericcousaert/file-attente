@@ -1,12 +1,12 @@
 import React from 'react'
 import {StyleSheet, View, Text} from 'react-native'
 
-class QueueDetails extends React.Component {
+class CompanySettings extends React.Component {
 
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>QueueDetails Screen</Text>
+                <Text>CompanySettings Screen</Text>
             </View>
         )
     }
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default QueueDetails
+export default CompanySettings
