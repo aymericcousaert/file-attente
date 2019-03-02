@@ -88,6 +88,7 @@ class Connexion extends React.Component {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                returnKeyType="next"
                 onSubmitEditing={() => this.refs.txtPassword.focus()}
               />
             </View>
@@ -104,6 +105,7 @@ class Connexion extends React.Component {
                 autoCapitalize="none"
                 autoCorrect={false}
                 ref={"txtPassword"}
+                returnKeyType="go"
                 onSubmitEditing={() => this.goToHomeScreen()}
               />
             </View>

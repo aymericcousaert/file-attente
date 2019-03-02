@@ -59,6 +59,7 @@ class SignUpScreen extends React.Component {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                returnKeyType="next"
                 onSubmitEditing={() => this.refs.txtPassword.focus()}
               />
             </View>
@@ -76,6 +77,7 @@ class SignUpScreen extends React.Component {
                 autoCapitalize="none"
                 autoCorrect={false}
                 ref={"txtPassword"}
+                returnKeyType="next"
                 onSubmitEditing={() => this.refs.lastPasswordCheck.focus()}
               />
             </View>
@@ -91,6 +93,7 @@ class SignUpScreen extends React.Component {
                 secureTextEntry={true}
                 autoCapitalize="none"
                 autoCorrect={false}
+                returnKeyType="go"
                 ref={"lastPasswordCheck"}
                 onSubmitEditing={() => this.signUpComplete()}
               />
@@ -157,7 +160,7 @@ const styles = StyleSheet.create({
 
   },
   btnBack: {
-    
+
 
   },
   btnText: {
