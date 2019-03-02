@@ -5,8 +5,9 @@ Screen SignUpScreen :
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, KeyboardAvoidingView, View, Image, TextInput, Button, Text, Alert, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
 import * as firebase from 'firebase';
-import config from './../config'
+import config from './../config';
 import background from './../image/BackImage.png';
+import BackButton from './../components/BackButton';
 
 const { width: WIDTH } = Dimensions.get('window');
 
@@ -19,6 +20,10 @@ class SignUpScreen extends React.Component {
       password: "",
       passwordConfirm: "",
     };
+  }
+
+  goToSignIn = () => {
+    this.props.navigation.navigate('LogIn');
   }
 
   signUpComplete = () => {
@@ -36,6 +41,9 @@ class SignUpScreen extends React.Component {
 		***************************************/
     return (
       <ImageBackground source={background} style={config.styles.backgroundInit}>
+      <TouchableOpacity style={styles.btnBackBox} onPress={this.goToSignIn} >
+        <BackButton style={styles.btnBack}> </BackButton>
+      </TouchableOpacity>
         <KeyboardAvoidingView behavior="position" >
           <View style={styles.header}>
             <Text style={config.styles.titleTextInit}>Sign Up</Text>
@@ -138,6 +146,19 @@ const styles = StyleSheet.create({
     margin: 12,
     top: 43,
     marginBottom: 80,
+  },
+  btnBackBox: {
+    width: 45,
+    height: 45,
+    borderRadius: 25,
+
+    backgroundColor: '#19342F',
+
+
+  },
+  btnBack: {
+    
+
   },
   btnText: {
     color: 'rgba(255,255,255,0.7)',

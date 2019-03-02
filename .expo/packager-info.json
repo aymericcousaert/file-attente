@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 43452,
+  "packagerPort": 19004,
+  "packagerPid": 58833,
   "expoServerNgrokUrl": "https://bh-p8j.anonymous.fileattente.exp.direct",
   "packagerNgrokUrl": "https://packager.bh-p8j.anonymous.fileattente.exp.direct",
-  "ngrokPid": 43489
+  "ngrokPid": 58853
 }

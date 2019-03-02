@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
         left: 3,
     },
     menuIcon: {
-        width: 28,
-        height: 28,
-        marginLeft: 20,
+        width: 19,
+        height: 19,
+        marginLeft: 9,
+        marginTop: 9,
         tintColor: config.colors.secondaryColor,
     }
 });
