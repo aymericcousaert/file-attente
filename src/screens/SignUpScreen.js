@@ -3,30 +3,31 @@ Screen SignUpScreen :
 
 ***************************************/
 import React from 'react';
-import { StyleSheet,
-TouchableWithoutFeedback,
-Keyboard,
-KeyboardAvoidingView,
-View,
-Image,
-TextInput,
-Button,
-Text,
-Alert,
-Dimensions,
-ImageBackground,
-TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  View,
+  Image,
+  TextInput,
+  Button,
+  Text,
+  Alert,
+  Dimensions,
+  ImageBackground,
+  TouchableOpacity
+} from 'react-native';
 import * as firebase from 'firebase';
 import config from './../config';
-import background from './../image/BackImage.png';
 import BackButton from './../components/BackButton';
 
 const { width: WIDTH } = Dimensions.get('window');
 
 const DismissKeyboard = ({ children }) => (
-<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-  {children}
-</TouchableWithoutFeedback>
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
 );
 
 class SignUpScreen extends React.Component {
@@ -58,72 +59,72 @@ class SignUpScreen extends React.Component {
 		Render definition of the Sign Up screen
 		***************************************/
     return (
-      <ImageBackground source={background} style={config.styles.backgroundInit}>
-        <KeyboardAvoidingView behavior="position" >
-        <DismissKeyboard>
-        <View>
-        <TouchableOpacity style={styles.btnBackBox} onPress={this.goToSignIn} >
+      <ImageBackground source={config.loginDesign.backgroundAuth} style={config.loginDesign.backgroundInit}>
+        <TouchableOpacity style={config.loginDesign.btnBackBox} onPress={this.goToSignIn} >
           <BackButton style={styles.btnBack}> </BackButton>
         </TouchableOpacity>
-          <View style={styles.header}>
-            <Text style={config.styles.titleTextInit}>Sign Up</Text>
-          </View>
-          <View style={styles.zoneContainer}>
-            <View style={styles.boite}>
-              <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
-              <TextInput style={styles.textInputInit}
-                value={this.state.email}
-                onChangeText={(text) => { this.setState({ email: text }) }}
-                placeholder="Email"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                returnKeyType="next"
-                onSubmitEditing={() => this.refs.txtPassword.focus()}
-              />
-            </View>
-          </View>
+        <KeyboardAvoidingView behavior="position" >
+          <DismissKeyboard>
+            <View>
+              <View style={styles.header}>
+                <Text style={config.loginDesign.titleTextInit}>Sign Up</Text>
+              </View>
+              <View style={styles.zoneContainer}>
+                <View style={styles.boite}>
+                  <Image source={config.icons.emailIcon} style={config.loginDesign.iconsLogin} />
+                  <TextInput style={styles.textInputInit}
+                    value={this.state.email}
+                    onChangeText={(text) => { this.setState({ email: text }) }}
+                    placeholder="Email"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.refs.txtPassword.focus()}
+                  />
+                </View>
+              </View>
 
-          <View style={styles.zoneContainer}>
-            <View style={styles.boite}>
-              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-              <TextInput style={styles.textInputInit}
-                value={this.state.password}
-                onChangeText={(text) => { this.setState({ password: text }) }}
-                placeholder="Password"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                secureTextEntry={true}
-                autoCapitalize="none"
-                autoCorrect={false}
-                ref={"txtPassword"}
-                returnKeyType="next"
-                onSubmitEditing={() => this.refs.lastPasswordCheck.focus()}
-              />
-            </View>
-          </View>
-          <View style={styles.zoneContainer}>
-            <View style={styles.boite}>
-              <Image source={config.icons.validateIcon} style={config.styles.iconsLogin} />
-              <TextInput style={styles.textInputInit}
-                value={this.state.passwordConfirm}
-                onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
-                placeholder="Password (confirm)"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                secureTextEntry={true}
-                autoCapitalize="none"
-                autoCorrect={false}
-                returnKeyType="go"
-                ref={"lastPasswordCheck"}
-                onSubmitEditing={() => this.signUpComplete()}
-              />
-            </View>
-          </View>
+              <View style={styles.zoneContainer}>
+                <View style={styles.boite}>
+                  <Image source={config.icons.LockIcon} style={config.loginDesign.iconsLogin} />
+                  <TextInput style={styles.textInputInit}
+                    value={this.state.password}
+                    onChangeText={(text) => { this.setState({ password: text }) }}
+                    placeholder="Password"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    secureTextEntry={true}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    ref={"txtPassword"}
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.refs.lastPasswordCheck.focus()}
+                  />
+                </View>
+              </View>
+              <View style={styles.zoneContainer}>
+                <View style={styles.boite}>
+                  <Image source={config.icons.validateIcon} style={config.loginDesign.iconsLogin} />
+                  <TextInput style={styles.textInputInit}
+                    value={this.state.passwordConfirm}
+                    onChangeText={(text) => { this.setState({ passwordConfirm: text }) }}
+                    placeholder="Password (confirm)"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    secureTextEntry={true}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    returnKeyType="go"
+                    ref={"lastPasswordCheck"}
+                    onSubmitEditing={() => this.signUpComplete()}
+                  />
+                </View>
+              </View>
 
-          <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
-            <Text style={styles.btnText}>Create Account</Text>
-          </TouchableOpacity>
-          </View>
+              <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
+                <Text style={styles.btnText}>Create Account</Text>
+              </TouchableOpacity>
+            </View>
           </DismissKeyboard>
         </KeyboardAvoidingView>
       </ImageBackground >
@@ -165,25 +166,12 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 25,
     left: (WIDTH / 2 - 40) / 2,
-    backgroundColor: '#19342F',
+    backgroundColor: config.loginDesign.authButtonsColor,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 12,
     top: 43,
     marginBottom: 80,
-  },
-  btnBackBox: {
-    width: 45,
-    height: 45,
-    borderRadius: 25,
-
-    backgroundColor: '#19342F',
-
-
-  },
-  btnBack: {
-
-
   },
   btnText: {
     color: 'rgba(255,255,255,0.7)',

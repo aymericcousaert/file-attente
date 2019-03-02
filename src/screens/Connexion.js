@@ -21,7 +21,6 @@ import {
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
 import config from './../config';
-import background from './../image/BackImage.png';
 import logo from './../icon/logo.png';
 
 /**************************************
@@ -30,9 +29,9 @@ import logo from './../icon/logo.png';
 const { width: WIDTH } = Dimensions.get('window');
 
 const DismissKeyboard = ({ children }) => (
-<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-  {children}
-</TouchableWithoutFeedback>
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
 );
 
 class Connexion extends React.Component {
@@ -83,66 +82,66 @@ class Connexion extends React.Component {
 		Render definition for Log In screen
 		***************************************/
     return (
-      <ImageBackground source={background} style={config.styles.backgroundInit}>
+      <ImageBackground source={config.loginDesign.backgroundAuth} style={config.loginDesign.backgroundInit}>
         <KeyboardAvoidingView behavior="position">
-        <DismissKeyboard>
-          <View>
-          <View style={config.styles.logoContainerInit}>
-            <Image source={logo} style={config.styles.logoInit} />
-            <Text style={config.styles.titleTextInit}>FILE ATENTE</Text>
-          </View>
-          <View style={styles.zoneContainer}>
+          <DismissKeyboard>
+            <View>
+              <View style={config.loginDesign.logoContainerInit}>
+                <Image source={logo} style={config.loginDesign.logoInit} />
+                <Text style={config.loginDesign.titleTextInit}>FILE ATENTE</Text>
+              </View>
+              <View style={styles.zoneContainer}>
 
-            <View style={styles.boite}>
-              <Image source={config.icons.emailIcon} style={config.styles.iconsLogin} />
-              <TextInput style={styles.textInputInit}
-                value={this.state.email}
-                onChangeText={(text) => { this.setState({ email: text }) }}
-                placeholder="Email"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                returnKeyType="next"
+                <View style={styles.boite}>
+                  <Image source={config.icons.emailIcon} style={config.loginDesign.iconsLogin} />
+                  <TextInput style={styles.textInputInit}
+                    value={this.state.email}
+                    onChangeText={(text) => { this.setState({ email: text }) }}
+                    placeholder="Email"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    returnKeyType="next"
 
-                onSubmitEditing={() => this.refs.txtPassword.focus()}
-              />
-            </View>
-          </View>
-          <View style={config.styles.logoContainerInit}>
-            <View style={styles.boite}>
-              <Image source={config.icons.LockIcon} style={config.styles.iconsLogin} />
-              <TextInput style={styles.textInputInit}
-                value={this.state.password}
-                onChangeText={(text) => { this.setState({ password: text }) }}
-                placeholder="Password"
-                placeholderTextColor='rgba(255,255,255,0.7)'
-                secureTextEntry={this.state.showPass}
-                autoCapitalize="none"
-                autoCorrect={false}
-                ref={"txtPassword"}
-                returnKeyType="go"
+                    onSubmitEditing={() => this.refs.txtPassword.focus()}
+                  />
+                </View>
+              </View>
+              <View style={config.loginDesign.logoContainerInit}>
+                <View style={styles.boite}>
+                  <Image source={config.icons.LockIcon} style={config.loginDesign.iconsLogin} />
+                  <TextInput style={styles.textInputInit}
+                    value={this.state.password}
+                    onChangeText={(text) => { this.setState({ password: text }) }}
+                    placeholder="Password"
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    secureTextEntry={this.state.showPass}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    ref={"txtPassword"}
+                    returnKeyType="go"
 
-                onSubmitEditing={() => this.goToHomeScreen()}
-              />
+                    onSubmitEditing={() => this.goToHomeScreen()}
+                  />
+                </View>
+                <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
+                  <Image source={this.state.press == false ? config.icons.eyeOpenIcon : config.icons.eyeCloseIcon} style={styles.iconsEyeStyle} />
+                </TouchableOpacity>
+                <View style={styles.btnContainer}>
+                  <TouchableOpacity style={styles.btnSignUp} onPress={this.goToSignUp} >
+                    <Text style={styles.btnText}>Sign Up</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.btnForgot} onPress={this.goToForgotPassword} >
+                    <Text style={styles.btnText}>Forgot Password ?</Text>
+                  </TouchableOpacity>
+                </View>
+                <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
+                  <Text style={styles.btnText}>Login</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >
-              <Image source={this.state.press == false ? config.icons.eyeOpenIcon : config.icons.eyeCloseIcon} style={styles.iconsEyeStyle} />
-            </TouchableOpacity>
-            <View style={styles.btnContainer}>
-              <TouchableOpacity style={styles.btnSignUp} onPress={this.goToSignUp} >
-                <Text style={styles.btnText}>Sign Up</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btnForgot} onPress={this.goToForgotPassword} >
-                <Text style={styles.btnText}>Forgot Password ?</Text>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
-              <Text style={styles.btnText}>Login</Text>
-            </TouchableOpacity>
-          </View>
-          </View>
-        </DismissKeyboard>
+          </DismissKeyboard>
         </KeyboardAvoidingView>
       </ImageBackground >
     )
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
     width: WIDTH - 55,
     height: 45,
     borderRadius: 25,
-    backgroundColor: '#19342F',
+    backgroundColor: config.loginDesign.authButtonsColor,
     justifyContent: 'center',
     marginTop: 8,
   },
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
     width: WIDTH / 2 - 75,
     height: 45,
     borderRadius: 25,
-    backgroundColor: '#19342F',
+    backgroundColor: config.loginDesign.authButtonsColor,
     justifyContent: 'center',
     margin: 12,
   },
@@ -195,7 +194,7 @@ const styles = StyleSheet.create({
     width: WIDTH / 2 - 5,
     height: 45,
     borderRadius: 25,
-    backgroundColor: '#19342F',
+    backgroundColor: config.loginDesign.authButtonsColor,
     justifyContent: 'center',
     margin: 12,
   },

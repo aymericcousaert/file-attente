@@ -13,14 +13,11 @@ export default {
         mapIcon: require('./../icon/compass-circular-variant.png'),
         map2Icon: require('./../icon/map-marker.png'),
         logOutIcon: require('./../icon/sign-out-option.png'),
-        settingsIcon: require('./../icon/cog-wheel-silhouette.png')
+        settingsIcon: require('./../icon/cog-wheel-silhouette.png'),
+
     },
-    styles: {
-        grandFond: {
-            backgroundColor: 'rgb(255,255,255)',
-            width: '100%',
-            height: '100%'
-        },
+    loginDesign: {
+        backgroundAuth: require('./../image/BackgroundOrangeRose.png'),
         backgroundInit: {
             flex: 1,
             width: '100%',
@@ -53,6 +50,25 @@ export default {
             opacity: 0.9,
             marginBottom: 35,
         },
+        btnBackBox: {
+            width: 45,
+            height: 45,
+            borderRadius: 25,
+            top: 80,
+            left: 36,
+            position: 'absolute',
+            backgroundColor: 'rgba(250,164,67,0.8)',
+        },
+        //'#19342F'
+        authButtonsColor: 'rgba(251,33,101,0.6)',
+    },
+    styles: {
+        grandFond: {
+            backgroundColor: 'rgb(255,255,255)',
+            width: '100%',
+            height: '100%'
+        },
+
     },
     colors: {
         mainColor: 'rgb(73,194,103)',
@@ -61,5 +77,7 @@ export default {
         red: 'rgb(255,96,96)',
         yelow: 'rgb(255,226,98)',
         green: 'rgb(72,152,64)',
+        rose: 'rgb(251,33,101)',
+        orange: 'rgb(250,164,67)'
     }
 }
