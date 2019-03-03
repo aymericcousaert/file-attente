@@ -4,12 +4,15 @@ Class MainPageStack :
 ***************************************/
 
 import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { LinearGradient } from 'expo';
 import { MenuButton, BackButton, ReservationButton } from './../components';
 import { Reservations, Settings, EmpPage } from './../screens'
 import MainPageTab from './MainPageTab';
 import CreateEmpPageNav from './CreateEmpPageNav';
 import config from '../config'
+
 
 const MainPageStack = createStackNavigator(
     {
@@ -62,6 +65,17 @@ const MainPageStack = createStackNavigator(
                     fontWeight: "bold",
                     color: config.colors.secondaryColor,
                 },
+                headerBackground: (
+                    <LinearGradient
+                        colors={[config.colors.rose, config.colors.orange]}
+                        style={{ flex: 1 }}
+                        start={[0, 0]}
+                        end={[1, 0]}
+                    />
+                ),
+                headerStyle: {
+                    backgroundColor: 'transparent',
+                }
             }
         }
     })

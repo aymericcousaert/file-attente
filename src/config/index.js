@@ -78,6 +78,8 @@ export default {
         yelow: 'rgb(255,226,98)',
         green: 'rgb(72,152,64)',
         rose: 'rgb(251,33,101)',
-        orange: 'rgb(250,164,67)'
+        orange: 'rgb(250,164,67)',
+        roseOpacityON: 'rgba(251,33,101,0.6)',
+        orangeOpacityON: 'rgba(250,164,67,0.6)',
     }
 }

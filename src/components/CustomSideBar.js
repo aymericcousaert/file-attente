@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import config from './../config';
+import LinearGradient from 'expo';
 import * as firebase from 'firebase';
+
 
 const WIDHT = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
+
+
 
 export default class CustomSideBar extends Component {
     logOut() {
@@ -25,17 +29,18 @@ export default class CustomSideBar extends Component {
 
     render() {
         return (
-            <View style={{ opacity: 0.8, backgroundColor: '#19342F' }}>
+            <View style={{ opacity: 0.8 }}>
                 <View style={styles.topLinks}>
                 </View>
-                <View style={{ top: 30, height: 700, }}>
+                <View style={{ top: 30, height: 700, backgroundColor: 'transparent' }}>
                     {this.navLink('Feed', 'Home')}
                     {this.navLink('Map', 'Map')}
-                    {this.navLink('CreateEmpPage', 'Create your shop page ?')}
+                    {this.navLink('CreateEmpPage', 'Join us !')}
                     {this.navLink('Settings', 'Settings')}
                     <TouchableOpacity onPress={() => this.logOut()} >
                         <Text style={styles.menuText}>Logout</Text>
                     </ TouchableOpacity>
+                    <Text style={styles.menuText}>OUI C'EST TJ MOCHE desoo :* </Text>
                 </View>
             </View>
         )
@@ -45,9 +50,7 @@ export default class CustomSideBar extends Component {
 const styles = StyleSheet.create({
     topLinks: {
         height: 270,
-        backgroundColor: config.colors.mainColor,
-        borderBottomColor: config.colors.borderColor,
-        borderBottomWidth: StyleSheet.hairlineWidth,
+        backgroundColor: 'transparent',
     },
     menuText: {
         fontSize: 19,
