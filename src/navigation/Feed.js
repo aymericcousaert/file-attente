@@ -4,12 +4,12 @@ Class Feed :
 ***************************************/
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { TileList } from './../container'
+import { Home } from './../screens'
 
 const Feed = createStackNavigator(
     {
         TileList: {
-            screen: TileList,
+            screen: Home,
         },
     },
     {

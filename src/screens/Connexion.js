@@ -133,7 +133,7 @@ class Connexion extends React.Component {
                     <Text style={styles.btnText}>Sign Up</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.btnForgot} onPress={this.goToForgotPassword} >
-                    <Text style={styles.btnText}>Forgot Password ?</Text>
+                    <Text style={styles.btnText}>Forgot Password</Text>
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   btnSignUp: {
-    width: WIDTH / 2 - 75,
+    width: WIDTH / 2 - 40,
     height: 45,
     borderRadius: 25,
     backgroundColor: config.loginDesign.authButtonsColor,
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     margin: 12,
   },
   btnForgot: {
-    width: WIDTH / 2 - 5,
+    width: WIDTH / 2 - 40,
     height: 45,
     borderRadius: 25,
     backgroundColor: config.loginDesign.authButtonsColor,

@@ -14,6 +14,7 @@ export default {
         map2Icon: require('./../icon/map-marker.png'),
         logOutIcon: require('./../icon/sign-out-option.png'),
         settingsIcon: require('./../icon/cog-wheel-silhouette.png'),
+        homeIcon: require('./../icon/home.png'),
 
     },
     loginDesign: {
@@ -68,7 +69,6 @@ export default {
             width: '100%',
             height: '100%'
         },
-
     },
     colors: {
         mainColor: 'rgb(73,194,103)',

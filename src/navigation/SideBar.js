@@ -30,11 +30,9 @@ const SideBar = createDrawerNavigator(
         Home: {
             screen: MainPageStack
         },
-        Feed: {
-            screen: Feed,
-        },
         Map: {
             screen: Map,
+            header: null
         },
     },
     SideBarConfig,

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, Dimensions, Text, View, FlatList } from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
-import Shops from './../Helpers/ShopsData'
-import MapPoint from './../components/MapPoint'
-import MapMarker from './../icon/map-marker.png'
+import MapView, { Marker } from 'react-native-maps';
+import BottomTabBar from './../components/BottomTabBar';
+import Shops from './../Helpers/ShopsData';
+import MapPoint from './../components/MapPoint';
+import MapMarker from './../icon/map-marker.png';
 
-const {width, height} = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
@@ -27,48 +28,49 @@ class Map extends Component {
     }
 
     navigator.geolocation.getCurrentPosition((position) => {
-       var lat = parseFloat(position.coords.latitude)
-       var long = parseFloat(position.coords.longitude)
+      var lat = parseFloat(position.coords.latitude)
+      var long = parseFloat(position.coords.longitude)
 
-       var initialRegion = {
-         latitude: lat,
-         longitude: long,
-         latitudeDelta: LATITUDE_DELTA,
-         longitudeDelta: LONGITUDE_DELTA,
-       }
+      var initialRegion = {
+        latitude: lat,
+        longitude: long,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      }
 
-       this.setState({initialPosition: initialRegion})
-     },
-     (error) => alert(JSON.stringify(error)),
-     {enableHighAccuracy: true, timeout: 20000});
+      this.setState({ initialPosition: initialRegion })
+    },
+      (error) => alert(JSON.stringify(error)),
+      { enableHighAccuracy: true, timeout: 20000 });
   }
 
 
 
 
 
-    render() {
-        return (
+  render() {
+    return (
 
 
-                /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
-                <View style={styles.container}>
-                <MapView  style={styles.map}
-                  region={this.state.initialPosition}
-                  showsUserLocation={true}
-                  followUserLocation={true}>
+      /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
+      <View style={styles.container}>
+        <MapView style={styles.map}
+          region={this.state.initialPosition}
+          showsUserLocation={true}
+          followUserLocation={true}>
 
-                  {this.state.markers.map((marker, index) => {
-                   return (
-                     <MapView.Marker key={index}  coordinate={marker.coordinate} />
-                   );
-                  })}
+          {this.state.markers.map((marker, index) => {
+            return (
+              <MapView.Marker key={index} coordinate={marker.coordinate} />
+            );
+          })}
 
 
-                </MapView>
-                </View>
-        )
-    }
+        </MapView>
+        <BottomTabBar />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -76,8 +78,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-   flex: 1
- },
+    flex: 1
+  },
 });
 
 export default Map
