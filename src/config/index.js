@@ -55,7 +55,7 @@ export default {
             width: 45,
             height: 45,
             borderRadius: 25,
-            top: 80,
+            top: 160,
             left: 36,
             position: 'absolute',
             backgroundColor: 'rgba(250,164,67,0.8)',

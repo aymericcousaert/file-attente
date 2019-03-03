@@ -3,6 +3,7 @@ import { TouchableOpacity, Image, StyleSheet, Dimensions, Text, View, FlatList }
 import MapView, { Marker } from 'react-native-maps';
 import LinearGradient from 'expo';
 import BottomTabBar from './../components/BottomTabBar';
+import MapHeader from './../components/MapHeader';
 import Shops from './../Helpers/ShopsData';
 import MapPoint from './../components/MapPoint';
 import MapMarker from './../icon/map-marker.png';
@@ -73,6 +74,7 @@ class Map extends Component {
 
           </MapView>
           <BottomTabBar />
+          <MapHeader />
         </View>
       </View >
     )

@@ -36,22 +36,11 @@ class ForgotPassword extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: "",
-      passwordConfirm: "",
     };
   }
 
   goToSignIn = () => {
     this.props.navigation.navigate('LogIn');
-  }
-
-  signUpComplete = () => {
-    if (this.state.password !== this.state.passwordConfirm) {
-      Alert.alert("Passwords do not match");
-      return;
-    }
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => { }, (error) => { Alert.alert(error.message); });
   }
 
   render() {
@@ -67,7 +56,7 @@ class ForgotPassword extends React.Component {
           <DismissKeyboard>
             <View>
               <View style={styles.header}>
-                <Text style={config.loginDesign.titleTextInit}>Forgot password ?</Text>
+                <Text style={config.loginDesign.titleTextInit}>Enter your Email adress</Text>
               </View>
               <View style={styles.zoneContainer}>
                 <View style={styles.boite}>

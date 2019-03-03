@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
         zIndex: 9,
         position: 'absolute',
         top: 0,
-        right: 20,
+        right: 24,
     },
     menuIcon: {
         width: 26,
         height: 26,
-        marginLeft: 20,
-        marginTop: 7,
+        marginLeft: 0,
+        marginTop: 4,
         tintColor: config.colors.secondaryColor,
     }
 });
