@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, Dimensions, Text, View, FlatList } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet, Dimensions, Text, View, FlatList } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import LinearGradient from 'expo';
 import BottomTabBar from './../components/BottomTabBar';
 import Shops from './../Helpers/ShopsData';
 import MapPoint from './../components/MapPoint';
 import MapMarker from './../icon/map-marker.png';
+import config from '../config';
 
 const { width, height } = Dimensions.get('window')
 
@@ -45,30 +47,34 @@ class Map extends Component {
   }
 
 
-
-
-
   render() {
     return (
 
 
       /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
       <View style={styles.container}>
-        <MapView style={styles.map}
-          region={this.state.initialPosition}
-          showsUserLocation={true}
-          followUserLocation={true}>
+        <View style={styles.positionZone}>
+          <TouchableOpacity >
+            <Image source={config.icons.positionIcon} style={styles.positionIcon} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <MapView style={styles.map}
+            region={this.state.initialPosition}
+            showsUserLocation={true}
+            followUserLocation={true}>
 
-          {this.state.markers.map((marker, index) => {
-            return (
-              <MapView.Marker key={index} coordinate={marker.coordinate} />
-            );
-          })}
+            {this.state.markers.map((marker, index) => {
+              return (
+                <MapView.Marker key={index} coordinate={marker.coordinate} />
+              );
+            })}
 
 
-        </MapView>
-        <BottomTabBar />
-      </View>
+          </MapView>
+          <BottomTabBar />
+        </View>
+      </View >
     )
   }
 }
@@ -80,6 +86,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  positionZone: {
+    zIndex: 9,
+    position: 'absolute',
+    width: 45,
+    height: 45,
+    borderRadius: 25,
+    bottom: 190,
+    right: 15,
+    backgroundColor: config.colors.orangeOpacityON,
+  },
+  positionIcon: {
+    width: 20,
+    height: 20,
+    top: 13,
+    left: 12,
+    tintColor: config.colors.secondaryColor,
+  }
 });
 
 export default Map

@@ -15,7 +15,7 @@ export default {
         logOutIcon: require('./../icon/sign-out-option.png'),
         settingsIcon: require('./../icon/cog-wheel-silhouette.png'),
         homeIcon: require('./../icon/home.png'),
-
+        positionIcon: require('./../icon/cursor.png'),
     },
     loginDesign: {
         backgroundAuth: require('./../image/BackgroundOrangeRose.png'),
@@ -79,7 +79,7 @@ export default {
         green: 'rgb(72,152,64)',
         rose: 'rgb(251,33,101)',
         orange: 'rgb(250,164,67)',
-        roseOpacityON: 'rgba(251,33,101,0.6)',
-        orangeOpacityON: 'rgba(250,164,67,0.6)',
+        roseOpacityON: 'rgba(251,33,101,0.8)',
+        orangeOpacityON: 'rgba(250,164,67,0.8)',
     }
 }
