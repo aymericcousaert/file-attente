@@ -19,6 +19,7 @@ class HomeCompany extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
+                <Image style={styles.back_image} source={require('../image/BackImageCompany.png')}/>
                 <TouchableOpacity style={styles.settings_touchableOpacity} onPress={() => this._displayCompanySettings()}>
                     <Image style={styles.settings_image} source={require('../icon/settings.png')}/>
                 </TouchableOpacity>
@@ -52,13 +53,20 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center'
     },
+    back_image: {
+        flex:1,
+        position:'absolute',
+        resizeMode:'cover',
+        height:'100%',
+        width:'100%'
+    },
     settings_touchableOpacity: {
-        height:50,
-        width:50
+        height:40,
+        width:40
     },
     settings_image: {
-        height:50,
-        width:50
+        height:40,
+        width:40
     },
     flat_list: {
         flex:1
@@ -75,9 +83,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#0064FF',
     },
     add_queue_text: {
-        color:'white',
         fontSize:26,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'white'
     }
 })
 

@@ -11,20 +11,22 @@ class CompanySettings extends React.Component {
         return (
             <ScrollView style={styles.main_container} showsVerticalScrollIndicator={false}>
                 <View style={styles.form_container}>
-                    <Text style={styles.text}>Nom du gérant / de la gérante :</Text>
-                    <TextInput style={styles.text_input} placeholder="DUPONT Martin"/>
-                    <Text style={styles.text}>Nom de l'enseigne :</Text>
-                    <TextInput style={styles.text_input} placeholder="Carrefour"/>
-                    <Text style={styles.text}>Numéro et nom de rue :</Text>
+                    <Text style={styles.text}>Manager's name :</Text>
+                    <TextInput style={styles.text_input} placeholder="SMITH John"/>
+                    <Text style={styles.text}>Name of the company :</Text>
+                    <TextInput style={styles.text_input} placeholder="Starbucks"/>
+                    <Text style={styles.text}>Number and street name :</Text>
                     <TextInput style={styles.text_input} placeholder="20 Avenue Albert Einstein"/>
-                    <Text style={styles.text}>Code postal :</Text>
+                    <Text style={styles.text}>Postal code :</Text>
                     <TextInput style={styles.text_input} placeholder="69100"/>
-                    <Text style={styles.text}>Ville :</Text>
+                    <Text style={styles.text}>City :</Text>
                     <TextInput style={styles.text_input} placeholder="Villeurbanne"/>
+                    <Text style={styles.text}>Country :</Text>
+                    <TextInput style={styles.text_input} placeholder="FRANCE"/>
                 </View>
                 <View style={styles.touchableOpacity_container}>
                     <TouchableOpacity style={styles.touchableOpacity} onPress={() => this._displayHomeCompany()}>
-                        <Text style={styles.touchableOpacity_text}>Confirmer</Text>
+                        <Text style={styles.touchableOpacity_text}>Ok</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         height:50,
-        width:150,
+        width:100,
         backgroundColor:'#19D127'
     },
     touchableOpacity_text: {

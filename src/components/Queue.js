@@ -7,7 +7,7 @@ class Queue extends React.Component {
         const {num,displayQueueDetails} = this.props
         return (
             <TouchableOpacity style={styles.main_container} onPress={() => displayQueueDetails()}>
-                <Text style={styles.text}>File d'attente {num.key}</Text>
+                <Text style={styles.text}>Queue n°{num.key}</Text>
             </TouchableOpacity>
         )
     }
@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#19D127'
     },
     text: {
-        color:'white',
         fontSize:18,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'white'
     }
 })
 
