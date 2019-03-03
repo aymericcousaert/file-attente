@@ -4,26 +4,22 @@ import { withNavigation } from 'react-navigation';
 import config from '../config'
 
 const { width: WIDTH } = Dimensions.get('window');
+const { height: HEIGHT } = Dimensions.get('window');
 
-class Tile extends Component {
+class LittleTile extends Component {
 
     render() {
         const shop = this.props.shop
         return (
 
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage') }}>
-                <View style={{ paddingHorizontal: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
+                <View style={{ paddingLeft: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
                     <Image style={styles.image} source={shop.image} />
-
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
-                            <Text style={styles.lowTilesText}> {shop.name} </Text>
-                            <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} m</Text>
-                            <Image style={styles.routeImg} source={require('../icon/route.png')} />
+                            <Text> {shop.name} </Text>
                         </View>
                     </View>
-
                 </View>
             </TouchableOpacity>
         )
@@ -32,16 +28,16 @@ class Tile extends Component {
 
 const styles = StyleSheet.create({
     image: {
-        width: '100%',
-        height: WIDTH / 2,
+        width: WIDTH / 2.6,
+        height: HEIGHT / 8,
         borderColor: config.colors.borderColor,
         borderWidth: StyleSheet.hairlineWidth,
         borderRadius: 8,
     },
     lowTilesBox: {
-        width: '100%',
-        top: -WIDTH / 25,
-        height: WIDTH / 10,
+        width: WIDTH / 2.6,
+        top: -WIDTH / 32,
+        height: HEIGHT / 32,
         backgroundColor: 'white',
         borderBottomLeftRadius: 8,
         borderBottomRightRadius: 8,
@@ -51,26 +47,10 @@ const styles = StyleSheet.create({
     lowTilesObj: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        marginLeft: 20
+        marginLeft: 4
     },
-    lowTilesText: {
-        fontSize: 18,
-        color: 'black',
-        fontWeight: 'bold'
-    },
-    indicAffluDot: {
-        width: 10,
-        height: 10,
-        tintColor: config.colors.red,
-        marginLeft: 15
-    },
-    routeImg: {
-        width: 20,
-        height: 20,
-        marginRight: 20
-    }
 });
 
-export default withNavigation(Tile);
+export default withNavigation(LittleTile);

@@ -121,8 +121,10 @@ class SignUpScreen extends React.Component {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
-                <Text style={styles.btnText}>Create Account</Text>
+              <TouchableOpacity onPress={this.signUpComplete} >
+                <View style={styles.btn}>
+                  <Text style={styles.btnText}>Create Account</Text>
+                </View>
               </TouchableOpacity>
             </View>
           </DismissKeyboard>
@@ -169,8 +171,8 @@ const styles = StyleSheet.create({
     backgroundColor: config.loginDesign.authButtonsColor,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 12,
-    top: 43,
+    margin: 14,
+    position: 'absolute',
     marginBottom: 80,
   },
   btnText: {

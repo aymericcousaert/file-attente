@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { FlatList } from 'react-native'
-import Tile from './Tile'
+import LittleTile from './LittleTile'
 import Shops from './../Helpers/ShopsData'
 
-class TileList extends Component {
+class LittleTileList extends Component {
 
     render() {
         return (
             <FlatList
-                showsVerticalScrollIndicator={false}
+                scrollEventThrottle={16}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
                 data={Shops}
-                renderItem={({ item }) => <Tile shop={item} />}
+                renderItem={({ item }) => <LittleTile shop={item} />}
                 keyExtractor={(item) => item.id.toString()}
                 navigation={this.props.navigation}
             />
@@ -18,4 +20,4 @@ class TileList extends Component {
     }
 }
 
-export default TileList;
+export default LittleTileList;

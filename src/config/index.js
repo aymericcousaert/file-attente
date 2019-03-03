@@ -16,6 +16,7 @@ export default {
         settingsIcon: require('./../icon/cog-wheel-silhouette.png'),
         homeIcon: require('./../icon/home.png'),
         positionIcon: require('./../icon/cursor.png'),
+        searchIcon: require('./../icon/magnifying-glass.png'),
     },
     loginDesign: {
         backgroundAuth: require('./../image/BackgroundOrangeRose.png'),

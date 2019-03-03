@@ -50,7 +50,7 @@ class ForgotPassword extends React.Component {
     return (
       <ImageBackground source={config.loginDesign.backgroundAuth} style={config.loginDesign.backgroundInit}>
         <TouchableOpacity style={config.loginDesign.btnBackBox} onPress={this.goToSignIn} >
-          <BackButton style={styles.btnBack}> </BackButton>
+          <BackButton style={styles.btnBack} />
         </TouchableOpacity>
         <KeyboardAvoidingView behavior="position" >
           <DismissKeyboard>
@@ -75,7 +75,7 @@ class ForgotPassword extends React.Component {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.btn} onPress={this.signUpComplete} >
+              <TouchableOpacity style={styles.btnSend} onPress={this.signUpComplete} >
                 <Text style={styles.btnText}>Send Password</Text>
               </TouchableOpacity>
             </View>
@@ -116,6 +116,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   btn: {
+    width: WIDTH / 2 - 40,
+    height: 45,
+    borderRadius: 25,
+    left: (WIDTH / 2 - 40) / 2,
+    backgroundColor: config.loginDesign.authButtonsColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 14,
+    position: 'absolute',
+    marginBottom: 80,
+  },
+  btnSend: {
     width: WIDTH / 2 - 40,
     height: 45,
     borderRadius: 25,

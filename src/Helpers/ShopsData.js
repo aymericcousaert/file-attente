@@ -9,7 +9,9 @@ export default data = [
       latitude: 45.776685,
       longitude: 4.874372,
     },
-    name: "Shop Name 1",
+    name: "Starbucks",
+    image: require("../image/Starbucks.jpg"),
+    distance: 100,
     busy: null,
 
   },
@@ -19,7 +21,9 @@ export default data = [
       latitude: 45.780936,
       longitude: 4.8842,
     },
-    name: "Shop Name 2",
+    name: "Paul",
+    image: require("../image/Paul.jpg"),
+    distance: 200,
     busy: null,
   },
   {
@@ -28,7 +32,9 @@ export default data = [
       latitude: 45.776685,
       longitude: 4.874372,
     },
-    name: "Shop Name 3",
+    name: "LePainQuotidien",
+    image: require("../image/LePainQuotidien.png"),
+    distance: 500,
     busy: null,
 
   },
