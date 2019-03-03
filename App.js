@@ -5,7 +5,7 @@ cc je suis la
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native'
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import AppNavigator from './src/navigation/AppNavigator';
+import AuthStackNavigator from './src/navigation/AuthStackNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
@@ -15,7 +15,7 @@ Creation of the App containers one that
 routes to the home page (AppHome) and one
 that routes to the app's login (AppScreens)
 ***************************************/
-const AppScreens = createAppContainer(AppNavigator);
+const AuthScreens = createAppContainer(AuthStackNavigator);
 const HomeNavigator = createStackNavigator(
 	{
 		Home: SideBar,
@@ -62,7 +62,7 @@ export default class App extends React.Component {
 			***************************************/
 			<View style={styles.container}>
 				<StatusBar barStyle='light-content' />
-				{this.state.isAuthenticated ? <AppHome /> : <AppScreens />}
+				{this.state.isAuthenticated ? <AppHome /> : <AuthScreens />}
 			</View>
 		);
 	}

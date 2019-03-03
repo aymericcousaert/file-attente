@@ -8,7 +8,7 @@ import Connexion from '../screens/Connexion'
 import SignUpScreen from '../screens/SignUpScreen'
 import ForgotPassword from '../screens/ForgotPassword'
 
-const AppStackNavigator = createStackNavigator(
+const AuthStackNavigator = createStackNavigator(
 	{
 		LogIn: Connexion,
 		SignUp: SignUpScreen,
@@ -22,4 +22,4 @@ const AppStackNavigator = createStackNavigator(
 	}
 )
 
-export default AppStackNavigator
+export default AuthStackNavigator
