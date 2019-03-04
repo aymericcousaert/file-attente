@@ -38,7 +38,14 @@ class SignUpScreen extends React.Component {
       email: "",
       password: "",
       passwordConfirm: "",
+			id: ""
     };
+		/**************************************
+		Fetching the last uid available on firebase
+		***************************************/
+		firebase.database().ref('id/uid').once('value').then(data => {
+  	this.setState({ id: data.val() })
+		})
   }
 
   goToSignIn = () => {
@@ -50,8 +57,20 @@ class SignUpScreen extends React.Component {
       Alert.alert("Passwords do not match");
       return;
     }
+		/**************************************
+		Creates a user on firebase using then
+		email and password while updating the last
+		available uid and creating a profil for
+		the user with his email (more options to be added)
+		***************************************/
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => { }, (error) => { Alert.alert(error.message); });
+      .then(() => { firebase.database().ref('users/'+this.state.id).set({
+				email: this.state.email,
+			}),
+				firebase.database().ref('id').update({
+					uid: this.state.id+1
+				})
+			}, (error) => { Alert.alert(error.message); });
   }
 
   render() {

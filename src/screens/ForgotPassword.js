@@ -1,6 +1,10 @@
 /**************************************
-Screen SignUpScreen :
-
+Screen ForgotPassword :
+Allows the user to enter his email
+adress in order to send a reset password
+email with the firebase integration methods
+(reset password mail can be updated so as
+the website)
 ***************************************/
 import React from 'react';
 import {
@@ -39,9 +43,14 @@ class ForgotPassword extends React.Component {
     };
   }
 
-  goToSignIn = () => {
-    this.props.navigation.navigate('LogIn');
-  }
+	onResetPasswordPress = () => {
+    firebase.auth().sendPasswordResetEmail(this.state.email)
+    .then(() => {
+        Alert.alert("Password reset email has been sent.");
+    }, (error) => {
+        Alert.alert(error.message);
+    });
+    }
 
   render() {
 		/**************************************
@@ -75,7 +84,7 @@ class ForgotPassword extends React.Component {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.btnSend} onPress={this.signUpComplete} >
+              <TouchableOpacity style={styles.btnSend} onPress={this.onResetPasswordPress} >
                 <Text style={styles.btnText}>Send Password</Text>
               </TouchableOpacity>
             </View>
