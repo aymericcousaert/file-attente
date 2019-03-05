@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, View, TouchableOpacity, Image, FlatList, Text} from 'react-native'
+import {StyleSheet, View, TouchableOpacity, Image, ImageBackground, FlatList, Text} from 'react-native'
 import Queue from '../components/Queue'
 
 class HomeCompany extends React.Component {
@@ -18,8 +18,7 @@ class HomeCompany extends React.Component {
 
     render() {
         return (
-            <View style={styles.main_container}>
-                <Image style={styles.back_image} source={require('../image/BackImageCompany.png')}/>
+            <ImageBackground style={styles.background_container} source={require('../image/BackImageCompany.png')}>
                 <TouchableOpacity style={styles.settings_touchableOpacity} onPress={() => this._displayCompanySettings()}>
                     <Image style={styles.settings_image} source={require('../icon/settings.png')}/>
                 </TouchableOpacity>
@@ -39,26 +38,21 @@ class HomeCompany extends React.Component {
                 <TouchableOpacity style={styles.add_queue_touchableOpacity} onPress={() => this._displayQueueSettings()}>
                     <Text style={styles.add_queue_text}>+</Text>
                 </TouchableOpacity>
-            </View>
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        flex:1
+    background_container: {
+        flex:1,
+        width:null,
+        height:null,
     },
     flatlist_container: {
         flex:1,
         justifyContent:'center',
         alignItems:'center'
-    },
-    back_image: {
-        flex:1,
-        position:'absolute',
-        resizeMode:'cover',
-        height:'100%',
-        width:'100%'
     },
     settings_touchableOpacity: {
         height:40,
