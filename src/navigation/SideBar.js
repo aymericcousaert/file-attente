@@ -32,7 +32,7 @@ const SideBar = createDrawerNavigator(
         },
         Map: {
             screen: Map,
-            header: null
+            //header: null
         },
     },
     SideBarConfig,

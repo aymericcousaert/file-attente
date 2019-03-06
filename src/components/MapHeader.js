@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Dimensions } from 'react-native';
-import MenuButton from './MenuButton';
-import ReservationButton from './ReservationButton';
+import MenuButton from './buttons/MenuButton';
+import ReservationButton from './buttons/ReservationButton';
 import config from './../config'
 import { withNavigation } from 'react-navigation';
 import { LinearGradient } from 'expo';

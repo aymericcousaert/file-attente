@@ -10,7 +10,6 @@ import { LinearGradient } from 'expo';
 import { MenuButton, BackButton, ReservationButton } from './../components';
 import { Reservations, Settings, EmpPage, Map } from './../screens'
 import Feed from './Feed';
-import CreateEmpPageNav from './CreateEmpPageNav';
 import config from '../config'
 
 const navOption =
@@ -65,12 +64,6 @@ const MainPageStack = createStackNavigator(
                 headerTitle: 'Nom Emp'
             }
         },
-        CreateEmpPage: {
-            screen: CreateEmpPageNav,
-            navigationOptions: {
-                headerTitle: 'Nom Emp'
-            }
-        },
         Settings: {
             screen: Settings,
             navigationOptions: {
@@ -85,9 +78,6 @@ const MainPageStack = createStackNavigator(
                 headerLeft: <BackButton />,
                 headerTitle: 'Settings',
                 headerTintColor: config.colors.secondaryColor,
-                headerStyle: {
-                    backgroundColor: config.colors.mainColor
-                },
                 headerTitleStyle: {
                     fontSize: 18,
                     lineHeight: 23,

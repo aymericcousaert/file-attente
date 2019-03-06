@@ -1,9 +1,9 @@
-import BackButton from './BackButton';
+import BackButton from './buttons/BackButton';
 import CustomSideBar from './CustomSideBar';
-import MenuButton from './MenuButton';
-import ReservationButton from './ReservationButton';
-import LoginButton from './LoginButton';
-import ValidateEmpButton from './ValidateEmpButton';
+import MenuButton from './buttons/MenuButton';
+import ReservationButton from './buttons/ReservationButton';
+import LoginButton from './buttons/LoginButton';
+import ValidateEmpButton from './buttons/ValidateEmpButton';
 
 export {
     BackButton,

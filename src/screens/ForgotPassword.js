@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 import * as firebase from 'firebase';
 import config from './../config';
-import BackButton from './../components/BackButton';
+import BackButton from './../components/buttons/BackButton';
 
 const { width: WIDTH } = Dimensions.get('window');
 
