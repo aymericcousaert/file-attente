@@ -64,11 +64,22 @@ class Connexion extends React.Component {
     this.props.navigation.navigate('ForgotPassword');
   }
 
-  goToHomeScreen = () => {
+  logInEmail = () => {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => { },
         (error) => { Alert.alert(error.message); });
   }
+
+	async logInFacebook() {
+		const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('540592969763996', { permissions: ['public_profile', 'email'] })
+		if (type == 'success') {
+			const credential = firebase.auth.FacebookAuthProvider.credential(token)
+			firebase.auth().signInWithCredential(credential).catch((error) => {
+				Alert.alert(error.message);
+			})
+		}
+	}
+
   showPass = () => {
     if (this.state.press == false) {
       this.setState({ showPass: false, press: true })
@@ -136,8 +147,11 @@ class Connexion extends React.Component {
                     <Text style={styles.btnText}>Forgot Password</Text>
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnLogin} onPress={this.goToHomeScreen} >
+                <TouchableOpacity style={styles.btnLogin} onPress={this.logInEmail} >
                   <Text style={styles.btnText}>Login</Text>
+                </TouchableOpacity>
+								<TouchableOpacity style={styles.btnLogin} onPress={this.logInFacebook} >
+                  <Text style={styles.btnText}>Login with Facebook</Text>
                 </TouchableOpacity>
               </View>
             </View>
