@@ -10,13 +10,25 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
 
 class EmpPage extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			shopsId: 1,
+		};
+	}
+
+	onAddToFav = () => {
+		firebase.database().ref('users/1/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId).once("value").then(snapshot =>
 			 {if (snapshot.val()) {
 		            Alert.alert("Already a favorite");
+								/*var newId = firebase.database().ref('users/1/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId);
 								firebase.database().ref('users/1/favPlaces/'+newId).remove();*/
 		        } else {
 							firebase.database().ref('users/1/favPlaces/').push({placeID: this.state.shopsId}).then(() =>
+							Alert.alert("Added to favorites"))
 						}
 		    })
+		/*
 			firebase.database().ref('users/1/favPlaces/').push({placeID: this.state.shopsId}).then(() =>
 			Alert.alert(id))
 			*/
