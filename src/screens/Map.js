@@ -33,7 +33,6 @@ class Map extends Component {
     navigator.geolocation.getCurrentPosition((position) => {
       var lat = parseFloat(position.coords.latitude)
       var long = parseFloat(position.coords.longitude)
-
       var initialRegion = {
         latitude: lat,
         longitude: long,
@@ -48,7 +47,79 @@ class Map extends Component {
   }
 
 
+
   render() {
+    var mapStyle = [
+      {
+        "featureType": "landscape.natural",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#e0efef"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "hue": "#1900ff"
+          },
+          {
+            "color": "#c0e8e8"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "lightness": 100
+          },
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "lightness": 700
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+          {
+            "color": "#7dcdcd"
+          }
+        ]
+      }
+    ]
     return (
 
 
@@ -63,7 +134,8 @@ class Map extends Component {
           <MapView style={styles.map}
             region={this.state.initialPosition}
             showsUserLocation={true}
-            followUserLocation={true}>
+            followUserLocation={true}
+            customMapStyle={mapStyle} >
 
             {this.state.markers.map((marker, index) => {
               return (
