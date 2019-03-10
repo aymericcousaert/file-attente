@@ -42,7 +42,7 @@ class LoggedOut extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('./../image/animatedbackground.gif')} style={styles.container} >
+            <ImageBackground source={require('./../image/OptiBackground.gif')} style={styles.container} >
                 <View style={styles.loginContainer}>
                     <TouchableOpacity onPress={this.onLoginPress}>
                         <Text style={styles.loginText}>Login</Text>

@@ -83,7 +83,7 @@ export default {
         roseOpacityON: 'rgba(251,33,101,0.8)',
         orangeOpacityON: 'rgba(250,164,67,0.8)',
     },
-		userDetails: {
-			uid: 1,
-		}
+    userDetails: {
+        uid: 1,
+    }
 }
