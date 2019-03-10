@@ -3,6 +3,7 @@ import EmpPage from './EmpPage';
 import Map from './Map';
 import Settings from './Settings';
 import Reservations from './Reservations';
+import QueueDetails from './QueueDetails';
 
 export {
     Home,
@@ -10,4 +11,5 @@ export {
     Map,
     Settings,
     Reservations,
+		QueueDetails,
 };
