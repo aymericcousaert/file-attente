@@ -52,7 +52,7 @@ const MainPageStack = createStackNavigator(
             navigationOptions: {
                 headerLeft: <MenuButton />,
                 headerRight: <ReservationButton />,
-                headerTitle: 'Fast Passs',
+                headerTitle: 'Skipt',
                 navOption,
             }
         },

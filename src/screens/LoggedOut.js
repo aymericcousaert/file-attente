@@ -45,7 +45,7 @@ class LoggedOut extends Component {
             <ImageBackground source={require('./../image/OptiBackground.gif')} style={styles.container} >
                 <View style={styles.loginContainer}>
                     <TouchableOpacity onPress={this.onLoginPress}>
-                        <Text style={styles.loginText}>Login</Text>
+                        <Text style={styles.loginText}>Skipt</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.welcomeContainer}>
