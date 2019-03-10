@@ -135,7 +135,8 @@ class Map extends Component {
             region={this.state.initialPosition}
             showsUserLocation={true}
             followUserLocation={true}
-            customMapStyle={mapStyle} >
+            customMapStyle={mapStyle}
+            showsMyLocationButton={true}>
 
             {this.state.markers.map((marker, index) => {
               return (

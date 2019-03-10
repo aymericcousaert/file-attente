@@ -45,7 +45,7 @@ class LoggedOut extends Component {
             <ImageBackground source={require('./../image/OptiBackground.gif')} style={styles.container} >
                 <View style={styles.loginContainer}>
                     <TouchableOpacity onPress={this.onLoginPress}>
-                        <Text style={styles.loginText}>Skipt</Text>
+                        <Text style={styles.loginText}>Login</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.welcomeContainer}>
@@ -53,7 +53,7 @@ class LoggedOut extends Component {
                         source={require('../image/logo.png')}
                         style={styles.logo}
                     />
-                    <Text style={styles.welcomeText}>Welcome to FastPasss.</Text>
+                    <Text style={styles.welcomeText}>Welcome to Skipt.</Text>
                     <RoundedButton
                         text="Continue with Google"
                         textColor={colors.darkBlue}
