@@ -8,7 +8,7 @@ import { View, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
 import { MenuButton, BackButton, ReservationButton } from './../components';
-import { Reservations, Settings, EmpPage, Map, QueueDetails } from './../screens'
+import { Reservations, Settings, EmpPage, QueueDetails } from './../screens'
 import Feed from './Feed';
 import config from '../config'
 
@@ -41,6 +41,10 @@ const navOption =
         }
     }
 
+//const EmpPageCustom = () => {
+//    <EmpPage shop={}/>
+//}
+
 const MainPageStack = createStackNavigator(
     {
         Feed: {
@@ -70,12 +74,12 @@ const MainPageStack = createStackNavigator(
                 headerTitle: 'Settings'
             }
         },
-				QueueDetails: {
+        QueueDetails: {
             screen: QueueDetails,
             navigationOptions: {
-                headerTitle: 'Shop'
+                headerTitle: 'QueueDetails'
             }
-        }
+        },
 
     },
     {
