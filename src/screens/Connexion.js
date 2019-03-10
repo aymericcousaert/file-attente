@@ -65,10 +65,16 @@ class Connexion extends React.Component {
   }
 
   logInEmail = () => {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => { },
-        (error) => { Alert.alert(error.message); });
-  }
+				firebase.database().ref('users/').orderByChild("email").equalTo(this.state.email).once("value").then(snapshot =>
+					 {if (snapshot.val()) {
+						 config.userDetails.uid = Object.keys(snapshot.val())[0];
+						 console.log(config.userDetails.uid);
+						 firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {},
+						 (error) => { Alert.alert(error.message) })
+					 } else {
+					 	Alert.alert("Wrong Email or Password")
+					 }
+				 })}
 
 	async logInFacebook() {
 		const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('540592969763996', { permissions: ['public_profile', 'email'] })
@@ -99,7 +105,7 @@ class Connexion extends React.Component {
             <View>
               <View style={config.loginDesign.logoContainerInit}>
                 <Image source={logo} style={config.loginDesign.logoInit} />
-                <Text style={config.loginDesign.titleTextInit}>FILE ATENTE</Text>
+                <Text style={config.loginDesign.titleTextInit}>FastPass</Text>
               </View>
               <View style={styles.zoneContainer}>
 
@@ -133,7 +139,7 @@ class Connexion extends React.Component {
                     ref={"txtPassword"}
                     returnKeyType="go"
 
-                    onSubmitEditing={() => this.goToHomeScreen()}
+                    onSubmitEditing={() => this.logInEmail()}
                   />
                 </View>
                 <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >

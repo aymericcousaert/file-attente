@@ -18,13 +18,14 @@ class EmpPage extends Component {
 	}
 
 	onAddToFav = () => {
-		firebase.database().ref('users/1/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId).once("value").then(snapshot =>
+		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId).once("value").then(snapshot =>
 			 {if (snapshot.val()) {
 		            Alert.alert("Already a favorite");
+								console.log(config.userDetails.uid);
 								/*var newId = firebase.database().ref('users/1/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId);
 								firebase.database().ref('users/1/favPlaces/'+newId).remove();*/
 		        } else {
-							firebase.database().ref('users/1/favPlaces/').push({placeID: this.state.shopsId}).then(() =>
+							firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces/').push({placeID: this.state.shopsId}).then(() =>
 							Alert.alert("Added to favorites"))
 						}
 		    })
