@@ -38,14 +38,14 @@ class SignUpScreen extends React.Component {
       email: "",
       password: "",
       passwordConfirm: "",
-			id: ""
+      id: ""
     };
 		/**************************************
 		Fetching the last uid available on firebase
 		***************************************/
-		firebase.database().ref('id/uid').once('value').then(data => {
-  	this.setState({ id: data.val() })
-		})
+    firebase.database().ref('id/uid').once('value').then(data => {
+      this.setState({ id: data.val() })
+    })
   }
 
   goToSignIn = () => {
@@ -64,13 +64,14 @@ class SignUpScreen extends React.Component {
 		the user with his email (more options to be added)
 		***************************************/
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => { firebase.database().ref('users/'+this.state.id).set({
-				email: this.state.email,
-			}),
-				firebase.database().ref('id').update({
-					uid: this.state.id+1
-				})
-			}, (error) => { Alert.alert(error.message); });
+      .then(() => {
+        firebase.database().ref('users/' + this.state.id).set({
+          email: this.state.email,
+        }),
+        firebase.database().ref('id').update({
+          uid: this.state.id + 1
+        })
+      }, (error) => { Alert.alert(error.message); });
   }
 
   render() {
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: 'rgba(0,0,0,0.3)',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 29,
   },
   btn: {
     width: WIDTH / 2 - 40,

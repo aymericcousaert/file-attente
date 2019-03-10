@@ -19,7 +19,7 @@ export default {
         searchIcon: require('./../icon/magnifying-glass.png'),
     },
     loginDesign: {
-        backgroundAuth: require('./../image/BackgroundOrangeRose.png'),
+        backgroundAuth: require('./../image/animatedbackground.gif'),
         backgroundInit: {
             flex: 1,
             width: '100%',
@@ -59,10 +59,10 @@ export default {
             top: 160,
             left: 36,
             position: 'absolute',
-            backgroundColor: 'rgba(250,164,67,0.8)',
+            backgroundColor: 'rgba(189,130,140,0.9)',
         },
         //'#19342F'
-        authButtonsColor: 'rgba(251,33,101,0.6)',
+        authButtonsColor: 'rgba(189,130,140,0.9)',
     },
     styles: {
         grandFond: {

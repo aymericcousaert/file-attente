@@ -11,7 +11,7 @@ class BottomTabBar extends Component {
     render() {
         return (
             <LinearGradient
-                colors={[config.colors.rose, config.colors.orange]}
+                colors={['#232526', '#414345']}
                 style={styles.tabBarContainer}
                 start={[0, 0]}
                 end={[1, 0]}

@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     bottom: 190,
     right: 15,
-    backgroundColor: config.colors.orangeOpacityON,
+    backgroundColor: '#414345',
   },
   positionIcon: {
     width: 20,

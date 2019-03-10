@@ -21,7 +21,8 @@ import {
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as firebase from 'firebase';
 import config from './../config';
-import logo from './../icon/logo.png';
+import colors from './../styles/colors'
+import logo from './../image/logo.png';
 
 /**************************************
 	Const
@@ -70,16 +71,6 @@ class Connexion extends React.Component {
         (error) => { Alert.alert(error.message); });
   }
 
-	async logInFacebook() {
-		const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('540592969763996', { permissions: ['public_profile', 'email'] })
-		if (type == 'success') {
-			const credential = firebase.auth.FacebookAuthProvider.credential(token)
-			firebase.auth().signInWithCredential(credential).catch((error) => {
-				Alert.alert(error.message);
-			})
-		}
-	}
-
   showPass = () => {
     if (this.state.press == false) {
       this.setState({ showPass: false, press: true })
@@ -99,7 +90,6 @@ class Connexion extends React.Component {
             <View>
               <View style={config.loginDesign.logoContainerInit}>
                 <Image source={logo} style={config.loginDesign.logoInit} />
-                <Text style={config.loginDesign.titleTextInit}>FILE ATENTE</Text>
               </View>
               <View style={styles.zoneContainer}>
 
@@ -140,18 +130,12 @@ class Connexion extends React.Component {
                   <Image source={this.state.press == false ? config.icons.eyeOpenIcon : config.icons.eyeCloseIcon} style={styles.iconsEyeStyle} />
                 </TouchableOpacity>
                 <View style={styles.btnContainer}>
-                  <TouchableOpacity style={styles.btnSignUp} onPress={this.goToSignUp} >
-                    <Text style={styles.btnText}>Sign Up</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.btnForgot} onPress={this.goToForgotPassword} >
-                    <Text style={styles.btnText}>Forgot Password</Text>
+                  <TouchableOpacity style={styles.forgotContainer} onPress={this.goToForgotPassword} >
+                    <Text style={styles.forgotText}>                    Forgot Password</Text>
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.btnLogin} onPress={this.logInEmail} >
                   <Text style={styles.btnText}>Login</Text>
-                </TouchableOpacity>
-								<TouchableOpacity style={styles.btnLogin} onPress={this.logInFacebook} >
-                  <Text style={styles.btnText}>Login with Facebook</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -204,13 +188,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 12,
   },
-  btnForgot: {
-    width: WIDTH / 2 - 40,
-    height: 45,
-    borderRadius: 25,
-    backgroundColor: config.loginDesign.authButtonsColor,
-    justifyContent: 'center',
-    margin: 12,
+  forgotContainer: {
+    alignContent: 'flex-end',
+    top: 8,
+    left: 50,
+  },
+  forgotText: {
+    fontSize: 16,
+    color: colors.white,
+    fontWeight: '200',
+    textDecorationLine: 'underline',
   },
   btnText: {
     color: 'rgba(255,255,255,0.7)',
@@ -218,9 +205,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   btnContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 20,
+    position: 'relative',
+    alignItems: 'flex-end',
+    marginBottom: 20,
   },
   iconsEyePos: {
     position: 'absolute',

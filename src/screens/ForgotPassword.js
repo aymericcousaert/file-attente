@@ -43,14 +43,14 @@ class ForgotPassword extends React.Component {
     };
   }
 
-	onResetPasswordPress = () => {
+  onResetPasswordPress = () => {
     firebase.auth().sendPasswordResetEmail(this.state.email)
-    .then(() => {
+      .then(() => {
         Alert.alert("Password reset email has been sent.");
-    }, (error) => {
+      }, (error) => {
         Alert.alert(error.message);
-    });
-    }
+      });
+  }
 
   render() {
 		/**************************************
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 12,
-    top: 43,
+    top: 13,
     marginBottom: 80,
   },
   btnText: {

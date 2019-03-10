@@ -3,10 +3,10 @@ Class App :
 
 ***************************************/
 import React from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native'
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import AuthStackNavigator from './src/navigation/AuthStackNavigator';
-import ApiKeys from './src/config/firebase/ApiKeys'
+import LoggedOutStack from './src/navigation/AuthStackNavigator';
+import ApiKeys from './src/config/firebase/ApiKeys';
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
 
@@ -15,7 +15,7 @@ Creation of the App containers one that
 routes to the home page (AppHome) and one
 that routes to the app's login (AppScreens)
 ***************************************/
-const AuthScreens = createAppContainer(AuthStackNavigator);
+const AuthScreens = createAppContainer(LoggedOutStack);
 const HomeNavigator = createStackNavigator(
 	{
 		Home: SideBar,

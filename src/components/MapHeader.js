@@ -13,14 +13,14 @@ class MapHeader extends Component {
         return (
             <View style={styles.headerZone}>
                 <LinearGradient
-                    colors={[config.colors.rose, 'rgb(248,49,99)']}
+                    colors={['#232526', '#414345']}
                     style={styles.btnBack1}
                     start={[0, 0]}
                     end={[1, 0]}
                 >
                 </LinearGradient >
                 <LinearGradient
-                    colors={['rgb(248,143,80)', config.colors.orange]}
+                    colors={['#232526', '#414345']}
                     style={styles.btnBack2}
                     start={[0, 0]}
                     end={[1, 0]}

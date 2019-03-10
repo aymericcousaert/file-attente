@@ -48,7 +48,7 @@ const MainPageStack = createStackNavigator(
             navigationOptions: {
                 headerLeft: <MenuButton />,
                 headerRight: <ReservationButton />,
-                headerTitle: '',
+                headerTitle: 'Fast Passs',
                 navOption,
             }
         },
@@ -86,7 +86,7 @@ const MainPageStack = createStackNavigator(
                 },
                 headerBackground: (
                     <LinearGradient
-                        colors={[config.colors.rose, config.colors.orange]}
+                        colors={['#232526', '#414345']}
                         style={{ flex: 1 }}
                         start={[0, 0]}
                         end={[1, 0]}
