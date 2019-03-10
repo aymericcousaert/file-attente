@@ -13,7 +13,7 @@ import SideBar from './src/navigation/SideBar';
 /**************************************
 Creation of the App containers one that
 routes to the home page (AppHome) and one
-that routes to the app's login (AppScreens)
+that routes to the app's login (AuthScreens)
 ***************************************/
 const AuthScreens = createAppContainer(LoggedOutStack);
 const HomeNavigator = createStackNavigator(
@@ -41,12 +41,21 @@ export default class App extends React.Component {
 		Initializing firebase and checks if user
 		is Authenticated, if not we redirect him
 		to the AppScreens else he goes directly
-		to the HomeScreen (thanks to isAuthenticated).
+		to the Home (thanks to isAuthenticated).
 		***************************************/
 		if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
 		firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 	}
 	onAuthStateChanged = (user) => {
+		var userEmail = "test";
+		if (user) { userEmail = user.email }
+		firebase.database().ref('users/').orderByChild("email").equalTo(userEmail).once("value").then(snapshot => {
+			if (snapshot.val()) {
+				config.userDetails.uid = Object.keys(snapshot.val())[0];
+				console.log(config.userDetails.uid);
+				console.log(user.email);
+			}
+		});
 		this.setState({ isAuthenticationReady: true });
 		this.setState({ isAuthenticated: !!user });
 	}

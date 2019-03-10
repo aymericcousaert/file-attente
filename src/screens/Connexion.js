@@ -66,9 +66,8 @@ class Connexion extends React.Component {
   }
 
   logInEmail = () => {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => { },
-        (error) => { Alert.alert(error.message); });
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => { },
+      (error) => { Alert.alert(error.message) })
   }
 
   showPass = () => {
@@ -90,6 +89,7 @@ class Connexion extends React.Component {
             <View>
               <View style={config.loginDesign.logoContainerInit}>
                 <Image source={logo} style={config.loginDesign.logoInit} />
+                <Text style={config.loginDesign.titleTextInit}>FastPass</Text>
               </View>
               <View style={styles.zoneContainer}>
 
@@ -123,7 +123,7 @@ class Connexion extends React.Component {
                     ref={"txtPassword"}
                     returnKeyType="go"
 
-                    onSubmitEditing={() => this.goToHomeScreen()}
+                    onSubmitEditing={() => this.logInEmail()}
                   />
                 </View>
                 <TouchableOpacity style={styles.iconsEyePos} onPress={this.showPass} >

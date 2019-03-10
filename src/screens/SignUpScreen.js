@@ -38,14 +38,7 @@ class SignUpScreen extends React.Component {
       email: "",
       password: "",
       passwordConfirm: "",
-      id: ""
     };
-		/**************************************
-		Fetching the last uid available on firebase
-		***************************************/
-    firebase.database().ref('id/uid').once('value').then(data => {
-      this.setState({ id: data.val() })
-    })
   }
 
   goToSignIn = () => {
@@ -65,11 +58,11 @@ class SignUpScreen extends React.Component {
 		***************************************/
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        firebase.database().ref('users/' + this.state.id).set({
+        firebase.database().ref('users/').push({
           email: this.state.email,
-        }),
-        firebase.database().ref('id').update({
-          uid: this.state.id + 1
+        }).then((snap) => {
+          config.userDetails.uid = snap.key;
+          console.log(config.userDetails.uid);
         })
       }, (error) => { Alert.alert(error.message); });
   }
