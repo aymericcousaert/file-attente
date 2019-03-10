@@ -65,16 +65,9 @@ class Connexion extends React.Component {
   }
 
   logInEmail = () => {
-				firebase.database().ref('users/').orderByChild("email").equalTo(this.state.email).once("value").then(snapshot =>
-					 {if (snapshot.val()) {
-						 config.userDetails.uid = Object.keys(snapshot.val())[0];
-						 console.log(config.userDetails.uid);
-						 firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {},
-						 (error) => { Alert.alert(error.message) })
-					 } else {
-					 	Alert.alert("Wrong Email or Password")
-					 }
-				 })}
+		 firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() => {},
+		 (error) => { Alert.alert(error.message) })
+	} 
 
 	async logInFacebook() {
 		const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('540592969763996', { permissions: ['public_profile', 'email'] })

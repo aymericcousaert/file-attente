@@ -7,6 +7,7 @@ import { View, StyleSheet, StatusBar } from 'react-native'
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import AuthStackNavigator from './src/navigation/AuthStackNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys'
+import config from './src/config/'
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
 
@@ -47,7 +48,15 @@ export default class App extends React.Component {
 		firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 	}
 	onAuthStateChanged = (user) => {
-		
+		var userEmail = "test";
+		if (user)
+		{userEmail = user.email}
+		firebase.database().ref('users/').orderByChild("email").equalTo(userEmail).once("value").then(snapshot =>
+			 {if (snapshot.val()){
+				 config.userDetails.uid = Object.keys(snapshot.val())[0];
+				 console.log(config.userDetails.uid);
+				 console.log(user.email);
+			 }});
 		this.setState({ isAuthenticationReady: true });
 		this.setState({ isAuthenticated: !!user });
 	}
