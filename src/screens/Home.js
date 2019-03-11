@@ -27,7 +27,7 @@ class Home extends Component {
                 </View>
                 <View style={{ flex: 1, justifyContent: 'space-around' }}>
                     <View>
-                        <Text style={{ paddingHorizontal: 20, marginTop: 10, marginBottom: 10, fontWeight: '700', fontSize: 25 }}>Sugestions for you :</Text>
+                        <Text style={{ paddingHorizontal: 20, marginTop: 10, marginBottom: 10, fontWeight: '700', fontSize: 25 }}>Favorites :</Text>
                         <LittleTileList navigation={this.props.navigation} />
                     </View>
                     <Text style={{ paddingHorizontal: 20, marginBottom: 10, fontWeight: '700', fontSize: 25 }}>Close to your position :</Text>

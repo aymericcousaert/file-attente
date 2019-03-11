@@ -17,6 +17,7 @@ export default {
         homeIcon: require('./../icon/home.png'),
         positionIcon: require('./../icon/cursor.png'),
         searchIcon: require('./../icon/magnifying-glass.png'),
+        hearthIcon: require('./../icon/heart-shape-silhouette.png'),
     },
     loginDesign: {
         backgroundAuth: require('./../image/animatedbackground.gif'),
