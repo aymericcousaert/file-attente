@@ -9,6 +9,7 @@ import LoggedOutStack from './src/navigation/AuthStackNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys';
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
+import Mainscreen from './src/screens/MainScreen';
 
 /**************************************
 Creation of the App containers one that
