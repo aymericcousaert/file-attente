@@ -33,7 +33,7 @@ class Home extends Component {
                     <TextInput
                         underlineColorAndroid='transparent'
 												onChangeText={(searchBarText) => this.onSearchDo(searchBarText)}
-                        placeholder="Try Lyon"
+                        placeholder="Try Starbucks"
                         placeholderTextColor="grey"
                         style={{
                             flex: 1, fontWeight: '700', backgroundColor: 'white'
