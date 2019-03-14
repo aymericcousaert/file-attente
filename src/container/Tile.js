@@ -8,9 +8,8 @@ const { width: WIDTH } = Dimensions.get('window');
 class Tile extends Component {
 
     render() {
-        const shop = this.props.shop
+        const shop = this.props.shop;
         return (
-
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage') }}>
                 <View style={{ paddingHorizontal: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
                     <Image style={styles.image} source={shop.image} />

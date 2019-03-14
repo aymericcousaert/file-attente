@@ -48,6 +48,7 @@ export default class App extends React.Component {
 		if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
 		firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 	}
+	
 	onAuthStateChanged = (user) => {
 		var userEmail = "";
 		if (user) { userEmail = user.email }
