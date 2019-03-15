@@ -48,7 +48,7 @@ export default class App extends React.Component {
 		if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
 		firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 	}
-	
+
 	onAuthStateChanged = (user) => {
 		var userEmail = "";
 		if (user) { userEmail = user.email }
@@ -57,10 +57,10 @@ export default class App extends React.Component {
 				config.userDetails.uid = Object.keys(snapshot.val())[0];
 				console.log(config.userDetails.uid);
 				console.log(user.email);
+				this.setState({ isAuthenticationReady: true });
+				this.setState({ isAuthenticated: !!user });
 			};
 		});
-		this.setState({ isAuthenticationReady: true });
-		this.setState({ isAuthenticated: !!user });
 	}
 
 	render() {

@@ -8,12 +8,21 @@ import { TileList, LittleTileList } from './../container';
 import BottomTabBar from './../components/BottomTabBar';
 import config from './../config';
 
+import * as firebase from 'firebase';
 
 class Home extends Component {
+
 	constructor(props){
 		super(props);
+		/*firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",function(snapshot) {
+			var arr = [];
+			snapshot.forEach(function(child) {
+				shopID.push(child.val().placeID);
+			});
+		});*/
 		this.state = {
-			searchBarText: "_all"
+			searchBarText: "_all",
+			allShopId: [1,2]
 		}
 	}
 
@@ -22,10 +31,38 @@ class Home extends Component {
     if (searchBarText === "") {
         return this.setState({ searchBarText: "_all" })
     }
-		/*console.log(this.state.searchBarText);*/
   }
 
+	componentWillMount() {
+	   this.fetchShopIDS();
+	}
+
+	fetchShopIDS = async () => {
+	    var shopID = [];
+	    firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').once('value').then(snapshot => {
+	        snapshot.forEach(item => {
+	             var temp = { placeID: item.val().placeID };
+	            shopID.push(temp);
+	            return false;
+	   		}).then(() => this.setState({allShopId: shopID}));
+	   });
+	}
+
     render() {
+			/*var shopID = [];
+			var ref = firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces');
+			ref.on("value", function(snapshot) {
+			var promises = [];
+			snapshot.forEach((snap) => {
+				promises.push(snap);
+				Promise.all(promises).then((snapshots) => {
+					snapshots.forEach((usersnap) => {
+						shopID.push(usersnap.val().placeID);
+						});
+						console.log(shopID);
+					})
+				})
+			})*/
         return (
             <View style={config.styles.grandFond}>
                 <View style={{ top: 10, marginBottom: 10, flexDirection: 'row', padding: 10, backgroundColor: 'white', marginHorizontal: 20, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1, borderRadius: 25, }}>
@@ -43,7 +80,7 @@ class Home extends Component {
                 <View style={{ flex: 1, justifyContent: 'space-around' }}>
                     <View>
                         <Text style={{ paddingHorizontal: 20, marginTop: 10, marginBottom: 10, fontWeight: '700', fontSize: 25 }}>Favorites :</Text>
-                        <LittleTileList navigation={this.props.navigation} />
+                        <LittleTileList navigation={this.props.navigation} allShopId={this.state.allShopId}/>
                     </View>
                     <Text style={{ paddingHorizontal: 20, marginBottom: 10, fontWeight: '700', fontSize: 25 }}>Close to your position :</Text>
                     <TileList navigation={this.props.navigation} shopName={this.state.searchBarText}/>

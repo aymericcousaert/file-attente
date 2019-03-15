@@ -32,7 +32,7 @@ export default data = [
       latitude: 45.776685,
       longitude: 4.874372,
     },
-    name: "LePainQuotidien",
+    name: "Le Pain Quotidien",
     image: require("../image/LePainQuotidien.png"),
     distance: 500,
     busy: null,
