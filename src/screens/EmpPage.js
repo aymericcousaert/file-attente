@@ -20,7 +20,7 @@ class EmpPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            shopsId: 2,
+            shopsId: 1,
         };
     }
 

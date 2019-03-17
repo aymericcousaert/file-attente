@@ -8,3 +8,4 @@ npm-debug.*
 *.DS_Store
 .DS_Store
 .expo/settings.json
+.expo/settings.json

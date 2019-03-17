@@ -11,7 +11,7 @@ const HEIGHT = Dimensions.get('window').height
 
 
 export default class CustomSideBar extends Component {
-    logOut() {
+    logOut = () => () {
         firebase.auth().signOut().then(function () {
             this.props.navigation.navigate(nav)
         }).catch(function (error) {
@@ -40,7 +40,6 @@ export default class CustomSideBar extends Component {
                     <TouchableOpacity onPress={() => this.logOut()} >
                         <Text style={styles.menuText}>Logout</Text>
                     </ TouchableOpacity>
-                    <Text style={styles.menuText}>OUI C'EST TJ MOCHE desoo :* </Text>
                 </View>
             </View>
         )

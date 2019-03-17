@@ -14,17 +14,12 @@ class Home extends Component {
 
 	constructor(props){
 		super(props);
-		/*firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",function(snapshot) {
-			var arr = [];
-			snapshot.forEach(function(child) {
-				shopID.push(child.val().placeID);
-			});
-		});*/
 		this.state = {
 			searchBarText: "_all",
-			allShopId: [1,2]
+			allShopId: []
 		}
 	}
+
 
 	onSearchDo(searchBarText) {
     this.setState({ searchBarText })
@@ -33,19 +28,14 @@ class Home extends Component {
     }
   }
 
-	componentWillMount() {
-	   this.fetchShopIDS();
-	}
-
-	fetchShopIDS = async () => {
-	    var shopID = [];
-	    firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').once('value').then(snapshot => {
-	        snapshot.forEach(item => {
-	             var temp = { placeID: item.val().placeID };
-	            shopID.push(temp);
-	            return false;
-	   		}).then(() => this.setState({allShopId: shopID}));
-	   });
+	componentDidMount() {
+		const shopID = [];
+		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",(snapshot) => {
+			snapshot.forEach(function(child) {
+				shopID.push(child.val().placeID);
+			});
+			this.setState({allShopId: shopID})
+		})
 	}
 
     render() {
