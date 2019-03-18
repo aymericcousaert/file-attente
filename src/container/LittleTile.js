@@ -12,12 +12,12 @@ class LittleTile extends Component {
         const shop = this.props.shop
         return (
 
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage') }}>
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}>
                 <View style={{ paddingLeft: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
                     <Image style={styles.image} source={shop.image} />
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
-                            <Text> {shop.name} </Text>
+                            <Text style={styles.text}> {shop.name} </Text>
                         </View>
                     </View>
                 </View>
@@ -51,6 +51,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 4
     },
+    text: {
+        fontSize: 11,
+        color: 'black',
+        fontWeight: 'bold'
+    }
 });
 
 export default withNavigation(LittleTile);

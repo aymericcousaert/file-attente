@@ -19,19 +19,29 @@ const { height: HEIGHT } = Dimensions.get('window').height;
 class EmpPage extends Component {
     constructor(props) {
         super(props);
+        //choper le sprops de shop 
+        const { navigation } = this.props;
+        const shop = navigation.getParam('shop', 'nop');
         this.state = {
-            shopsId: 1,
+            shopId: JSON.stringify(shop.id),
+            shopName: shop.name,
+            shopImage: shop.image,
         };
+        alert(this.state.shopId);
+    }
+
+    static navigationOptions = {
+        headerTitle: '',
     }
 
     onAddToFav = () => {
         firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId).once("value").then(snapshot => {
             if (snapshot.val()) {
-                firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces/'+Object.keys(snapshot.val())[0]).remove().then(() =>
-									Alert.alert("Removed from favorites"))
+                firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/' + Object.keys(snapshot.val())[0]).remove().then(() =>
+                    Alert.alert("Removed from favorites"))
             } else {
                 firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').push({ placeID: this.state.shopsId }).then(() =>
-                  Alert.alert("Added to favorites"))
+                    Alert.alert("Added to favorites"))
             }
         })
     }
@@ -45,8 +55,10 @@ class EmpPage extends Component {
             // Ceci est temporaire, le shop affiché ne correspond pas
             <View style={{ flex: 1 }}>
                 <ScrollView style={styles.container}>
-                    <Image source={require('./../image/Paul.jpg')} style={styles.imageContainer} />
-                    <Text >Pas encore fini</Text>
+                    <View style={styles.imageContainer} >
+                        <Image source={this.state.shopImage} style={styles.image} />
+                    </View>
+                    <Text style={styles.headerTitle}>{this.state.shopName}</Text>
 
                     <View style={styles.favContainer} >
                         <TouchableOpacity onPress={this.onAddToFav} >
@@ -79,6 +91,10 @@ const styles = StyleSheet.create({
     imageContainer: {
         height: 220,
     },
+    image: {
+        height: '100%',
+        width: '100%',
+    },
     favContainer: {
         zIndex: 4,
         position: 'absolute',
@@ -95,5 +111,12 @@ const styles = StyleSheet.create({
         height: 28,
         width: 28,
         tintColor: 'coral',
+    },
+    headerTitle: {
+        paddingHorizontal: 20,
+        marginTop: 10,
+        marginBottom: 10,
+        fontWeight: '700',
+        fontSize: 25
     }
 });

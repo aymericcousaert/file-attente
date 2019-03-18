@@ -64,9 +64,6 @@ const MainPageStack = createStackNavigator(
         },
         EmpPage: {
             screen: EmpPage,
-            navigationOptions: {
-                headerTitle: 'Nom Emp'
-            }
         },
         Settings: {
             screen: Settings,
