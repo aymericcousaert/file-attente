@@ -28,31 +28,21 @@ class Home extends Component {
     }
   }
 
-	componentDidMount() {
-		const shopID = [];
+	componentWillMount() {
+		var shopID = [];
 		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",(snapshot) => {
 			snapshot.forEach(function(child) {
 				shopID.push(child.val().placeID);
 			});
 			this.setState({allShopId: shopID})
+		});
+		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("child_removed",(snapshot) => {
+			shopID = this.state.allShopId.filter(i => i !== snapshot.val().placeID);
+			this.setState({allShopId: shopID});
 		})
 	}
 
     render() {
-			/*var shopID = [];
-			var ref = firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces');
-			ref.on("value", function(snapshot) {
-			var promises = [];
-			snapshot.forEach((snap) => {
-				promises.push(snap);
-				Promise.all(promises).then((snapshots) => {
-					snapshots.forEach((usersnap) => {
-						shopID.push(usersnap.val().placeID);
-						});
-						console.log(shopID);
-					})
-				})
-			})*/
         return (
             <View style={config.styles.grandFond}>
                 <View style={{ top: 10, marginBottom: 10, flexDirection: 'row', padding: 10, backgroundColor: 'white', marginHorizontal: 20, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1, borderRadius: 25, }}>

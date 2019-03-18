@@ -11,10 +11,8 @@ const HEIGHT = Dimensions.get('window').height
 
 
 export default class CustomSideBar extends Component {
-    logOut = () => () {
-        firebase.auth().signOut().then(function () {
-            this.props.navigation.navigate(nav)
-        }).catch(function (error) {
+    logOut = () => {
+        firebase.auth().signOut().then(function () {}).catch(function (error) {
             // An error happened.
         });
     }
