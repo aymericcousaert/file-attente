@@ -19,15 +19,14 @@ const { height: HEIGHT } = Dimensions.get('window').height;
 class EmpPage extends Component {
     constructor(props) {
         super(props);
-        //choper le sprops de shop 
+        //choper le sprops de shop
         const { navigation } = this.props;
         const shop = navigation.getParam('shop', 'nop');
         this.state = {
-            shopId: JSON.stringify(shop.id),
+            shopId: shop.id,
             shopName: shop.name,
             shopImage: shop.image,
         };
-        alert(this.state.shopId);
     }
 
     static navigationOptions = {
@@ -35,12 +34,12 @@ class EmpPage extends Component {
     }
 
     onAddToFav = () => {
-        firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopsId).once("value").then(snapshot => {
+        firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopId).once("value").then(snapshot => {
             if (snapshot.val()) {
                 firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/' + Object.keys(snapshot.val())[0]).remove().then(() =>
                     Alert.alert("Removed from favorites"))
             } else {
-                firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').push({ placeID: this.state.shopsId }).then(() =>
+                firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').push({ placeID: this.state.shopId }).then(() =>
                     Alert.alert("Added to favorites"))
             }
         })
