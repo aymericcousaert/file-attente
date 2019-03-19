@@ -6,7 +6,7 @@ import backgrounds from './../styles/backgrounds';
 import colors from './../styles/colors';
 import RoundedButton from './../components/buttons/RoundedButton';
 
-console.disableYellowBox = true;
+
 
 class LoggedOut extends Component {
 

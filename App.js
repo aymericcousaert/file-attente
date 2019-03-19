@@ -55,8 +55,6 @@ export default class App extends React.Component {
 		firebase.database().ref('users/').orderByChild("email").equalTo(userEmail).once("value").then(snapshot => {
 			if (snapshot.val()) {
 				config.userDetails.uid = Object.keys(snapshot.val())[0];
-				console.log(config.userDetails.uid);
-				console.log(user.email);
 				this.setState({ isAuthenticationReady: true });
 				this.setState({ isAuthenticated: !!user });
 			};

@@ -65,6 +65,37 @@ class EmpPage extends Component {
                         </TouchableOpacity>
                     </View>
 
+                    <Text style={styles.empDesc}>Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+
+
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+
+                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    </Text>
                 </ScrollView>
 
                 <View style={{ position: 'absolute', bottom: 20, padding: 20 }}>
@@ -116,6 +147,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         fontWeight: '700',
-        fontSize: 25
+        fontSize: 30
+    },
+    empDesc: {
+        paddingHorizontal: 20,
     }
 });

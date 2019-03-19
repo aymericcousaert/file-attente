@@ -13,7 +13,6 @@ export default data = [
     image: require("../image/Starbucks.jpg"),
     distance: 100,
     busy: null,
-
   },
   {
     id: 2,
