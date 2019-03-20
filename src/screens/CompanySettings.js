@@ -13,17 +13,17 @@ class CompanySettings extends React.Component {
                 <KeyboardAvoidingView style={styles.keyboard_container} behavior="padding">
                     <ScrollView style={styles.main_container} showsVerticalScrollIndicator={false}>
                         <Text style={styles.text}>Manager's name :</Text>
-                        <TextInput style={styles.text_input} placeholder="SMITH John"/>
+                        <TextInput style={styles.text_input} placeholder="SMITH John" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <Text style={styles.text}>Name of the company :</Text>
-                        <TextInput style={styles.text_input} placeholder="Starbucks"/>
+                        <TextInput style={styles.text_input} placeholder="Starbucks" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <Text style={styles.text}>Number and street name :</Text>
-                        <TextInput style={styles.text_input} placeholder="20 Avenue Albert Einstein"/>
+                        <TextInput style={styles.text_input} placeholder="20 Avenue Albert Einstein" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <Text style={styles.text}>Postal code :</Text>
-                        <TextInput style={styles.text_input} placeholder="69100"/>
+                        <TextInput style={styles.text_input} placeholder="69100" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <Text style={styles.text}>City :</Text>
-                        <TextInput style={styles.text_input} placeholder="Villeurbanne"/>
+                        <TextInput style={styles.text_input} placeholder="Villeurbanne" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <Text style={styles.text}>Country :</Text>
-                        <TextInput style={styles.text_input} placeholder="FRANCE"/>
+                        <TextInput style={styles.text_input} placeholder="FRANCE" placeholderTextColor='rgba(255, 255, 255, 0.5)'/>
                         <View style={styles.touchableOpacity_container}>
                             <TouchableOpacity style={styles.touchableOpacity} onPress={() => this._displayHomeCompany()}>
                                 <Text style={styles.touchableOpacity_text}>Confirm</Text>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         borderRadius:25,
         paddingLeft:10,
         backgroundColor:'rgba(0, 0, 0, 0.35)',
-        color:'rgba(255, 255, 255, 0.7)'
+        color:'white'
     },
     touchableOpacity: {
         marginVertical:40,
