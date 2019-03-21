@@ -19,7 +19,7 @@ class Tile extends Component {
                             <Text style={styles.lowTilesText}> {shop.name} </Text>
                             <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
                             <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} m</Text>
-                            <Image style={styles.routeImg} source={require('../icon/route.png')} />
+                            <Image style={styles.routeImg} source={config.icons.map2Icon} />
                         </View>
                     </View>
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     lowTilesText: {
         fontSize: 18,
-        color: 'black',
+        color: '#232526',
         fontWeight: 'bold'
     },
     indicAffluDot: {

@@ -15,6 +15,7 @@ import * as firebase from 'firebase';
 
 const { width: WIDTH } = Dimensions.get('window').width;
 const { height: HEIGHT } = Dimensions.get('window').height;
+var heartColor = /*this.state.isFav == false ? colors.white : */colors.fireOrange;
 
 class EmpPage extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class EmpPage extends Component {
             shopId: shop.id,
             shopName: shop.name,
             shopImage: shop.image,
+            isFav: false,
         };
     }
 
@@ -41,6 +43,12 @@ class EmpPage extends Component {
             } else {
                 firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').push({ placeID: this.state.shopId }).then(() =>
                     Alert.alert("Added to favorites"))
+            }
+
+            if (this.state.isFav == false) {
+                this.setState({ isFav: true })
+            } else {
+                this.setState({ isFav: false })
             }
         })
     }
@@ -140,7 +148,7 @@ const styles = StyleSheet.create({
     favIcon: {
         height: 28,
         width: 28,
-        tintColor: 'coral',
+        tintColor: heartColor,
     },
     headerTitle: {
         paddingHorizontal: 20,
