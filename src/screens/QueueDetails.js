@@ -1,41 +1,42 @@
-/**************************************
-Emploi du Temps :
+import React from 'react'
+import {StyleSheet, View, Text, Button, Alert} from 'react-native'
 
-***************************************/
-import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
-import config from './../config';
+class QueueDetails extends React.Component {
 
-class QueueDetails extends Component {
-
-  _onPressButton = () => {
-    alert('COUCOU')
-  }
+    _onPressButton = () => {
+        Alert.alert('COUCOU')
+    }
 
     render() {
         return (
-
-            <View style={{flex :1,flexDirection : 'column', justifyContent: 'space-around', alignItems: "center"}}>
-            <View style={{position:'absolute',right:30,top:30}}>
-            <Button
-              onPress={this._onPressButton}
-              title="..."
-              />
+            <View style={styles.main_container}>
+                <View style={styles.button_container}>
+                    <Button onPress={this._onPressButton} title="..."/>
+                </View>
+                <Text> Lundi </Text>
+                <Text> Mardi </Text>
+                <Text> Mercredi </Text>
+                <Text> Jeudi </Text>
+                <Text> Vendredi </Text>
+                <Text> Samedi </Text>
+                <Text> Dimanche </Text>
+                <Button onPress={this._onPressButton} title="Ajouter Créneau"/>
             </View>
-                  <Text> Lundi </Text>
-                  <Text> Mardi </Text>
-                  <Text> Mercredi </Text>
-                  <Text> Jeudi </Text>
-                  <Text> Vendredi </Text>
-                  <Text> Samedi </Text>
-                  <Text> Dimanche </Text>
-                  <Button
-                    onPress={this._onPressButton}
-                    title="Ajouter Créneau"
-                    />
-            </View >
         )
     }
 }
+
+const styles = StyleSheet.create({
+    main_container: {
+        flex:1,
+        justifyContent:'space-around',
+        alignItems:'center'
+    },
+    button_container: {
+        position:'absolute',
+        right:30,
+        top:30
+    }
+})
 
 export default QueueDetails
