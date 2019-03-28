@@ -5,9 +5,12 @@ import LinearGradient from 'expo';
 import BottomTabBar from './../components/BottomTabBar';
 import MapHeader from './../components/MapHeader';
 import Shops from './../Helpers/ShopsData';
-import MapPoint from './../components/MapPoint';
 import MapMarker from './../icon/map-marker.png';
 import config from '../config';
+import MapCallout from 'react-native-maps';
+import MapPreview from './../components/MapPreview';
+
+import { NavigationActions, StackActions } from 'react-navigation';
 
 const { width, height } = Dimensions.get('window')
 
@@ -45,8 +48,6 @@ class Map extends Component {
       (error) => alert(JSON.stringify(error)),
       { enableHighAccuracy: true, timeout: 20000 });
   }
-
-
 
   render() {
     var mapStyle = [
@@ -140,7 +141,14 @@ class Map extends Component {
 
             {this.state.markers.map((marker, index) => {
               return (
-                <MapView.Marker key={index} coordinate={marker.coordinate} />
+                <MapView.Marker key={index} coordinate={marker.coordinate}>
+                <MapView.Callout
+
+                onPress={() => { this.props.navigation.navigate('EmpPage', {shop:marker}) }}
+                >
+                <MapPreview shop = {marker}    />
+                </MapView.Callout>
+                </MapView.Marker>
               );
             })}
 

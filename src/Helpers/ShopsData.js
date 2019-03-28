@@ -28,8 +28,8 @@ export default data = [
   {
     id: 3,
     coordinate: {
-      latitude: 45.776685,
-      longitude: 4.874372,
+      latitude: 45.7649399,
+      longitude: 4.8512063,
     },
     name: "Le Pain Quotidien",
     image: require("../image/LePainQuotidien.png"),

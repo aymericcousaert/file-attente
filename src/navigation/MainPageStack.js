@@ -8,7 +8,8 @@ import { View, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
 import { MenuButton, BackButton, ReservationButton } from './../components';
-import { Reservations, Settings, EmpPage, QueueDetails } from './../screens'
+import { Reservations, Settings, EmpPage, QueueDetails } from './../screens';
+
 import Feed from './Feed';
 import config from '../config'
 
@@ -47,6 +48,7 @@ const navOption =
 
 const MainPageStack = createStackNavigator(
     {
+
         Feed: {
             screen: Feed,
             navigationOptions: {
