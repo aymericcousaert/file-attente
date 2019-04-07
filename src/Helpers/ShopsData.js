@@ -11,7 +11,7 @@ export default data = [
     },
     name: "Starbucks",
     image: require("../image/Starbucks.jpg"),
-    distance: 100,
+    distance: null,
     busy: null,
   },
   {
@@ -22,7 +22,7 @@ export default data = [
     },
     name: "Paul",
     image: require("../image/Paul.jpg"),
-    distance: 200,
+    distance: null,
     busy: null,
   },
   {
@@ -33,7 +33,7 @@ export default data = [
     },
     name: "Le Pain Quotidien",
     image: require("../image/LePainQuotidien.png"),
-    distance: 500,
+    distance: null,
     busy: null,
 
   },

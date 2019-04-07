@@ -3,7 +3,7 @@ Class App :
 
 ***************************************/
 import React from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar, Alert} from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import LoggedOutStack from './src/navigation/AuthStackNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys';
@@ -59,6 +59,17 @@ export default class App extends React.Component {
 				this.setState({ isAuthenticated: !!user });
 			};
 		});
+	}
+
+	componentWillMount = () => {
+		this.watchId = navigator.geolocation.watchPosition(
+      (position) => {
+				config.userDetails.coordinate.latitude = position.coords.latitude
+				config.userDetails.coordinate.longitude = position.coords.longitude
+      },
+      (error) => {Alert.alert(error.message)},
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+    );
 	}
 
 	render() {

@@ -7,6 +7,7 @@ import { View, Image, Text, TextInput, Platform, StatusBar } from 'react-native'
 import { TileList, LittleTileList } from './../container';
 import BottomTabBar from './../components/BottomTabBar';
 import config from './../config';
+import Shops from './../Helpers/ShopsData';
 
 import * as firebase from 'firebase';
 
@@ -23,12 +24,14 @@ class Home extends Component {
 
 	onSearchDo(searchBarText) {
     this.setState({ searchBarText })
+		console.log(Shops);
     if (searchBarText === "") {
         return this.setState({ searchBarText: "_all" })
     }
   }
 
 	componentWillMount() {
+		this.shopDistance();
 		var shopID = [];
 		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",(snapshot) => {
 			snapshot.forEach(function(child) {
@@ -39,6 +42,28 @@ class Home extends Component {
 		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("child_removed",(snapshot) => {
 			shopID = this.state.allShopId.filter(i => i !== snapshot.val().placeID);
 			this.setState({allShopId: shopID});
+		})
+	}
+	/**************************************
+	Heaversine formula in order to calculate
+	the distance between two points in km
+	***************************************/
+	getDistance = (p1, p2) => {
+	  var R = 6378137;
+	  var dLat = (p2.latitude - p1.latitude)*Math.PI / 180;
+	  var dLong = (p2.longitude - p1.longitude)*Math.PI / 180;
+	  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+	    Math.cos((p1.latitude)*Math.PI / 180) * Math.cos((p2.latitude)*Math.PI / 180) *
+	    Math.sin(dLong / 2) * Math.sin(dLong / 2);
+	  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	  var d = R * c / 1000;
+		d = d.toFixed(1);
+	  return d;
+	};
+
+	shopDistance() {
+		Shops.map((shop) => {
+			shop.distance=this.getDistance(shop.coordinate,config.userDetails.coordinate);
 		})
 	}
 

@@ -18,7 +18,7 @@ class Tile extends Component {
                         <View style={styles.lowTilesObj}>
                             <Text style={styles.lowTilesText}> {shop.name} </Text>
                             <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} m</Text>
+                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} km</Text>
                             <Image style={styles.routeImg} source={config.icons.map2Icon} />
                         </View>
                     </View>
