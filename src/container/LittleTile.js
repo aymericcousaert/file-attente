@@ -14,7 +14,7 @@ class LittleTile extends Component {
         return (
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}>
                 <View style={{ paddingLeft: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
-                    <Image style={styles.image} source={shop.image} />
+                    <Image style={styles.image} source={{uri: shop.image}} />
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
                             <Text style={styles.text}> {shop.name} </Text>

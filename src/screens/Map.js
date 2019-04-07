@@ -9,6 +9,7 @@ import MapMarker from './../icon/map-marker.png';
 import config from '../config';
 import MapCallout from 'react-native-maps';
 import MapPreview from './../components/MapPreview';
+import * as firebase from 'firebase';
 
 import { NavigationActions, StackActions } from 'react-navigation';
 
@@ -21,9 +22,13 @@ const LATITUDE_DELTA = 0.0222
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 class Map extends Component {
+
+
   constructor() {
     super()
+    this.shopsRef = firebase.database().ref('/places');
     this.state = {
+      allShops: [],
       initialPosition: {
         latitude: 0,
         longitude: 0,
@@ -47,6 +52,28 @@ class Map extends Component {
     },
       (error) => alert(JSON.stringify(error)),
       { enableHighAccuracy: true, timeout: 20000 });
+  }
+
+  componentDidMount(){
+    var data = [];
+    this.shopsRef.on('value', snap =>  {
+      snap.forEach(elem => {
+        data.push({
+          id: elem.child('id').val(),
+          name: elem.child('name').val(),
+          coordinate: {
+            latitude: elem.child('coords/latitude').val(),
+            longitude: elem.child('coords/longitude').val(),
+          },
+          image: elem.child('image').val(),
+          distance: elem.child('distance').val(),
+          busy: elem.child('busy').val(),
+        });
+    });
+    });
+    this.setState({
+      allShops: data
+    })
   }
 
   render() {
@@ -139,7 +166,7 @@ class Map extends Component {
             customMapStyle={mapStyle}
             showsMyLocationButton={true}>
 
-            {this.state.markers.map((marker, index) => {
+            {this.state.allShops.map((marker, index) => {
               return (
                 <MapView.Marker key={index} coordinate={marker.coordinate}>
                 <MapView.Callout

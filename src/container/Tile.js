@@ -3,19 +3,26 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'rea
 import { withNavigation } from 'react-navigation';
 import config from '../config'
 
+
+
+
 const { width: WIDTH } = Dimensions.get('window');
 
 class Tile extends Component {
 
+
     render() {
         const shop = this.props.shop;
+
         return (
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}>
                 <View style={{ paddingHorizontal: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
-                    <Image style={styles.image} source={shop.image} />
+
+                    <Image style={styles.image} source= {{uri: shop.image}} />
 
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
+
                             <Text style={styles.lowTilesText}> {shop.name} </Text>
                             <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
                             <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} km</Text>

@@ -15,7 +15,7 @@ class MapPreview extends Component {
           <Text style={styles.baseText}>
           distance : {shop.distance} m {'\n'}{'\n'}
           </Text>
-          <Image style={styles.image} source={shop.image} />
+          <Image style={styles.image} source={{uri: shop.image}} />
           </View>
         )
     }
