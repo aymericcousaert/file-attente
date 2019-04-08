@@ -11,7 +11,7 @@ export default data = [
     },
     name: "Starbucks",
     image: require("../image/Starbucks.jpg"),
-    distance: 100,
+    distance: null,
     busy: null,
   },
   {
@@ -22,18 +22,18 @@ export default data = [
     },
     name: "Paul",
     image: require("../image/Paul.jpg"),
-    distance: 200,
+    distance: null,
     busy: null,
   },
   {
     id: 3,
     coordinate: {
-      latitude: 45.776685,
-      longitude: 4.874372,
+      latitude: 45.7649399,
+      longitude: 4.8512063,
     },
     name: "Le Pain Quotidien",
     image: require("../image/LePainQuotidien.png"),
-    distance: 500,
+    distance: null,
     busy: null,
 
   },

@@ -86,5 +86,9 @@ export default {
     },
     userDetails: {
         uid: 1,
+				coordinate: {
+					latitude: 45.763420,
+					longitude: 4.834277,
+			}
     }
 }

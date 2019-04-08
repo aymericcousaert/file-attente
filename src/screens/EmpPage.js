@@ -63,7 +63,7 @@ class EmpPage extends Component {
             <View style={{ flex: 1 }}>
                 <ScrollView style={styles.container}>
                     <View style={styles.imageContainer} >
-                        <Image source={this.state.shopImage} style={styles.image} />
+                        <Image source={{uri: this.state.shopImage}} style={styles.image} />
                     </View>
                     <Text style={styles.headerTitle}>{this.state.shopName}</Text>
 

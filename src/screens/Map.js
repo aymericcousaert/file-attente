@@ -5,9 +5,13 @@ import LinearGradient from 'expo';
 import BottomTabBar from './../components/BottomTabBar';
 import MapHeader from './../components/MapHeader';
 import Shops from './../Helpers/ShopsData';
-import MapPoint from './../components/MapPoint';
 import MapMarker from './../icon/map-marker.png';
 import config from '../config';
+import MapCallout from 'react-native-maps';
+import MapPreview from './../components/MapPreview';
+import * as firebase from 'firebase';
+
+import { NavigationActions, StackActions } from 'react-navigation';
 
 const { width, height } = Dimensions.get('window')
 
@@ -18,9 +22,13 @@ const LATITUDE_DELTA = 0.0222
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 class Map extends Component {
+
+
   constructor() {
     super()
+    this.shopsRef = firebase.database().ref('/places');
     this.state = {
+      allShops: [],
       initialPosition: {
         latitude: 0,
         longitude: 0,
@@ -46,7 +54,27 @@ class Map extends Component {
       { enableHighAccuracy: true, timeout: 20000 });
   }
 
-
+  componentDidMount(){
+    var data = [];
+    this.shopsRef.on('value', snap =>  {
+      snap.forEach(elem => {
+        data.push({
+          id: elem.child('id').val(),
+          name: elem.child('name').val(),
+          coordinate: {
+            latitude: elem.child('coords/latitude').val(),
+            longitude: elem.child('coords/longitude').val(),
+          },
+          image: elem.child('image').val(),
+          distance: elem.child('distance').val(),
+          busy: elem.child('busy').val(),
+        });
+    });
+    });
+    this.setState({
+      allShops: data
+    })
+  }
 
   render() {
     var mapStyle = [
@@ -138,9 +166,16 @@ class Map extends Component {
             customMapStyle={mapStyle}
             showsMyLocationButton={true}>
 
-            {this.state.markers.map((marker, index) => {
+            {this.state.allShops.map((marker, index) => {
               return (
-                <MapView.Marker key={index} coordinate={marker.coordinate} />
+                <MapView.Marker key={index} coordinate={marker.coordinate}>
+                <MapView.Callout
+
+                onPress={() => { this.props.navigation.navigate('EmpPage', {shop:marker}) }}
+                >
+                <MapPreview shop = {marker}    />
+                </MapView.Callout>
+                </MapView.Marker>
               );
             })}
 
