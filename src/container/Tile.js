@@ -2,15 +2,24 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import config from '../config'
+import BouncingComponent from '../components/animated/BouncingComponent'
 
 const { width: WIDTH } = Dimensions.get('window');
+
+onTilePress = () => {
+    this.props.navigation.navigate('EmpPage', { shop })
+}
 
 class Tile extends Component {
 
     render() {
         const shop = this.props.shop;
         return (
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}>
+
+            <BouncingComponent
+                bouncingDistance={0.1}
+                handleOnPress={this.onTilePress}
+            >
                 <View style={{ paddingHorizontal: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
                     <Image style={styles.image} source={shop.image} />
 
@@ -24,7 +33,8 @@ class Tile extends Component {
                     </View>
 
                 </View>
-            </TouchableOpacity>
+            </BouncingComponent>
+
         )
     }
 }
