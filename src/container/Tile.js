@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback, Dimensions, Animated } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import config from '../config'
 import BouncingComponent from '../components/animated/BouncingComponent'
@@ -9,25 +9,56 @@ import BouncingComponent from '../components/animated/BouncingComponent'
 
 const { width: WIDTH } = Dimensions.get('window');
 
-onTilePress = () => {
-    this.props.navigation.navigate('EmpPage', { shop })
-}
-
 class Tile extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handelPressIn = this.handelPressIn.bind(this);
+        this.handelPressOut = this.handelPressOut.bind(this);
+        this.onTilePress = this.onTilePress.bind(this);
+    }
 
+    componentWillMount() {
+        this.AnimatedValue = new Animated.Value(1);
+    }
+
+    handelPressIn() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 0.94
+        }
+        ).start();
+    }
+
+    handelPressOut() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 1,
+            friction: 3,
+            tension: 20
+        }).start()
+        this.onTilePress();
+    }
+
+    onTilePress() {
+
+    }
     render() {
+
+        const animatedStyle = {
+            transform: [{ scale: this.AnimatedValue }]
+        }
+
         const shop = this.props.shop;
 
         return (
 
-            <BouncingComponent
-                bouncingDistance={0.1}
-                handleOnPress={this.onTilePress}
+            <TouchableWithoutFeedback
+                onPressIn={this.handelPressIn}
+                onPressOut={this.handelPressOut}
+                onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}
             >
-                <View style={{ paddingHorizontal: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
+                <Animated.View style={[styles.container, animatedStyle]}>
 
-                    <Image style={styles.image} source= {{uri: shop.image}} />
+                    <Image style={styles.image} source={{ uri: shop.image }} />
 
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
@@ -39,14 +70,26 @@ class Tile extends Component {
                         </View>
                     </View>
 
-                </View>
-            </BouncingComponent>
-
+                </Animated.View>
+            </TouchableWithoutFeedback>
         )
     }
 }
 
+export default withNavigation(Tile);
+
+
 const styles = StyleSheet.create({
+    container: {
+        paddingHorizontal: 17,
+        /*shadowOffSet: {
+            width: 2,
+            height: 2
+        },*/
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        elevation: 1
+    },
     image: {
         width: '100%',
         height: WIDTH / 2,
@@ -89,4 +132,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default withNavigation(Tile);
+
