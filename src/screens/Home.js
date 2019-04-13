@@ -30,7 +30,7 @@ class Home extends Component {
     }
   }
 
-	componentWillMount() {
+	componentDidMount() {
 		this.shopDistance();
 		var shopID = [];
 		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",(snapshot) => {
