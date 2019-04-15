@@ -74,36 +74,8 @@ class EmpPage extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <Text style={styles.empDesc}>Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    <Text style={styles.empDesc}>
+										-----Description Entreprise-----
                     </Text>
                 </ScrollView>
 
