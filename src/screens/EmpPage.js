@@ -20,7 +20,7 @@ var heartColor = /*this.state.isFav == false ? colors.white : */colors.fireOrang
 class EmpPage extends Component {
     constructor(props) {
         super(props);
-        //choper le sprops de shop
+        //get props from shop
         const { navigation } = this.props;
         const shop = navigation.getParam('shop', 'nop');
         this.state = {
@@ -54,7 +54,8 @@ class EmpPage extends Component {
     }
 
     onGoToQueueDetails = () => {
-        this.props.navigation.navigate('QueueDetails');
+				const shopId = this.state.shopId;
+        this.props.navigation.navigate('QueueDetails', { shopId });
     }
 
     render() {
