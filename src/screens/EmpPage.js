@@ -75,7 +75,7 @@ class EmpPage extends Component {
                     </View>
 
                     <Text style={styles.empDesc}>
-										-----Description Entreprise-----
+										-----Shop Description-----
                     </Text>
                 </ScrollView>
 
