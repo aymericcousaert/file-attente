@@ -17,7 +17,7 @@ const { width: WIDTH } = Dimensions.get('window').width;
 const { height: HEIGHT } = Dimensions.get('window').height;
 var heartColor = /*this.state.isFav == false ? colors.white : */colors.fireOrange;
 
-class EmpPage extends Component {
+export default class EmpPage extends Component {
     constructor(props) {
         super(props);
         //get props from shop
@@ -91,8 +91,6 @@ class EmpPage extends Component {
         )
     }
 }
-
-export default EmpPage
 
 const styles = StyleSheet.create({
     container: {

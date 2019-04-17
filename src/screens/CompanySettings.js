@@ -1,7 +1,7 @@
-import React from 'react'
-import {StyleSheet, View, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView} from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, View, ScrollView, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView} from 'react-native'
 
-class CompanySettings extends React.Component {
+export default class CompanySettings extends Component {
 
     _displayHomeCompany() {
         this.props.navigation.navigate('HomeCompany')
@@ -82,5 +82,3 @@ const styles = StyleSheet.create({
         color:'white'
     }
 })
-
-export default CompanySettings

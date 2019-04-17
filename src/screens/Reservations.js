@@ -8,7 +8,7 @@ import { View, Text } from 'react-native'
 import { TileList } from '../container'
 import config from './../config'
 
-class Reservations extends Component {
+export default class Reservations extends Component {
 
     render() {
         return (
@@ -19,5 +19,3 @@ class Reservations extends Component {
         )
     }
 }
-
-export default Reservations

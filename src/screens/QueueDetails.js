@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {DatePickerIOS, StyleSheet, View, Text, Button, Alert} from 'react-native'
 import config from './../config';
 
 import * as firebase from 'firebase'
 
-class QueueDetails extends React.Component {
+export default class QueueDetails extends Component {
 		constructor(props) {
 				super(props);
 				//get props from shop
@@ -61,5 +61,3 @@ const styles = StyleSheet.create({
         top:30
     }
 })
-
-export default QueueDetails

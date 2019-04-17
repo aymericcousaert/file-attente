@@ -33,8 +33,9 @@ export default class CustomSideBar extends Component {
                 <View style={{ top: 30, height: 700, backgroundColor: 'transparent' }}>
                     {this.navLink('Feed', 'Home')}
                     {this.navLink('Map', 'Map')}
-                    {this.navLink('CreateEmpPage', 'Join us !')}
                     {this.navLink('Settings', 'Settings')}
+                    {this.navLink('CompanySettings', 'Join us !')}
+                    {this.navLink('HomeCompany', 'HomeCompany')}
                     <TouchableOpacity onPress={() => this.logOut()} >
                         <Text style={styles.menuText}>Logout</Text>
                     </ TouchableOpacity>
