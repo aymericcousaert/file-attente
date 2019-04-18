@@ -31,8 +31,8 @@ export default class QueueDetails extends Component {
 			const hour = this.state.chosenDate.getHours().toString();
 			const date = month+"/"+day+"/"+hour;
 			firebase.database().ref('places/shop' + shopId + '/bookings/'+date).push({ uid: config.userDetails.uid }).then(() =>
-				firebase.database().ref('users/'+config.userDetails.uid+'/bookings/'+date).push({ shopId: shopId }).then(() =>
-					Alert.alert("congratulations you've just Skipt It")))
+				firebase.database().ref('users/'+config.userDetails.uid+'/bookings/'+date).push({ placeID: shopId }).then(() =>
+					Alert.alert("Congratulations you've just Skipt It")))
     }
 
     render() {
