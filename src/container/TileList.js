@@ -16,7 +16,7 @@ class TileList extends Component {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={allShops}
-        renderItem={({ item }) => <Tile shop={item} name={shopName} />}
+        renderItem={({ item }) => <Tile shop={item}/>}
         keyExtractor={(item) => item.id.toString()}
         navigation={this.props.navigation}
       />

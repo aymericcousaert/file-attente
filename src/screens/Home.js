@@ -19,6 +19,7 @@ class Home extends Component {
 			searchBarText: "_all",
 			allShopId: []
 		}
+		this.shopDistance();
 	}
 
 
@@ -31,7 +32,6 @@ class Home extends Component {
   }
 
 	componentDidMount() {
-		this.shopDistance();
 		var shopID = [];
 		firebase.database().ref('users/'+config.userDetails.uid+'/favPlaces').on("value",(snapshot) => {
 			snapshot.forEach(function(child) {

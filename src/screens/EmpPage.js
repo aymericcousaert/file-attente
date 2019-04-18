@@ -60,7 +60,6 @@ export default class EmpPage extends Component {
 
     render() {
         return (
-            // Ceci est temporaire, le shop affiché ne correspond pas
             <View style={{ flex: 1 }}>
                 <ScrollView style={styles.container}>
                     <View style={styles.imageContainer} >

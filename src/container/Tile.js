@@ -16,9 +16,6 @@ class Tile extends Component {
         this.handelPressIn = this.handelPressIn.bind(this);
         this.handelPressOut = this.handelPressOut.bind(this);
         this.onTilePress = this.onTilePress.bind(this);
-        this.state = {
-          shop: this.props.shop,
-        }
     }
 
     componentWillMount() {
@@ -67,22 +64,22 @@ class Tile extends Component {
         }
 
 
-
+				const shop = this.props.shop
         return (
 
             <TouchableWithoutFeedback
                 onPressIn={this.handelPressIn}
                 onPressOut={this.handelPressOut}
-                onPress={() => { this.props.navigation.navigate('EmpPage',  this.state.shop ) }}
+                onPress={() => { this.props.navigation.navigate('EmpPage',  { shop } ) }}
             >
                 <Animated.View style={[styles.container, animatedStyle]}>
 
-                    <Image style={styles.image} source={{ uri: this.state.shop.image }} />
+                    <Image style={styles.image} source={{ uri: shop.image }} />
 
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
 
-                            <Text style={styles.lowTilesText}> {this.state.shop.name} </Text>
+                            <Text style={styles.lowTilesText}> {shop.name} </Text>
 
                             { this.renderElementRed() }
                             { this.renderElementOrange() }
@@ -91,7 +88,7 @@ class Tile extends Component {
 
 
 
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {this.state.shop.distance} km</Text>
+                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} km</Text>
                             <Image style={styles.routeImg} source={config.icons.map2Icon} />
                         </View>
                     </View>
