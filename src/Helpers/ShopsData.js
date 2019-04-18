@@ -1,40 +1,22 @@
 // Helpers/ShopsData.js
+import React, { Component } from 'react';
+import * as firebase from 'firebase';
 
-// Structure des données (sans doute temporaire)
+var data = []
+firebase.database().ref('/places').on('value', snap => {
+  snap.forEach(elem => {
+    data.push({
+      id: elem.child('id').val(),
+      name: elem.child('name').val(),
+      coordinate: {
+        latitude: elem.child('coords/latitude').val(),
+        longitude: elem.child('coords/longitude').val(),
+      },
+      image: elem.child('image').val(),
+      distance: elem.child('distance').val(),
+      busy: elem.child('busy').val(),
+    });
+  });
+})
 
-export default data = [
-  {
-    id: 1,
-    coordinate: {
-      latitude: 45.776685,
-      longitude: 4.874372,
-    },
-    name: "Starbucks",
-    image: require("../image/Starbucks.jpg"),
-    distance: null,
-    busy: null,
-  },
-  {
-    id: 2,
-    coordinate: {
-      latitude: 45.780936,
-      longitude: 4.8842,
-    },
-    name: "Paul",
-    image: require("../image/Paul.jpg"),
-    distance: null,
-    busy: null,
-  },
-  {
-    id: 3,
-    coordinate: {
-      latitude: 45.7649399,
-      longitude: 4.8512063,
-    },
-    name: "Le Pain Quotidien",
-    image: require("../image/LePainQuotidien.png"),
-    distance: null,
-    busy: null,
-
-  },
-]
+export default data
