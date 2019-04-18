@@ -16,6 +16,9 @@ class Tile extends Component {
         this.handelPressIn = this.handelPressIn.bind(this);
         this.handelPressOut = this.handelPressOut.bind(this);
         this.onTilePress = this.onTilePress.bind(this);
+        this.state = {
+          shop: this.props.shop,
+        }
     }
 
     componentWillMount() {
@@ -41,31 +44,54 @@ class Tile extends Component {
     onTilePress() {
 
     }
+
+   renderElementRed(){
+      if(this.props.shop.busy == 3)
+        return <Image style={styles.indicAffluDotRed} source={config.icons.circleIcon} />;
+      return null;
+   }
+   renderElementOrange(){
+      if(this.props.shop.busy == 2)
+        return <Image style={styles.indicAffluDotOrange} source={config.icons.circleIcon} />;
+      return null;
+   }
+   renderElementGreen(){
+      if(this.props.shop.busy == 1)
+        return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
+      return null;
+   }
     render() {
 
         const animatedStyle = {
             transform: [{ scale: this.AnimatedValue }]
         }
 
-        const shop = this.props.shop;
+
 
         return (
 
             <TouchableWithoutFeedback
                 onPressIn={this.handelPressIn}
                 onPressOut={this.handelPressOut}
-                onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}
+                onPress={() => { this.props.navigation.navigate('EmpPage',  this.state.shop ) }}
             >
                 <Animated.View style={[styles.container, animatedStyle]}>
 
-                    <Image style={styles.image} source={{ uri: shop.image }} />
+                    <Image style={styles.image} source={{ uri: this.state.shop.image }} />
 
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
 
-                            <Text style={styles.lowTilesText}> {shop.name} </Text>
-                            <Image style={styles.indicAffluDot} source={config.icons.circleIcon} />
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} km</Text>
+                            <Text style={styles.lowTilesText}> {this.state.shop.name} </Text>
+
+                            { this.renderElementRed() }
+                            { this.renderElementOrange() }
+                            { this.renderElementGreen() }
+
+
+
+
+                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {this.state.shop.distance} km</Text>
                             <Image style={styles.routeImg} source={config.icons.map2Icon} />
                         </View>
                     </View>
@@ -119,10 +145,22 @@ const styles = StyleSheet.create({
         color: '#232526',
         fontWeight: 'bold'
     },
-    indicAffluDot: {
+    indicAffluDotRed: {
         width: 10,
         height: 10,
         tintColor: config.colors.red,
+        marginLeft: 15
+    },
+    indicAffluDotGreen: {
+        width: 10,
+        height: 10,
+        tintColor: config.colors.green,
+        marginLeft: 15
+    },
+    indicAffluDotOrange: {
+        width: 10,
+        height: 10,
+        tintColor: config.colors.orange,
         marginLeft: 15
     },
     routeImg: {
@@ -131,5 +169,3 @@ const styles = StyleSheet.create({
         marginRight: 20
     }
 });
-
-
