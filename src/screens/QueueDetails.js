@@ -11,7 +11,7 @@ export default class QueueDetails extends Component {
 				const { navigation } = this.props;
 				const shopid = navigation.getParam('shopId', 'nop');
 				var day = new Date().getDate()+7; //Get day in a week
-		    var month = new Date().getMonth() //Current Month
+		    var month = new Date().getMonth() + 1; //Current Month
 		    var year = new Date().getFullYear(); //Current Year
 				this.state = {
 						shopId: shopid,
@@ -27,11 +27,12 @@ export default class QueueDetails extends Component {
 		onPressButton = () => {
 			const shopId = this.state.shopId;
 			const day = this.state.chosenDate.getDate().toString();
-			const month = this.state.chosenDate.getMonth().toString();
+			const month = (this.state.chosenDate.getMonth()+1).toString();
 			const hour = this.state.chosenDate.getHours().toString();
+			const minute = this.state.chosenDate.getMinutes().toString();
 			const date = month+"/"+day+"/"+hour;
-			firebase.database().ref('places/shop' + shopId + '/bookings/'+date).push({ uid: config.userDetails.uid }).then(() =>
-				firebase.database().ref('users/'+config.userDetails.uid+'/bookings/'+date).push({ placeID: shopId }).then(() =>
+			firebase.database().ref('places/shop' + shopId + '/bookings/'+date).push({ uid: config.userDetails.uid, minute: minute }).then(() =>
+				firebase.database().ref('users/'+config.userDetails.uid+'/bookings/'+date).push({ placeID: shopId, minute: minute}).then(() =>
 					Alert.alert("Congratulations you've just Skipt It")))
     }
 
