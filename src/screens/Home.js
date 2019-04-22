@@ -20,6 +20,7 @@ class Home extends Component {
 			allShopId: []
 		}
 		this.shopDistance();
+		this.shopBusy();
 	}
 
 
@@ -64,6 +65,29 @@ class Home extends Component {
 	shopDistance() {
 		Shops.map((shop) => {
 			shop.distance=this.getDistance(shop.coordinate,config.userDetails.coordinate);
+		})
+	}
+
+	shopBusy() {
+		Shops.map((shop) => {
+			const shopId = shop.id;
+			const today = new Date();
+			const day = today.getDate().toString();
+			const month = (today.getMonth()+1).toString();
+			const hour = today.getHours().toString();
+			var count = 0;
+			const date = month+"/"+day+"/"+hour;
+			firebase.database().ref('places/shop' + shopId + '/bookings/'+date).on("value", function(snapshot) {
+				snapshot.forEach(function(snap) {
+	   			count++;
+				})
+		  });
+			if (count<(10*0.33)) {
+				shop.busy = 1;
+			} else if (count<(10*0.66)) {
+				shop.busy = 2;
+			} else shop.busy = 3;
+			console.log(shop.name+":"+shop.busy);
 		})
 	}
 

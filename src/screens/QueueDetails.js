@@ -16,7 +16,8 @@ export default class QueueDetails extends Component {
 				this.state = {
 						shopId: shopid,
 						chosenDate: new Date(),
-						nextWeekDate: new Date(year, month, day, 0, 0, 0, 0),
+						nextWeekDate: new Date(year, month-1, day, 0, 0, 0, 0),
+						minuteInterval: 5, //replace with shop's desired interval
 				};
 		}
 
@@ -40,10 +41,11 @@ export default class QueueDetails extends Component {
         return (
             <View style={styles.main_container}>
         				<DatePickerIOS
-          				date={this.state.chosenDate}
-          				onDateChange={this.setDate}
+          				date = {this.state.chosenDate}
+          				onDateChange = {this.setDate}
 									minimumDate = {new Date()}
 									maximumDate = {this.state.nextWeekDate}
+									minuteInterval = {this.state.minuteInterval}
         					/>
               <Button onPress={this.onPressButton} title="Skip it!"/>
             </View>
