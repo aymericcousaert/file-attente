@@ -9,12 +9,13 @@ import BouncingComponent from '../components/animated/BouncingComponent'
 
 const { width: WIDTH } = Dimensions.get('window');
 
-class Tile extends Component {
+class ReservationTile extends Component {
 
     constructor(props) {
         super(props);
         this.handelPressIn = this.handelPressIn.bind(this);
         this.handelPressOut = this.handelPressOut.bind(this);
+        this.onTilePress = this.onTilePress.bind(this);
     }
 
     componentWillMount() {
@@ -32,8 +33,9 @@ class Tile extends Component {
         Animated.spring(this.AnimatedValue, {
             toValue: 1,
             friction: 3,
-            tension: 40
+            tension: 20
         }).start()
+        this.onTilePress();
     }
 
     onTilePress() {
@@ -55,14 +57,33 @@ class Tile extends Component {
         return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
       return null;
    }
+
     render() {
 
         const animatedStyle = {
             transform: [{ scale: this.AnimatedValue }]
         }
-
-
 				const shop = this.props.shop
+				var bookingData = this.props.bookingData
+				var booking = [];
+				booking = bookingData.filter((bookingData) => bookingData.placeID==shop.id)
+
+				var days = [
+				 "Sun",
+				 "Mon",
+				 "Tue",
+				 "Wed",
+				 "Thu",
+				 "Fri",
+				 "Sat",
+		 		];
+
+				if(booking.length>0){
+					bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}>{days[new Date(2019, booking[0].month, booking[0].day, 0, 0, 0, 0).getDay()]} {booking[0].day}/{booking[0].month} - {booking[0].hour}:{booking[0].minute}</Text>
+				} else {
+					bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}></Text>
+				}
+
         return (
 
             <TouchableWithoutFeedback
@@ -83,10 +104,7 @@ class Tile extends Component {
                             { this.renderElementOrange() }
                             { this.renderElementGreen() }
 
-
-
-
-                            <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}> {shop.distance} km</Text>
+                            {bookingText}
                             <Image style={styles.routeImg} source={config.icons.map2Icon} />
                         </View>
                     </View>
@@ -97,7 +115,7 @@ class Tile extends Component {
     }
 }
 
-export default withNavigation(Tile);
+export default withNavigation(ReservationTile);
 
 
 const styles = StyleSheet.create({
@@ -116,15 +134,15 @@ const styles = StyleSheet.create({
         height: WIDTH / 2,
         borderColor: config.colors.borderColor,
         borderWidth: StyleSheet.hairlineWidth,
-        borderRadius: 2,
+        borderRadius: 8,
     },
     lowTilesBox: {
         width: '100%',
         top: -WIDTH / 25,
         height: WIDTH / 10,
         backgroundColor: 'white',
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5,
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
         borderColor: 'rgba(0,0,0,0.4)',
         borderWidth: 0.17,
     },

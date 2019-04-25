@@ -16,10 +16,10 @@ import * as firebase from 'firebase';
 const { width: WIDTH } = Dimensions.get('window').width;
 const { height: HEIGHT } = Dimensions.get('window').height;
 
-class EmpPage extends Component {
+export default class EmpPage extends Component {
     constructor(props) {
         super(props);
-        //choper le sprops de shop
+        //get props from shop
         const { navigation } = this.props;
         const shop = navigation.getParam('shop', 'nop');
         this.state = {
@@ -55,7 +55,8 @@ class EmpPage extends Component {
     }
 
     onGoToQueueDetails = () => {
-        this.props.navigation.navigate('QueueDetails');
+				const shopId = this.state.shopId;
+        this.props.navigation.navigate('QueueDetails', { shopId });
     }
 
     componentWillMount() {
@@ -146,8 +147,6 @@ class EmpPage extends Component {
         )
     }
 }
-
-export default EmpPage
 
 const styles = StyleSheet.create({
     container: {

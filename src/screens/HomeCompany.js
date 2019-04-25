@@ -1,8 +1,8 @@
-import React from 'react'
-import {StyleSheet, View, TouchableOpacity, Image, ImageBackground, FlatList, Text} from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, View, TouchableOpacity, Image, ImageBackground, FlatList, Text} from 'react-native'
 import Queue from '../components/Queue'
 
-class HomeCompany extends React.Component {
+export default class HomeCompany extends Component {
 
     _displayQueueDetails = () => {
         this.props.navigation.navigate('QueueDetails')
@@ -82,5 +82,3 @@ const styles = StyleSheet.create({
         color:'white'
     }
 })
-
-export default HomeCompany
