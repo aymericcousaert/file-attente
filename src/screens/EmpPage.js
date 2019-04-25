@@ -55,13 +55,19 @@ export default class EmpPage extends Component {
     }
 
     onGoToQueueDetails = () => {
-				const shopId = this.state.shopId;
+        const shopId = this.state.shopId;
         this.props.navigation.navigate('QueueDetails', { shopId });
     }
 
     componentWillMount() {
         this.AnimatedValue = new Animated.Value(1);
-
+        firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopId).once("value").then(snapshot => {
+            if (snapshot.val()) {
+                this.setState({ isFav: true });
+            } else {
+                this.setState({ isFav: false });
+            };
+        })
     }
 
     handelPressIn() {
@@ -83,16 +89,18 @@ export default class EmpPage extends Component {
         const animatedStyle = {
             transform: [{ scale: this.AnimatedValue }]
         }
+        const animatedLike = {
+            transform: [{ scale: this.AnimatedValue }]
+        }
         const heartColor = this.state.isFav ? colors.fireOrange : colors.white;
 
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1 }} >
                 <ScrollView style={styles.container}>
                     <View style={styles.imageContainer} >
                         <Image source={{ uri: this.state.shopImage }} style={styles.image} />
                     </View>
                     <Text style={styles.headerTitle}>{this.state.shopName}</Text>
-
                     <Animated.View style={styles.favContainer}>
                         <TouchableWithoutFeedback
                             onPressIn={this.handelPressIn}
@@ -102,36 +110,8 @@ export default class EmpPage extends Component {
                             <Animated.Image source={config.icons.hearthIcon} style={[styles.favIcon, { tintColor: heartColor }, animatedStyle]} />
                         </TouchableWithoutFeedback>
                     </Animated.View>
-                    <Text style={styles.empDesc}>Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste sTesttes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
-
-                    Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
+                    <Text style={styles.empDesc}>
+                        -----Shop Description-----
                     </Text>
                 </ScrollView>
 
@@ -143,7 +123,7 @@ export default class EmpPage extends Component {
                         text="Availability"
                     />
                 </View>
-            </View>
+            </View >
         )
     }
 }
