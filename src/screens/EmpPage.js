@@ -3,7 +3,7 @@ Screen EmpPage :
 
 ***************************************/
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Alert, Image, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView, StyleSheet, Alert, Image, Dimensions, Animated } from 'react-native';
 import Tile from './../container/Tile';
 import config from './../config';
 import RoundedButton from './../components/buttons/RoundedButton';
@@ -15,7 +15,6 @@ import * as firebase from 'firebase';
 
 const { width: WIDTH } = Dimensions.get('window').width;
 const { height: HEIGHT } = Dimensions.get('window').height;
-var heartColor = /*this.state.isFav == false ? colors.white : */colors.fireOrange;
 
 class EmpPage extends Component {
     constructor(props) {
@@ -29,6 +28,9 @@ class EmpPage extends Component {
             shopImage: shop.image,
             isFav: false,
         };
+        this.handelPressIn = this.handelPressIn.bind(this);
+        this.handelPressOut = this.handelPressOut.bind(this);
+
     }
 
     static navigationOptions = {
@@ -39,16 +41,15 @@ class EmpPage extends Component {
         firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopId).once("value").then(snapshot => {
             if (snapshot.val()) {
                 firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/' + Object.keys(snapshot.val())[0]).remove().then(() =>
-                    Alert.alert("Removed from favorites"))
+                    //Alert.alert("Removed from favorites"),
+                    this.setState({ isFav: false }),
+                )
             } else {
                 firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').push({ placeID: this.state.shopId }).then(() =>
-                    Alert.alert("Added to favorites"))
-            }
-
-            if (this.state.isFav == false) {
-                this.setState({ isFav: true })
-            } else {
-                this.setState({ isFav: false })
+                    //Alert.alert("Added to favorites"),
+                    this.setState({ isFav: true }),
+                    //Alert.alert(this.state.isFav.toString())
+                )
             }
         })
     }
@@ -57,22 +58,49 @@ class EmpPage extends Component {
         this.props.navigation.navigate('QueueDetails');
     }
 
+    componentWillMount() {
+        this.AnimatedValue = new Animated.Value(1);
+
+    }
+
+    handelPressIn() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 1.3
+        }
+        ).start();
+    }
+
+    handelPressOut() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 1,
+            friction: 3,
+            tension: 40
+        }).start()
+    }
+
     render() {
+        const animatedStyle = {
+            transform: [{ scale: this.AnimatedValue }]
+        }
+        const heartColor = this.state.isFav ? colors.fireOrange : colors.white;
+
         return (
-            // Ceci est temporaire, le shop affiché ne correspond pas
             <View style={{ flex: 1 }}>
                 <ScrollView style={styles.container}>
                     <View style={styles.imageContainer} >
-                        <Image source={{uri: this.state.shopImage}} style={styles.image} />
+                        <Image source={{ uri: this.state.shopImage }} style={styles.image} />
                     </View>
                     <Text style={styles.headerTitle}>{this.state.shopName}</Text>
 
-                    <View style={styles.favContainer} >
-                        <TouchableOpacity onPress={this.onAddToFav} >
-                            <Image source={config.icons.hearthIcon} style={styles.favIcon} />
-                        </TouchableOpacity>
-                    </View>
-
+                    <Animated.View style={styles.favContainer}>
+                        <TouchableWithoutFeedback
+                            onPressIn={this.handelPressIn}
+                            onPressOut={this.handelPressOut}
+                            onPress={this.onAddToFav}
+                        >
+                            <Animated.Image source={config.icons.hearthIcon} style={[styles.favIcon, { tintColor: heartColor }, animatedStyle]} />
+                        </TouchableWithoutFeedback>
+                    </Animated.View>
                     <Text style={styles.empDesc}>Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste
 
                     Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s Testtes tes tes te ste s
@@ -148,7 +176,6 @@ const styles = StyleSheet.create({
     favIcon: {
         height: 28,
         width: 28,
-        tintColor: heartColor,
     },
     headerTitle: {
         paddingHorizontal: 20,

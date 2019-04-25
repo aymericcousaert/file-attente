@@ -15,7 +15,6 @@ class Tile extends Component {
         super(props);
         this.handelPressIn = this.handelPressIn.bind(this);
         this.handelPressOut = this.handelPressOut.bind(this);
-        this.onTilePress = this.onTilePress.bind(this);
     }
 
     componentWillMount() {
@@ -33,14 +32,10 @@ class Tile extends Component {
         Animated.spring(this.AnimatedValue, {
             toValue: 1,
             friction: 3,
-            tension: 20
+            tension: 40
         }).start()
-        this.onTilePress();
     }
 
-    onTilePress() {
-
-    }
     render() {
 
         const animatedStyle = {
@@ -95,15 +90,15 @@ const styles = StyleSheet.create({
         height: WIDTH / 2,
         borderColor: config.colors.borderColor,
         borderWidth: StyleSheet.hairlineWidth,
-        borderRadius: 8,
+        borderRadius: 2,
     },
     lowTilesBox: {
         width: '100%',
         top: -WIDTH / 25,
         height: WIDTH / 10,
         backgroundColor: 'white',
-        borderBottomLeftRadius: 8,
-        borderBottomRightRadius: 8,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
         borderColor: 'rgba(0,0,0,0.4)',
         borderWidth: 0.17,
     },

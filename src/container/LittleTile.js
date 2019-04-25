@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback, Dimensions, Animated } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import config from '../config';
 import colors from '../styles/colors';
@@ -9,12 +9,46 @@ const { height: HEIGHT } = Dimensions.get('window');
 
 class LittleTile extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handelPressIn = this.handelPressIn.bind(this);
+        this.handelPressOut = this.handelPressOut.bind(this);
+    }
+
+    componentWillMount() {
+        this.AnimatedValue = new Animated.Value(1);
+    }
+
+    handelPressIn() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 0.92
+        }
+        ).start();
+    }
+
+    handelPressOut() {
+        Animated.spring(this.AnimatedValue, {
+            toValue: 1,
+            friction: 3,
+            tension: 40
+        }).start()
+    }
+
     render() {
+
+        const animatedStyle = {
+            transform: [{ scale: this.AnimatedValue }]
+        }
+
         const shop = this.props.shop
         return (
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}>
-                <View style={{ paddingLeft: 17, shadowOffSet: { width: 2, height: 2 }, shadowColor: 'black', shadowOpacity: 0.2, elevation: 1 }}>
-                    <Image style={styles.image} source={{uri: shop.image}} />
+            <TouchableWithoutFeedback
+                onPressIn={this.handelPressIn}
+                onPressOut={this.handelPressOut}
+                onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}
+            >
+                <Animated.View style={[styles.container, animatedStyle]}>
+                    <Image style={styles.image} source={{ uri: shop.image }} />
                     <View style={styles.lowTilesBox}>
                         <View style={styles.lowTilesObj}>
                             <Text style={styles.text}> {shop.name} </Text>
@@ -23,27 +57,34 @@ class LittleTile extends Component {
                             </View>
                         </View>
                     </View>
-                </View>
-            </TouchableOpacity>
+                </Animated.View>
+            </TouchableWithoutFeedback>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        paddingLeft: 17,
+        //shadowOffSet: { width: 2, height: 2 },
+        //shadowColor: 'black',
+        //shadowOpacity: 0.2,
+        elevation: 1
+    },
     image: {
         width: WIDTH / 2.6,
         height: HEIGHT / 8,
         borderColor: config.colors.borderColor,
         borderWidth: StyleSheet.hairlineWidth,
-        borderRadius: 8,
+        borderRadius: 2,
     },
     lowTilesBox: {
         width: WIDTH / 2.6,
         top: -WIDTH / 32,
         height: HEIGHT / 32,
         backgroundColor: 'white',
-        borderBottomLeftRadius: 8,
-        borderBottomRightRadius: 8,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
         borderColor: 'rgba(0,0,0,0.4)',
         borderWidth: 0.17,
     },
@@ -64,7 +105,6 @@ const styles = StyleSheet.create({
         width: 15,
         height: 15,
         borderRadius: 20,
-        backgroundColor: '#414345',
         justifyContent: 'center',
         alignItems: 'center',
     },
