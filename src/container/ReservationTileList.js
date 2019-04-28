@@ -1,28 +1,87 @@
 import React, { Component } from 'react'
-import { FlatList } from 'react-native'
+import { View, StyleSheet, Text, FlatList, Image, Animated } from 'react-native'
 import ReservationTile from './ReservationTile'
 import Shops from './../Helpers/ShopsData'
 
+//Creation d'une flatlist animée
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+
 class ReservationTileList extends Component {
+
+  scrollAnimatedValue = new Animated.Value(0);
+
   constructor() {
     super();
   }
 
   render() {
-		var shopID = this.props.allShopId;
-		var allShops = Shops;
-		if(shopID.length > 0){allShops=allShops.filter(allShops => shopID.includes(allShops.id ))}
-		const bookingData = this.props.bookingData
+    var shopID = this.props.allShopId;
+    var allShops = Shops;
+    if (shopID.length > 0) { allShops = allShops.filter(allShops => shopID.includes(allShops.id)) }
+    const bookingData = this.props.bookingData
     return (
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={allShops}
-        renderItem={({ item }) => <ReservationTile shop={item} bookingData={bookingData}/>}
-        keyExtractor={(item) => item.id.toString()}
-        navigation={this.props.navigation}
-      />
+      <View styles={styles.container}>
+        <Animated.Image
+          source={require('./../image/backgroundNuages.png')}
+          style={
+            [
+              styles.topImage,
+              {
+                transform:
+                  [
+                    {
+                      translateY: this.scrollAnimatedValue.interpolate({
+                        inputRange: [-IMAGE_HEIGHT, 0, IMAGE_HEIGHT],
+                        outputRange: [IMAGE_HEIGHT / 2, 0, -IMAGE_HEIGHT / 2],
+                        extrapolateRight: 'clamp',
+                      })
+                    },
+                    {
+                      scale: this.scrollAnimatedValue.interpolate({
+                        inputRange: [-IMAGE_HEIGHT, 0],
+                        outputRange: [2, 1],
+                        extrapolateRight: 'clamp',
+                      })
+                    },
+                  ]
+              }
+            ]
+          } />
+        <AnimatedFlatList
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.scrollAnimatedValue } } }],
+            { useNativeDriver: true },
+          )}
+          scrollEventThrottle={8} //vistesse de rafraichissement 
+          showsVerticalScrollIndicator={true}
+          data={allShops}
+          renderItem={({ item }) => <ReservationTile shop={item} bookingData={bookingData} />}
+          keyExtractor={(item) => item.id.toString()}
+          navigation={this.props.navigation}
+          contentContainerStyle={
+            {
+              top: 20,
+              marginTop: IMAGE_HEIGHT, // to shift the content container
+            }
+          }
+        />
+      </View >
     )
   }
 }
+
+const IMAGE_HEIGHT = 200;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  topImage: {
+    position: 'absolute', top: 0,
+    height: IMAGE_HEIGHT,
+    resizeMode: 'stretch',
+  }
+});
 
 export default ReservationTileList;

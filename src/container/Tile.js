@@ -40,21 +40,21 @@ class Tile extends Component {
 
     }
 
-   renderElementRed(){
-      if(this.props.shop.busy == 3)
-        return <Image style={styles.indicAffluDotRed} source={config.icons.circleIcon} />;
-      return null;
-   }
-   renderElementOrange(){
-      if(this.props.shop.busy == 2)
-        return <Image style={styles.indicAffluDotOrange} source={config.icons.circleIcon} />;
-      return null;
-   }
-   renderElementGreen(){
-      if(this.props.shop.busy == 1)
-        return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
-      return null;
-   }
+    renderElementRed() {
+        if (this.props.shop.busy == 3)
+            return <Image style={styles.indicAffluDotRed} source={config.icons.circleIcon} />;
+        return null;
+    }
+    renderElementOrange() {
+        if (this.props.shop.busy == 2)
+            return <Image style={styles.indicAffluDotOrange} source={config.icons.circleIcon} />;
+        return null;
+    }
+    renderElementGreen() {
+        if (this.props.shop.busy == 1)
+            return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
+        return null;
+    }
     render() {
 
         const animatedStyle = {
@@ -62,13 +62,13 @@ class Tile extends Component {
         }
 
 
-				const shop = this.props.shop
+        const shop = this.props.shop
         return (
 
             <TouchableWithoutFeedback
                 onPressIn={this.handelPressIn}
                 onPressOut={this.handelPressOut}
-                onPress={() => { this.props.navigation.navigate('EmpPage',  { shop } ) }}
+                onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}
             >
                 <Animated.View style={[styles.container, animatedStyle]}>
 
@@ -79,9 +79,9 @@ class Tile extends Component {
 
                             <Text style={styles.lowTilesText}> {shop.name} </Text>
 
-                            { this.renderElementRed() }
-                            { this.renderElementOrange() }
-                            { this.renderElementGreen() }
+                            {this.renderElementRed()}
+                            {this.renderElementOrange()}
+                            {this.renderElementGreen()}
 
 
 
@@ -123,10 +123,10 @@ const styles = StyleSheet.create({
         top: -WIDTH / 25,
         height: WIDTH / 10,
         backgroundColor: 'white',
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5,
-        borderColor: 'rgba(0,0,0,0.4)',
-        borderWidth: 0.17,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderColor: config.colors.borderColor,
+        borderWidth: 0.4,
     },
     lowTilesObj: {
         flex: 1,

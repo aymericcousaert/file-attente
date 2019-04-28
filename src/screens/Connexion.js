@@ -89,7 +89,7 @@ class Connexion extends React.Component {
             <View>
               <View style={config.loginDesign.logoContainerInit}>
                 <Image source={logo} style={config.loginDesign.logoInit} />
-                <Text style={config.loginDesign.titleTextInit}>FastPass</Text>
+                <Text style={config.loginDesign.titleTextInit}>Skipt</Text>
               </View>
               <View style={styles.zoneContainer}>
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Image, StyleSheet, Dimensions, Text, View, FlatList } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet, Dimensions, Text, View, FlatList, StatusBar } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import LinearGradient from 'expo';
-import BottomTabBar from './../components/BottomTabBar';
 import MapHeader from './../components/MapHeader';
 import Shops from './../Helpers/ShopsData';
 import MapMarker from './../icon/map-marker.png';
@@ -126,14 +125,18 @@ class Map extends Component {
     ]
     return (
 
-
-      /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
-      <View style={styles.container}>
-        <View style={styles.positionZone}>
+      /* <View style={styles.positionZone}>
           <TouchableOpacity >
             <Image source={config.icons.positionIcon} style={styles.positionIcon} />
           </TouchableOpacity>
         </View>
+         */
+      /*<Text style = {styles.container} > Latitude: {this.state.initialPosition.latitude} </Text>*/
+      <View style={styles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor='transparent'
+        />
         <View style={styles.container}>
           <MapView style={styles.map}
             region={this.state.initialPosition}
@@ -145,20 +148,18 @@ class Map extends Component {
             {Shops.map((marker, index) => {
               return (
                 <MapView.Marker key={index} coordinate={marker.coordinate}>
-                <MapView.Callout
+                  <MapView.Callout
 
-                onPress={() => { this.props.navigation.navigate('EmpPage', {shop:marker}) }}
-                >
-                <MapPreview shop = {marker}    />
-                </MapView.Callout>
+                    onPress={() => { this.props.navigation.navigate('EmpPage', { shop: marker }) }}
+                  >
+                    <MapPreview shop={marker} />
+                  </MapView.Callout>
                 </MapView.Marker>
               );
             })}
 
 
           </MapView>
-          <BottomTabBar />
-          <MapHeader />
         </View>
       </View >
     )

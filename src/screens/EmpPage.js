@@ -4,11 +4,10 @@ Screen EmpPage :
 ***************************************/
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView, StyleSheet, Alert, Image, Dimensions, Animated } from 'react-native';
-import Tile from './../container/Tile';
 import config from './../config';
 import RoundedButton from './../components/buttons/RoundedButton';
 import colors from './../styles/colors';
-import { NavigationActions, StackActions } from 'react-navigation';
+import BackButton from './../components/buttons/BackButton';
 import * as firebase from 'firebase';
 
 
@@ -61,6 +60,7 @@ export default class EmpPage extends Component {
 
     componentWillMount() {
         this.AnimatedValue = new Animated.Value(1);
+        //Permet au chargement de la page ou a chaque changement sur le serveur d'actualiser la valeur de IsFav qui indique si la page est un fav de l'user.
         firebase.database().ref('users/' + config.userDetails.uid + '/favPlaces/').orderByChild("placeID").equalTo(this.state.shopId).once("value").then(snapshot => {
             if (snapshot.val()) {
                 this.setState({ isFav: true });
@@ -96,6 +96,9 @@ export default class EmpPage extends Component {
 
         return (
             <View style={{ flex: 1 }} >
+                <View style={styles.backContainer}>
+                    <BackButton />
+                </View>
                 <ScrollView style={styles.container}>
                     <View style={styles.imageContainer} >
                         <Image source={{ uri: this.state.shopImage }} style={styles.image} />
@@ -115,10 +118,10 @@ export default class EmpPage extends Component {
                     </Text>
                 </ScrollView>
 
-                <View style={{ position: 'absolute', bottom: 20, padding: 20 }}>
+                <View style={{ position: 'absolute', bottom: 2, paddingLeft: 20, paddingRight: 20 }}>
                     <RoundedButton
                         textColor={colors.white}
-                        background={'#414345'}
+                        background={'rgba(73,175,235,0.9)'}
                         handleOnPress={this.onGoToQueueDetails}
                         text="Availability"
                     />
@@ -139,6 +142,18 @@ const styles = StyleSheet.create({
     image: {
         height: '100%',
         width: '100%',
+    },
+    backContainer: {
+        zIndex: 6,
+        position: 'absolute',
+        top: 40,
+        left: 20,
+        width: 45,
+        height: 45,
+        borderRadius: 25,
+        backgroundColor: '#414345',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     favContainer: {
         zIndex: 4,

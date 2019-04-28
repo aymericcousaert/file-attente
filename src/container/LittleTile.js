@@ -85,15 +85,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderBottomLeftRadius: 5,
         borderBottomRightRadius: 5,
-        borderColor: 'rgba(0,0,0,0.4)',
-        borderWidth: 0.17,
+        borderColor: config.colors.borderColor,
+        borderWidth: 0.3,
     },
     lowTilesObj: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginLeft: 4
+        marginLeft: 4,
     },
     text: {
         fontSize: 11,

@@ -8,16 +8,11 @@ import { Home } from './../screens'
 
 const Feed = createStackNavigator(
     {
-        TileList: {
+        Feed: {
             screen: Home,
+            headerMode: 'none',
         },
     },
-    {
-        headerMode: 'none',
-        defaultNavigationOptions: {
-            gesturesEnabled: false,
-        },
-    }
 )
 
 export default createAppContainer(Feed);

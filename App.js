@@ -3,14 +3,14 @@ Class App :
 
 ***************************************/
 import React from 'react';
-import { View, StyleSheet, StatusBar, Alert} from 'react-native';
+import { View, StyleSheet, StatusBar, Alert } from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import LoggedOutStack from './src/navigation/AuthStackNavigator';
 import ApiKeys from './src/config/firebase/ApiKeys';
 import config from './src/config/';
 import * as firebase from 'firebase';
 import SideBar from './src/navigation/SideBar';
-import Mainscreen from './src/screens/MainScreen';
+import TabBar from './src/navigation/TabBar';
 
 /**************************************
 Creation of the App containers one that
@@ -20,7 +20,7 @@ that routes to the app's login (AuthScreens)
 const AuthScreens = createAppContainer(LoggedOutStack);
 const HomeNavigator = createStackNavigator(
 	{
-		Home: SideBar,
+		Home: TabBar,
 	},
 	{
 		headerMode: 'none',
@@ -63,13 +63,13 @@ export default class App extends React.Component {
 
 	componentWillMount = () => {
 		this.watchId = navigator.geolocation.watchPosition(
-      (position) => {
+			(position) => {
 				config.userDetails.coordinate.latitude = position.coords.latitude
 				config.userDetails.coordinate.longitude = position.coords.longitude
-      },
-      (error) => {Alert.alert(error.message)},
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
-    );
+			},
+			(error) => { Alert.alert(error.message) },
+			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+		);
 	}
 
 	render() {

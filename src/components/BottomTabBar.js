@@ -1,75 +1,80 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
-import config from './../config'
-import { withNavigation } from 'react-navigation';
-import { LinearGradient } from 'expo';
-import { ViewPagerAndroid } from 'react-native-gesture-handler';
+import React from "react";
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import posed from "react-native-pose";
 
-const { width: WIDTH } = Dimensions.get('window');
+const windowWidth = Dimensions.get("window").width;
+const tabWidth = windowWidth / 4;
 
-class BottomTabBar extends Component {
-    render() {
-        return (
-            <LinearGradient
-                colors={['#232526', '#414345']}
-                style={styles.tabBarContainer}
-                start={[0, 0]}
-                end={[1, 0]}
-
-            >
-                <TouchableOpacity style={styles.menuZone} onPress={() => this.props.navigation.navigate('Feed')}>
-
-
-                    <Image style={styles.homeStyle} source={config.icons.homeIcon} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuZone} onPress={() => this.props.navigation.navigate('Map')}>
-                    <Image style={styles.mapStyle} source={config.icons.mapIcon} />
-                </TouchableOpacity>
-
-            </LinearGradient >
-        )
-    }
-}
-
-const styles = StyleSheet.create({
-    tabBarContainer: {
-        width: WIDTH / 3,
-        height: 45,
-        backgroundColor: 'transparent',
-        position: 'absolute',
-        left: WIDTH / 3,
-        bottom: 36,
-        borderRadius: 25,
-        opacity: 0.9,
-        borderColor: config.colors.borderColor,
-        borderWidth: StyleSheet.hairlineWidth,
-    },
-    homeZone: {
-        width: 50,
-        height: 50,
-        zIndex: 8,
-        borderRadius: 25,
-        position: 'absolute',
-        bottom: 36,
-        left: WIDTH / 3,
-    },
-    homeStyle: {
-        width: 25,
-        height: 25,
-        tintColor: config.colors.secondaryColor,
-        left: WIDTH / 3 / 7,
-        top: 50 / 6,
-        position: 'absolute',
-    },
-    mapStyle: {
-        width: 24,
-        height: 24,
-        tintColor: config.colors.secondaryColor,
-        right: WIDTH / 3 / 7 + 0.5,
-        top: 50 / 6 + 0.5,
-        position: 'absolute',
-    },
+const SpotLight = posed.View({
+    route0: { x: 0 },
+    route1: { x: tabWidth },
+    route2: { x: tabWidth * 2 },
+    route3: { x: tabWidth * 3 }
 });
 
-export default withNavigation(BottomTabBar);
+const Scaler = posed.View({
+    active: { scale: 1.4 },
+    inactive: { scale: 1 }
+});
+
+const S = StyleSheet.create({
+    container: { flexDirection: "row", height: 52, elevation: 2, marginBottom: 25, marginTop: 2, borderRadius: 15 },
+    tabButton: { flex: 1, justifyContent: "center", alignItems: "center" },
+    spotLight: {
+        width: tabWidth / 4,
+        height: "20%",
+        backgroundColor: "rgba(87,182,238,0.9)",
+        borderRadius: 80,
+        marginLeft: tabWidth / 4 * 1.5,
+        marginTop: 43,
+    }
+});
+
+const TabBar = props => {
+    const {
+        renderIcon,
+        getLabelText,
+        activeTintColor,
+        inactiveTintColor,
+        onTabPress,
+        onTabLongPress,
+        getAccessibilityLabel,
+        navigation
+    } = props;
+
+    const { routes, index: activeRouteIndex } = navigation.state;
+
+    return (
+        <View style={S.container}>
+
+            <View style={StyleSheet.absoluteFillObject}>
+                <SpotLight style={S.spotLight} pose={`route${activeRouteIndex}`} />
+            </View>
+
+            {routes.map((route, routeIndex) => {
+                const isRouteActive = routeIndex === activeRouteIndex;
+                const tintColor = isRouteActive ? activeTintColor : inactiveTintColor;
+
+                return (
+                    <TouchableOpacity
+                        key={routeIndex}
+                        style={S.tabButton}
+                        onPress={() => {
+                            onTabPress({ route });
+                        }}
+                        onLongPress={() => {
+                            onTabLongPress({ route });
+                        }}
+                        accessibilityLabel={getAccessibilityLabel({ route })}
+                    >
+                        <Scaler style={S.scaler} pose={isRouteActive ? "active" : "inactive"}>
+                            {renderIcon({ route, focused: isRouteActive, tintColor })}
+                        </Scaler>
+                    </TouchableOpacity>
+                );
+            })}
+        </View>
+    );
+};
+
+export default TabBar;

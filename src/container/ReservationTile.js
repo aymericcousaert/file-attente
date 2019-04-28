@@ -42,54 +42,54 @@ class ReservationTile extends Component {
 
     }
 
-   renderElementRed(){
-      if(this.props.shop.busy == 3)
-        return <Image style={styles.indicAffluDotRed} source={config.icons.circleIcon} />;
-      return null;
-   }
-   renderElementOrange(){
-      if(this.props.shop.busy == 2)
-        return <Image style={styles.indicAffluDotOrange} source={config.icons.circleIcon} />;
-      return null;
-   }
-   renderElementGreen(){
-      if(this.props.shop.busy == 1)
-        return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
-      return null;
-   }
+    renderElementRed() {
+        if (this.props.shop.busy == 3)
+            return <Image style={styles.indicAffluDotRed} source={config.icons.circleIcon} />;
+        return null;
+    }
+    renderElementOrange() {
+        if (this.props.shop.busy == 2)
+            return <Image style={styles.indicAffluDotOrange} source={config.icons.circleIcon} />;
+        return null;
+    }
+    renderElementGreen() {
+        if (this.props.shop.busy == 1)
+            return <Image style={styles.indicAffluDotGreen} source={config.icons.circleIcon} />;
+        return null;
+    }
 
     render() {
 
         const animatedStyle = {
             transform: [{ scale: this.AnimatedValue }]
         }
-				const shop = this.props.shop
-				var bookingData = this.props.bookingData
-				var booking = [];
-				booking = bookingData.filter((bookingData) => bookingData.placeID==shop.id)
+        const shop = this.props.shop
+        var bookingData = this.props.bookingData
+        var booking = [];
+        booking = bookingData.filter((bookingData) => bookingData.placeID == shop.id)
 
-				var days = [
-				 "Sun",
-				 "Mon",
-				 "Tue",
-				 "Wed",
-				 "Thu",
-				 "Fri",
-				 "Sat",
-		 		];
+        var days = [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+        ];
 
-				if(booking.length>0){
-					bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}>{days[new Date(2019, booking[0].month, booking[0].day, 0, 0, 0, 0).getDay()]} {booking[0].day}/{booking[0].month} - {booking[0].hour}:{booking[0].minute}</Text>
-				} else {
-					bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}></Text>
-				}
+        if (booking.length > 0) {
+            bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}>{days[new Date(2019, booking[0].month, booking[0].day, 0, 0, 0, 0).getDay()]} {booking[0].day}/{booking[0].month} - {booking[0].hour}:{booking[0].minute}</Text>
+        } else {
+            bookingText = <Text style={[styles.lowTilesText, { marginLeft: 40, marginRight: 30 }]}></Text>
+        }
 
         return (
 
             <TouchableWithoutFeedback
                 onPressIn={this.handelPressIn}
                 onPressOut={this.handelPressOut}
-                onPress={() => { this.props.navigation.navigate('EmpPage',  { shop } ) }}
+                onPress={() => { this.props.navigation.navigate('EmpPage', { shop }) }}
             >
                 <Animated.View style={[styles.container, animatedStyle]}>
 
@@ -100,9 +100,9 @@ class ReservationTile extends Component {
 
                             <Text style={styles.lowTilesText}> {shop.name} </Text>
 
-                            { this.renderElementRed() }
-                            { this.renderElementOrange() }
-                            { this.renderElementGreen() }
+                            {this.renderElementRed()}
+                            {this.renderElementOrange()}
+                            {this.renderElementGreen()}
 
                             {bookingText}
                             <Image style={styles.routeImg} source={config.icons.map2Icon} />
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderBottomLeftRadius: 8,
         borderBottomRightRadius: 8,
-        borderColor: 'rgba(0,0,0,0.4)',
-        borderWidth: 0.17,
+        borderColor: config.colors.borderColor,
+        borderWidth: 0.4,
     },
     lowTilesObj: {
         flex: 1,
