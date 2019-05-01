@@ -86,7 +86,6 @@ class Home extends Component {
 			} else if (count < (10 * 0.66)) {
 				shop.busy = 2;
 			} else shop.busy = 3;
-			console.log(shop.name + ":" + shop.busy);
 		})
 	}
 

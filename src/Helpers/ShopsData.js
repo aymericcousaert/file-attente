@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
 var data = []
-firebase.database().ref('/places').on('value', snap => {
+firebase.database().ref('/places').once('value', snap => {
   snap.forEach(elem => {
     data.push({
       id: elem.child('id').val(),

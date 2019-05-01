@@ -11,7 +11,10 @@ class TileList extends Component {
   render() {
     var allShops = Shops;
     var shopName = this.props.shopName;
-    if (shopName !== "_all") { allShops = allShops.filter(allShops => allShops.name.includes(shopName)) }
+    if (shopName !== "_all") {
+			allShops = allShops.filter(allShops => allShops.name.includes(shopName));
+		}
+		allShops = allShops.sort((a, b) => Number(a.distance) - Number(b.distance));
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
