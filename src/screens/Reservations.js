@@ -48,7 +48,7 @@ class Reservations extends Component {
 
 	render() {
 		return (
-			<View style={{ flex: 1, justifyContent: "space-around" }}>
+			<View >
 				<ReservationTileList navigation={this.props.navigation} allShopId={this.state.allShopId} bookingData={this.state.bookingData} />
 			</View>
 		)

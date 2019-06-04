@@ -116,6 +116,16 @@ export default class EmpPage extends Component {
                     <Text style={styles.empDesc}>
                         -----Shop Description-----
                     </Text>
+                    <Text style={styles.headerMap}>How to go :</Text>
+                    <Image
+                        style={{
+                            height: 200,
+                            width: WIDTH,
+                            margin: 20,
+                            top: 150,
+                        }}
+                        source={require('./../image/unecarte.png')}
+                    />
                 </ScrollView>
 
                 <View style={{ position: 'absolute', bottom: 2, paddingLeft: 20, paddingRight: 20 }}>
@@ -180,5 +190,13 @@ const styles = StyleSheet.create({
     },
     empDesc: {
         paddingHorizontal: 20,
-    }
+    },
+    headerMap: {
+        paddingHorizontal: 20,
+        marginTop: 10,
+        marginBottom: -10,
+        fontWeight: '700',
+        fontSize: 20,
+        top: 145,
+    },
 });

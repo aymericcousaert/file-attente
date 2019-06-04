@@ -16,7 +16,7 @@ export default class Settings extends Component {
 		firebase.auth().signOut().then(function () { }).catch(function (error) {
 			// An error happened.
 		});
-		this.props.navigation.navigate('AuthStackNavigator')
+		//this.props.navigation.navigate('AuthStackNavigator')
 	}
 
 	toCreateShop = () => {

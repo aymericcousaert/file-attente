@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, FlatList, Image, Animated } from 'react-native'
+import { View, StyleSheet, Text, FlatList, Image, Animated, Dimensions } from 'react-native'
 import ReservationTile from './ReservationTile'
 import Shops from './../Helpers/ShopsData'
 
@@ -15,6 +15,7 @@ class ReservationTileList extends Component {
   }
 
   render() {
+    let screenHeight = Dimensions.get('window').height;
     var shopID = this.props.allShopId;
     var allShops = Shops;
     if (shopID.length > 0) { allShops = allShops.filter(allShops => shopID.includes(allShops.id)) }
@@ -49,8 +50,7 @@ class ReservationTileList extends Component {
               ]
             } />
           <Text style={{
-            position: "relative",
-            top: 150,
+            top: IMAGE_HEIGHT - 45,
             fontSize: 40,
             left: 15,
             color: "white",
@@ -69,7 +69,7 @@ class ReservationTileList extends Component {
           navigation={this.props.navigation}
           contentContainerStyle={
             {
-              top: 20,
+              height: screenHeight,
               marginTop: IMAGE_HEIGHT, // to shift the content container
             }
           }

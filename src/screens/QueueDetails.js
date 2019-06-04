@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { DatePickerIOS, StyleSheet, View, Alert } from 'react-native';
 import config from './../config';
+import BackButton from './../components/buttons/BackButton';
 import RoundedButton from './../components/buttons/RoundedButton';
 
 import * as firebase from 'firebase'
@@ -35,12 +36,16 @@ export default class QueueDetails extends Component {
 		const date = month + "/" + day + "/" + hour;
 		firebase.database().ref('places/shop' + shopId + '/bookings/' + date).push({ uid: config.userDetails.uid, minute: minute }).then(() =>
 			firebase.database().ref('users/' + config.userDetails.uid + '/bookings/' + date).push({ placeID: shopId, minute: minute }).then(() =>
+				this.props.navigation.goBack(),
 				Alert.alert("Congratulations you've just Skipt It")))
 	}
 
 	render() {
 		return (
 			<View style={styles.main_container}>
+				<View style={styles.backContainer}>
+					<BackButton />
+				</View>
 				<DatePickerIOS
 					date={this.state.chosenDate}
 					onDateChange={this.setDate}
@@ -71,5 +76,17 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		right: 30,
 		top: 30
-	}
+	},
+	backContainer: {
+		zIndex: 6,
+		position: 'absolute',
+		top: 40,
+		left: 20,
+		width: 45,
+		height: 45,
+		borderRadius: 25,
+		backgroundColor: '#414345',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 })
