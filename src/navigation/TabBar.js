@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { Map, Settings } from '../screens';
+import { Map } from '../screens';
 import MainPageStack from './MainPageStack';
+import Setting from './Setting';
 import Reservations from './../screens/Reservations';
 import BottomTabBar from './../components/BottomTabBar';
 import Icon from './../components/Icon';
@@ -27,8 +28,8 @@ const TabBar = createBottomTabNavigator(
                 tabBarIcon: ({ tintColor }) => <Icon name="booking" color={tintColor} />
             }
         },
-        Settings: {
-            screen: Settings,
+        Setting: {
+            screen: Setting,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => <Icon name="settings" color={tintColor} />
             }

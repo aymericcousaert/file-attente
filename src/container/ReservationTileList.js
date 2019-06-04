@@ -21,32 +21,41 @@ class ReservationTileList extends Component {
     const bookingData = this.props.bookingData
     return (
       <View styles={styles.container}>
-        <Animated.Image
-          source={require('./../image/backgroundNuages.png')}
-          style={
-            [
-              styles.topImage,
-              {
-                transform:
-                  [
-                    {
-                      translateY: this.scrollAnimatedValue.interpolate({
-                        inputRange: [-IMAGE_HEIGHT, 0, IMAGE_HEIGHT],
-                        outputRange: [IMAGE_HEIGHT / 2, 0, -IMAGE_HEIGHT / 2],
-                        extrapolateRight: 'clamp',
-                      })
-                    },
-                    {
-                      scale: this.scrollAnimatedValue.interpolate({
-                        inputRange: [-IMAGE_HEIGHT, 0],
-                        outputRange: [2, 1],
-                        extrapolateRight: 'clamp',
-                      })
-                    },
-                  ]
-              }
-            ]
-          } />
+        <View>
+          <Animated.Image
+            source={require('./../image/backgroundNuages.png')}
+            style={
+              [
+                styles.topImage,
+                {
+                  transform:
+                    [
+                      {
+                        translateY: this.scrollAnimatedValue.interpolate({
+                          inputRange: [-IMAGE_HEIGHT, 0, IMAGE_HEIGHT],
+                          outputRange: [IMAGE_HEIGHT / 2, 0, -IMAGE_HEIGHT / 2],
+                          extrapolateRight: 'clamp',
+                        })
+                      },
+                      {
+                        scale: this.scrollAnimatedValue.interpolate({
+                          inputRange: [-IMAGE_HEIGHT, 0],
+                          outputRange: [2, 1],
+                          extrapolateRight: 'clamp',
+                        })
+                      },
+                    ]
+                }
+              ]
+            } />
+          <Text style={{
+            position: "relative",
+            top: 150,
+            fontSize: 40,
+            left: 15,
+            color: "white",
+          }}>Reservations</Text>
+        </View>
         <AnimatedFlatList
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: this.scrollAnimatedValue } } }],
@@ -76,6 +85,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    justifyContent: 'space-around',
   },
   topImage: {
     position: 'absolute', top: 0,
